@@ -1,23 +1,29 @@
 [gd_scene format=3 uid="uid://d2wle73x0ng8r"]
 
-[ext_resource type="Texture2D" uid="uid://58vq435x6i4v" path="res://Assets/ACC associate-certified-coach-acc.png" id="1_wjf51"]
 [ext_resource type="Script" uid="uid://bkh0x3s5yu5bu" path="res://Scripts/floor.gd" id="2_wjf51"]
 [ext_resource type="Script" uid="uid://b68g78pxi0dox" path="res://Scripts/neighbour.gd" id="3_ugy24"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8gbba"]
-size = Vector2(1952.7445, 1967.3674)
+size = Vector2(1, 1)
 
-[node name="Node2D" type="Sprite2D" unique_id=119915836]
-scale = Vector2(0.062988274, 0.062011745)
-texture = ExtResource("1_wjf51")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_agfsv"]
+size = Vector2(1, 1)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_wjf51"]
+
+[node name="Floor" type="StaticBody2D" unique_id=680558180]
 script = ExtResource("2_wjf51")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1388060289]
+[node name="Neighbor" type="Area2D" parent="." unique_id=1388060289]
 script = ExtResource("3_ugy24")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1954082528]
-position = Vector2(-7.937975, 0.00013072092)
-scale = Vector2(1, 1.0000013)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Neighbor" unique_id=1954082528]
 shape = SubResource("RectangleShape2D_8gbba")
 
-[connection signal="area_entered" from="Area2D" to="Area2D" method="_on_area_entered"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1200411852]
+shape = SubResource("RectangleShape2D_agfsv")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=190337358]
+texture = SubResource("CanvasTexture_wjf51")
+
+[connection signal="area_entered" from="Neighbor" to="Neighbor" method="_on_area_entered"]

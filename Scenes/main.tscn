@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://drakrwbphss2j"]
 
 [ext_resource type="PackedScene" uid="uid://dhgwt22ubln3q" path="res://Scenes/block.tscn" id="1_jjgbg"]
+[ext_resource type="PackedScene" uid="uid://d2wle73x0ng8r" path="res://Scenes/floor.tscn" id="2_bo1nx"]
 
 [node name="Main" type="Node" unique_id=1760907832]
 
@@ -9,3 +10,7 @@ position = Vector2(242, 161)
 
 [node name="RigidBody2D2" parent="." unique_id=1031546032 instance=ExtResource("1_jjgbg")]
 position = Vector2(454, 212)
+
+[node name="Floor" parent="." unique_id=680558180 instance=ExtResource("2_bo1nx")]
+position = Vector2(557, 603)
+scale = Vector2(2000, 100)

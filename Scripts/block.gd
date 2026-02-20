@@ -16,15 +16,8 @@ func _physics_process(delta: float) -> void:
 		var distance = global_position.distance_to(get_global_mouse_position())
 		var direction = global_position.direction_to(get_global_mouse_position())
 		
-		print('distance: ' + str(distance))
-		print('direction:' + str(direction))
-		
 		var speed = distance / delta
-		
 		velocity = direction * speed
-		
-		print('velocity: ' + str(velocity))
-		
 		move_and_slide()
 
 func _on_button_button_down() -> void:
