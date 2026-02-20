@@ -3,6 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://58vq435x6i4v" path="res://Assets/ACC associate-certified-coach-acc.png" id="1_c2iur"]
 [ext_resource type="Script" uid="uid://b68g78pxi0dox" path="res://Scripts/neighbour.gd" id="1_ejx3s"]
 [ext_resource type="Script" uid="uid://g0qmwplp4ot0" path="res://Scripts/block.gd" id="2_i67tl"]
+[ext_resource type="Script" uid="uid://bx6w5sem037xp" path="res://Scripts/movement_button.gd" id="3_ods6j"]
+[ext_resource type="Texture2D" uid="uid://dvsv86rhvylrl" path="res://Assets/check.png" id="4_i67tl"]
+[ext_resource type="Script" uid="uid://bgy3liv1oh07x" path="res://Scripts/confirm_button.gd" id="5_s3j4o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c2iur"]
 size = Vector2(121, 119.99983)
@@ -33,6 +36,7 @@ offset_right = -1095.4421
 offset_bottom = -1080.4409
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("3_ods6j")
 metadata/_edit_use_anchors_ = true
 
 [node name="Neighbor" type="Area2D" parent="." unique_id=1388060289]
@@ -44,6 +48,17 @@ position = Vector2(-7.937975, 0.00013072092)
 scale = Vector2(1, 1.0000013)
 shape = SubResource("RectangleShape2D_8gbba")
 
+[node name="TextureButton" type="TextureButton" parent="." unique_id=586993200]
+offset_left = 63.0
+offset_top = 11.999998
+offset_right = 113.0
+offset_bottom = 61.0
+texture_normal = ExtResource("4_i67tl")
+script = ExtResource("5_s3j4o")
+
 [connection signal="button_down" from="Node2D/Button" to="." method="_on_button_button_down"]
+[connection signal="button_down" from="Node2D/Button" to="TextureButton" method="_on_button_button_down"]
 [connection signal="button_up" from="Node2D/Button" to="." method="_on_button_button_up"]
+[connection signal="button_up" from="Node2D/Button" to="TextureButton" method="_on_button_button_up"]
 [connection signal="area_entered" from="Neighbor" to="Neighbor" method="_on_area_entered"]
+[connection signal="button_down" from="TextureButton" to="Node2D/Button" method="_on_texture_button_button_down"]

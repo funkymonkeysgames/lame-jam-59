@@ -41,4 +41,3 @@ func update_integrity():
 			max_integrity = max(max_integrity, neighbors[i].body.integrity)
 			
 		integrity = max_integrity - 1
-	

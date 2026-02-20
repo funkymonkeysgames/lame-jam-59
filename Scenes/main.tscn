@@ -14,3 +14,12 @@ position = Vector2(454, 212)
 [node name="Floor" parent="." unique_id=680558180 instance=ExtResource("2_bo1nx")]
 position = Vector2(557, 603)
 scale = Vector2(2000, 100)
+
+[node name="RigidBody2D3" parent="." unique_id=775746113 instance=ExtResource("1_jjgbg")]
+position = Vector2(867, 268)
+
+[node name="RigidBody2D4" parent="." unique_id=661760210 instance=ExtResource("1_jjgbg")]
+position = Vector2(638, 362)
+
+[node name="RigidBody2D5" parent="." unique_id=1036186022 instance=ExtResource("1_jjgbg")]
+position = Vector2(176, 410)
