@@ -4,8 +4,8 @@
 
 [node name="Main" type="Node" unique_id=1760907832]
 
-[node name="Node2D" parent="." unique_id=119915836 instance=ExtResource("1_jjgbg")]
-position = Vector2(-38, -18)
+[node name="RigidBody2D" parent="." unique_id=581432221 instance=ExtResource("1_jjgbg")]
+position = Vector2(242, 161)
 
-[node name="Node2D2" parent="." unique_id=2081828932 instance=ExtResource("1_jjgbg")]
-position = Vector2(181, 40)
+[node name="RigidBody2D2" parent="." unique_id=1031546032 instance=ExtResource("1_jjgbg")]
+position = Vector2(454, 212)
