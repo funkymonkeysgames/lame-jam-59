@@ -1,12 +1,7 @@
 extends StaticBody2D
 
-var integrity = 6
+@onready var integrity: int = 6
+@onready var max_neighbour_integrity: int = 0
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+@onready var parent_body2d = $".."
+@onready var neighbour_area2d: Area2D = $"Neighbour"

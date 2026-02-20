@@ -1,30 +1,28 @@
 extends CharacterBody2D
 
-var can_drag = false
-var drag_offset = Vector2(0,0)
-var integrity = 0
-var force = Vector2.ZERO
+@onready var can_drag = false
+@onready var can_update = true
 
-@onready var neighborArea2D = $Neighbor
+@onready var drag_offset = Vector2(0,0)
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+@onready var integrity: int = 0
+@onready var max_neighbour_integrity = 0
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+@onready var neighbour_area2d: Area2D = $Neighbour
+@onready var parent_body2d = $".."
+@onready var integrity_text: TextEdit = $IntegrityText
+@onready var neighbour_manager = $"../Node"
+
 func _physics_process(delta: float) -> void:
-	if can_drag:
-		var current_position = global_position
-		var distance = global_position.distance_to(get_global_mouse_position())
-		var direction = global_position.direction_to(get_global_mouse_position())
-		
-		var speed = distance / delta
-		velocity = direction * speed
-		move_and_slide()
-		
-func _process(delta: float) -> void:
-	update_integrity()
-	print(integrity)
+	if !can_drag: return
+	
+	var current_position = global_position
+	var distance = global_position.distance_to(get_global_mouse_position())
+	var direction = global_position.direction_to(get_global_mouse_position())
+	
+	var speed = distance / delta
+	velocity = direction * speed
+	move_and_slide()
 
 func _on_button_button_down() -> void:
 	drag_offset = get_global_mouse_position() - global_position
@@ -32,12 +30,13 @@ func _on_button_button_down() -> void:
 
 func _on_button_button_up() -> void:
 	can_drag = false
-	
-func update_integrity():
-	var neighbors = neighborArea2D.get_overlapping_areas()
-	if (neighbors.size() > 0):
-		var max_integrity = 0
-		for i in neighbors.size():
-			max_integrity = max(max_integrity, neighbors[i].body.integrity)
-			
-		integrity = max_integrity - 1
+
+func _on_neighbor_area_entered(area: Area2D) -> void:
+	if can_update:
+		neighbour_manager.check_integrity(self)
+
+
+func _on_confirmation_button_button_down() -> void:
+	if await neighbour_manager.check_integrity(self):
+		neighbour_manager.new_neighbour(self)
+	can_update = false

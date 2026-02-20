@@ -2,28 +2,32 @@
 
 [ext_resource type="PackedScene" uid="uid://dhgwt22ubln3q" path="res://Scenes/block.tscn" id="1_jjgbg"]
 [ext_resource type="PackedScene" uid="uid://d2wle73x0ng8r" path="res://Scenes/floor.tscn" id="2_bo1nx"]
-[ext_resource type="PackedScene" uid="uid://dy7h5xt0bws8w" path="res://Scenes/Objects/paper_bag.tscn" id="2_kry3j"]
-[ext_resource type="PackedScene" uid="uid://d36msxyd7l8jo" path="res://Scenes/Objects/spray_can.tscn" id="3_21xkr"]
-[ext_resource type="PackedScene" uid="uid://bf8a4bbvpr4kg" path="res://Scenes/Objects/newspaper.tscn" id="4_6bp64"]
-[ext_resource type="PackedScene" uid="uid://df234nmagmsa" path="res://Scenes/Objects/box.tscn" id="5_344ge"]
+[ext_resource type="Script" uid="uid://di3ad1sghrct5" path="res://Scripts/neighbour_manager.gd" id="2_jjvhh"]
 
 [node name="Main" type="Node" unique_id=1760907832]
+
+[node name="Node" type="Node" parent="." unique_id=962948133]
+script = ExtResource("2_jjvhh")
+
+[node name="AAA" parent="." unique_id=581432221 instance=ExtResource("1_jjgbg")]
+position = Vector2(382, 147)
+scale = Vector2(0.8380582, 6.069581)
+
+[node name="BBB" parent="." unique_id=1031546032 instance=ExtResource("1_jjgbg")]
+position = Vector2(544, 58)
+
+[node name="CCC" parent="." unique_id=775746113 instance=ExtResource("1_jjgbg")]
+position = Vector2(689, 65)
+
+[node name="DDD" parent="." unique_id=661760210 instance=ExtResource("1_jjgbg")]
+position = Vector2(771, 199)
+
+[node name="EEE" parent="." unique_id=1036186022 instance=ExtResource("1_jjgbg")]
+position = Vector2(844, 332)
 
 [node name="Floor" parent="." unique_id=680558180 instance=ExtResource("2_bo1nx")]
 position = Vector2(557, 603)
 scale = Vector2(2000, 100)
 
-[node name="RigidBody2D" parent="." unique_id=581432221 instance=ExtResource("2_kry3j")]
-position = Vector2(205, 120)
-
-[node name="RigidBody2D2" parent="." unique_id=1399438488 instance=ExtResource("3_21xkr")]
-position = Vector2(469, 285)
-
-[node name="RigidBody2D3" parent="." unique_id=564677933 instance=ExtResource("4_6bp64")]
-position = Vector2(105, 385)
-
-[node name="RigidBody2D4" parent="." unique_id=676657265 instance=ExtResource("5_344ge")]
-position = Vector2(669, 108)
-
-[node name="RigidBody2D5" parent="." unique_id=651395400 instance=ExtResource("1_jjgbg")]
-position = Vector2(135, 249)
+[node name="FFF" parent="." unique_id=1680664541 instance=ExtResource("1_jjgbg")]
+position = Vector2(902, 471)
