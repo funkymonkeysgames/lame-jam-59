@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://g0qmwplp4ot0" path="res://Scripts/block.gd" id="1_oarpt"]
 [ext_resource type="Texture2D" uid="uid://c2iqgqlc5fiud" path="res://Assets/objects/water_bottle.png" id="2_4rl8u"]
 [ext_resource type="Script" uid="uid://bx6w5sem037xp" path="res://Scripts/movement_button.gd" id="3_qfoov"]
-[ext_resource type="Script" uid="uid://b68g78pxi0dox" path="res://Scripts/neighbour.gd" id="4_12ukf"]
 [ext_resource type="Texture2D" uid="uid://dvsv86rhvylrl" path="res://Assets/check.png" id="5_p60l7"]
 [ext_resource type="Script" uid="uid://bgy3liv1oh07x" path="res://Scripts/confirm_button.gd" id="6_3uv51"]
 
@@ -13,9 +12,13 @@ size = Vector2(15, 45)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8gbba"]
 size = Vector2(16, 46)
 
-[node name="RigidBody2D" type="CharacterBody2D" unique_id=581432221]
+[node name="RigidBody2D" type="CharacterBody2D" unique_id=581432221 node_paths=PackedStringArray("neighbour_area2d", "parent_body2d", "integrity_text", "sprite2D")]
 scale = Vector2(1, 1.0000001)
 script = ExtResource("1_oarpt")
+neighbour_area2d = NodePath("Neighbour")
+parent_body2d = NodePath(".")
+integrity_text = NodePath("IntegrityText")
+sprite2D = NodePath("Node2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1735779317]
 scale = Vector2(1, 1.0000013)
@@ -38,14 +41,13 @@ grow_vertical = 2
 script = ExtResource("3_qfoov")
 metadata/_edit_use_anchors_ = true
 
-[node name="Neighbor" type="Area2D" parent="." unique_id=1388060289]
-script = ExtResource("4_12ukf")
+[node name="Neighbour" type="Area2D" parent="." unique_id=1388060289]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Neighbor" unique_id=1954082528]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Neighbour" unique_id=1954082528]
 scale = Vector2(1, 1.0000013)
 shape = SubResource("RectangleShape2D_8gbba")
 
-[node name="TextureButton" type="TextureButton" parent="." unique_id=586993200]
+[node name="ConfirmationButton" type="TextureButton" parent="." unique_id=2038110343]
 offset_left = 63.0
 offset_top = 11.999998
 offset_right = 113.0
@@ -53,9 +55,17 @@ offset_bottom = 61.0
 texture_normal = ExtResource("5_p60l7")
 script = ExtResource("6_3uv51")
 
+[node name="IntegrityText" type="TextEdit" parent="." unique_id=559475215]
+offset_left = -56.0
+offset_top = -52.999992
+offset_right = -16.0
+offset_bottom = -12.999992
+
 [connection signal="button_down" from="Node2D/Button" to="." method="_on_button_button_down"]
-[connection signal="button_down" from="Node2D/Button" to="TextureButton" method="_on_button_button_down"]
+[connection signal="button_down" from="Node2D/Button" to="ConfirmationButton" method="_on_button_button_down"]
 [connection signal="button_up" from="Node2D/Button" to="." method="_on_button_button_up"]
-[connection signal="button_up" from="Node2D/Button" to="TextureButton" method="_on_button_button_up"]
-[connection signal="area_entered" from="Neighbor" to="Neighbor" method="_on_area_entered"]
-[connection signal="button_down" from="TextureButton" to="Node2D/Button" method="_on_texture_button_button_down"]
+[connection signal="button_up" from="Node2D/Button" to="ConfirmationButton" method="_on_button_button_up"]
+[connection signal="area_entered" from="Neighbour" to="." method="_on_neighbor_area_entered"]
+[connection signal="button_down" from="ConfirmationButton" to="." method="_on_confirmation_button_button_down"]
+[connection signal="button_down" from="ConfirmationButton" to="Node2D/Button" method="_on_texture_button_button_down"]
+[connection signal="button_down" from="ConfirmationButton" to="ConfirmationButton" method="_on_button_down"]

@@ -43,7 +43,7 @@ func pickRandomObject() -> PackedScene:
 	return possible_objects.pick_random()
 
 func initilizeSceneArray() -> void:
-	"""possible_objects.append(water_bottle_scene)
+	possible_objects.append(water_bottle_scene)
 	possible_objects.append(bigger_tin_can_scene)
 	possible_objects.append(box_scene)
 	possible_objects.append(coke_bottle_scene)
@@ -58,8 +58,8 @@ func initilizeSceneArray() -> void:
 	possible_objects.append(soda_can_scene)
 	possible_objects.append(spray_can_scene)
 	possible_objects.append(styro_cup_scene)
-	possible_objects.append(tin_can_scene)"""
-	possible_objects.append(block_scene)
+	possible_objects.append(tin_can_scene)
+	#possible_objects.append(block_scene)
 
 func setObjects():
 	if nextObject == null:

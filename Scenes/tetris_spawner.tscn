@@ -8,4 +8,3 @@ nextObjectPreview = NodePath("nextObjectPreview")
 
 [node name="nextObjectPreview" type="Sprite2D" parent="." unique_id=587752958]
 position = Vector2(1000, 280)
-scale = Vector2(0.063, 0.063)
