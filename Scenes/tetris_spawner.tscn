@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://bvvbm68pjfov2"]
+
+[ext_resource type="Script" uid="uid://cr5aldwomsi7m" path="res://Scripts/tetris_spawner.gd" id="1_6uk01"]
+
+[node name="TetrisSpawner" type="Node2D" unique_id=325327661 node_paths=PackedStringArray("nextObjectPreview")]
+script = ExtResource("1_6uk01")
+nextObjectPreview = NodePath("nextObjectPreview")
+
+[node name="nextObjectPreview" type="Sprite2D" parent="." unique_id=587752958]
+position = Vector2(1000, 280)
+scale = Vector2(0.063, 0.063)
