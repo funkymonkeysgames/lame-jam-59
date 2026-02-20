@@ -33,6 +33,7 @@ offset_right = -1095.4421
 offset_bottom = -1080.4409
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="Neighbor" type="Area2D" parent="." unique_id=1388060289]
 scale = Vector2(0.062988274, 0.062011745)
