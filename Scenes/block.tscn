@@ -65,5 +65,6 @@ offset_bottom = -12.999992
 [connection signal="button_up" from="Node2D/Button" to="." method="_on_button_button_up"]
 [connection signal="button_up" from="Node2D/Button" to="ConfirmationButton" method="_on_button_button_up"]
 [connection signal="area_entered" from="Neighbour" to="." method="_on_neighbor_area_entered"]
+[connection signal="button_down" from="ConfirmationButton" to="." method="_on_confirmation_button_button_down"]
 [connection signal="button_down" from="ConfirmationButton" to="Node2D/Button" method="_on_texture_button_button_down"]
 [connection signal="button_down" from="ConfirmationButton" to="ConfirmationButton" method="_on_button_down"]

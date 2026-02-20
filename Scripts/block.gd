@@ -1,30 +1,28 @@
 extends CharacterBody2D
 
-var can_drag = false
-var drag_offset = Vector2(0,0)
+@onready var can_drag = false
+@onready var can_update = true
 
-var integrity: int
+@onready var drag_offset = Vector2(0,0)
+
+@onready var integrity: int = 0
+@onready var max_neighbour_integrity = 0
 
 @onready var neighbour_area2d: Area2D = $Neighbour
 @onready var parent_body2d = $".."
 @onready var integrity_text: TextEdit = $IntegrityText
+@onready var neighbour_manager = $"../Node"
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	integrity = 0
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-	if can_drag:
-		var current_position = global_position
-		var distance = global_position.distance_to(get_global_mouse_position())
-		var direction = global_position.direction_to(get_global_mouse_position())
-		
-		var speed = distance / delta
-		velocity = direction * speed
-		move_and_slide()
-
+	if !can_drag: return
+	
+	var current_position = global_position
+	var distance = global_position.distance_to(get_global_mouse_position())
+	var direction = global_position.direction_to(get_global_mouse_position())
+	
+	var speed = distance / delta
+	velocity = direction * speed
+	move_and_slide()
 
 func _on_button_button_down() -> void:
 	drag_offset = get_global_mouse_position() - global_position
@@ -33,10 +31,12 @@ func _on_button_button_down() -> void:
 func _on_button_button_up() -> void:
 	can_drag = false
 
-
 func _on_neighbor_area_entered(area: Area2D) -> void:
-	var max_neighbour_integrity = 0
-	for neighbour: Area2D in neighbour_area2d.get_overlapping_areas():
-		max_neighbour_integrity = max(max_neighbour_integrity, neighbour.get_parent().integrity)
-	integrity = max_neighbour_integrity - 1
-	integrity_text.text = str(integrity)
+	if can_update:
+		neighbour_manager.check_integrity(self)
+
+
+func _on_confirmation_button_button_down() -> void:
+	if await neighbour_manager.check_integrity(self):
+		neighbour_manager.new_neighbour(self)
+	can_update = false
