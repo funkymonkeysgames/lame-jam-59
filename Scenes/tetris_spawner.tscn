@@ -7,4 +7,20 @@ script = ExtResource("1_6uk01")
 nextObjectPreview = NodePath("nextObjectPreview")
 
 [node name="nextObjectPreview" type="Sprite2D" parent="." unique_id=587752958]
-position = Vector2(1000, 280)
+
+[node name="CenterContainer" type="CenterContainer" parent="nextObjectPreview" unique_id=853148852]
+custom_minimum_size = Vector2(60, 60)
+offset_right = 60.0
+offset_bottom = 60.0
+use_top_left = true
+
+[node name="Button" type="Button" parent="nextObjectPreview/CenterContainer" unique_id=1546908348]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_type_variation = &"FlatButton"
+action_mode = 0
+
+[connection signal="button_down" from="nextObjectPreview/CenterContainer/Button" to="." method="_on_button_button_down"]
+[connection signal="button_up" from="nextObjectPreview/CenterContainer/Button" to="." method="_on_button_button_up"]
