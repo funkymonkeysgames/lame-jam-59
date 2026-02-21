@@ -19,7 +19,6 @@ var soda_can_scene = preload("res://Scenes/Objects/soda_can.tscn")
 var spray_can_scene = preload("res://Scenes/Objects/spray_can.tscn")
 var styro_cup_scene = preload("res://Scenes/Objects/styro_cup.tscn")
 var tin_can_scene = preload("res://Scenes/Objects/tin_can.tscn")
-var block_scene = preload("res://Scenes/block_example.tscn")
 
 var currentObject: Node = null
 var nextObject: Node = null
@@ -55,7 +54,6 @@ func initilizeSceneArray() -> void:
 	possible_objects.append(spray_can_scene)
 	possible_objects.append(styro_cup_scene)
 	possible_objects.append(tin_can_scene)
-	#possible_objects.append(block_scene)
 
 func setObjects():
 	if nextObject == null:
