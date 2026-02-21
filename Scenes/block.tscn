@@ -12,9 +12,13 @@ size = Vector2(121, 119.99983)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8gbba"]
 size = Vector2(1952.7445, 1967.3674)
 
-[node name="RigidBody2D" type="CharacterBody2D" unique_id=581432221]
+[node name="RigidBody2D" type="CharacterBody2D" unique_id=581432221 node_paths=PackedStringArray("neighbour_area2d", "parent_body2d", "integrity_text", "sprite2D")]
 scale = Vector2(1, 1.0000001)
 script = ExtResource("2_i67tl")
+neighbour_area2d = NodePath("Neighbour")
+parent_body2d = NodePath(".")
+integrity_text = NodePath("IntegrityText")
+sprite2D = NodePath("Node2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1735779317]
 position = Vector2(-0.5, 1.9073484e-06)

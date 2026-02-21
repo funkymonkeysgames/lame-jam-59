@@ -8,9 +8,10 @@ extends CharacterBody2D
 @onready var integrity: int = 0
 @onready var max_neighbour_integrity = 0
 
-@onready var neighbour_area2d: Area2D = $Neighbour
-@onready var parent_body2d = $".."
-@onready var integrity_text: TextEdit = $IntegrityText
+@export var neighbour_area2d: Area2D
+@export var parent_body2d: CharacterBody2D
+@export var integrity_text: TextEdit
+@export var sprite2D: Sprite2D
 @onready var neighbour_manager = $"../Node"
 
 func _physics_process(delta: float) -> void:
