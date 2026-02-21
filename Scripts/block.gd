@@ -26,10 +26,12 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _on_button_button_down() -> void:
+	print("DOWN")
 	drag_offset = get_global_mouse_position() - global_position
 	can_drag = true
 
 func _on_button_button_up() -> void:
+	print("UP")
 	can_drag = false
 
 func _on_neighbor_area_entered(area: Area2D) -> void:
