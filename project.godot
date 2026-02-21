@@ -15,6 +15,10 @@ run/main_scene="uid://drakrwbphss2j"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[display]
+
+mouse_cursor/custom_image="uid://bqv35w5ollidl"
+
 [input]
 
 rotate_clockwise_90={

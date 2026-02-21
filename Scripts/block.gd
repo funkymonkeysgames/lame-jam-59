@@ -22,6 +22,9 @@ class_name Block
 @onready var lerping: bool = false
 @onready var target_rotation: float = 0.0
 
+func _ready() -> void:
+	drag_button.flat = true
+
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("rotate_clockwise_90"):
 		target_rotation += 90
@@ -65,10 +68,12 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _on_button_button_down() -> void:
+	Input.set_custom_mouse_cursor(load("res://Assets/cursors/hand_closed.svg"))
 	drag_offset = get_global_mouse_position() - global_position
 	can_drag = true
 
 func _on_button_button_up() -> void:
+	Input.set_custom_mouse_cursor(load("res://Assets/cursors/hand_open.png"))
 	can_drag = false
 	
 func _on_neighbor_area_entered(_area: Area2D) -> void:
