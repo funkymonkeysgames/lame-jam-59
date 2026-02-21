@@ -27,6 +27,7 @@ class_name Block
 
 signal block_placed
 signal block_missed
+signal neighbour_entered
 
 func _ready() -> void:
 	# drag button
@@ -87,15 +88,16 @@ func _on_button_button_up() -> void:
 	
 func _on_neighbor_area_entered(_area: Area2D) -> void:
 	if can_update:
-		neighbour_manager.check_integrity(self)
+		await neighbour_manager.check_integrity(self)
+		neighbour_entered.emit(integrity)
 
 func _on_confirmation_button_button_down() -> void:
 	if await neighbour_manager.check_integrity(self):
 		neighbour_manager.new_neighbour(self)
 		can_update = false
-		audio_stream_player_success.play(0)
+		#audio_stream_player_success.play(0)
 		block_placed.emit()
 	else:
 		block_missed.emit()
-		audio_stream_player_reject.play(0)
+		#audio_stream_player_reject.play(0)
 	

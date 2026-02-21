@@ -29,9 +29,11 @@ func check_integrity(body) -> bool:
 	var neighbours = body.neighbour_area2d.get_overlapping_areas()
 	for i in neighbours.size():
 		body.max_neighbour_integrity = max(body.max_neighbour_integrity, neighbours[i].get_parent().integrity)
-	var temp_integrity = body.max_neighbour_integrity - 1
-	body.integrity_text.text = str(temp_integrity)
-	return temp_integrity > 0
+	#var temp_integrity = body.max_neighbour_integrity - 1
+	body.integrity = body.max_neighbour_integrity - 1
+	print(body.integrity)
+	body.integrity_text.text = str(body.integrity)
+	return body.integrity > 0
 	
 func new_neighbour(body) -> void:
 	#print("new neighbour!")

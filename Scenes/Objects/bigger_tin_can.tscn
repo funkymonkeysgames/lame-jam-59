@@ -56,6 +56,10 @@ offset_right = -16.0
 offset_bottom = -12.999992
 
 [node name="ConfirmationButton" parent="." unique_id=590694293 instance=ExtResource("4_jxqgo")]
+offset_left = 11.0
+offset_top = -8.0
+offset_right = 40.0
+offset_bottom = 21.0
 
 [node name="AudioStreamPlayerRejection" parent="." unique_id=1322738899 instance=ExtResource("5_mth6b")]
 
