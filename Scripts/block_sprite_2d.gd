@@ -4,11 +4,13 @@ extends Sprite2D
 @onready var reverse_lerping: bool = false
 @onready var t: float = 0.0
 
-@export var animation_player:AnimationPlayer
+@onready var animation_player:AnimationPlayer = $AnimationPlayer
+@onready var particles:CPUParticles2D = $CPUParticles2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var object:Block = get_parent()
+	object.block_placed.connect(_on_character_body_2d_block_placed)
 	object.block_missed.connect(_on_character_body_2d_block_missed)
 
 
@@ -28,7 +30,10 @@ func _physics_process(delta: float) -> void:
 		if t >= 1.0:
 			reverse_lerping = false
 			t = 0.0
-			
+
+func _on_character_body_2d_block_placed() -> void:
+	particles.emitting = true
+	
 func _on_character_body_2d_block_missed() -> void:
 	animation_player.play("shake")
 

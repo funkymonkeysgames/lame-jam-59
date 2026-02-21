@@ -12,7 +12,7 @@ class_name Block
 @export var neighbour_area2d: Area2D
 @export var parent_body2d: CharacterBody2D
 @export var integrity_text: TextEdit
-@export var sprite2D: Sprite2D
+@onready var sprite2D: Sprite2D = $Sprite2D
 @onready var audio_stream_player_success: AudioStreamPlayer = $AudioStreamPlayerSuccess
 @onready var audio_stream_player_reject: AudioStreamPlayer = $AudioStreamPlayerRejection
 
@@ -90,9 +90,7 @@ func _on_neighbor_area_entered(_area: Area2D) -> void:
 		neighbour_manager.check_integrity(self)
 
 func _on_confirmation_button_button_down() -> void:
-	var g: bool = await neighbour_manager.check_integrity(self)
-	print(g)
-	if g:
+	if await neighbour_manager.check_integrity(self):
 		neighbour_manager.new_neighbour(self)
 		can_update = false
 		audio_stream_player_success.play(0)

@@ -65,4 +65,6 @@ func setObjects():
 	nextObject = pickRandomObject().instantiate()
 	objects_list.add_child(nextObject)
 	nextObject.global_position = Vector2(2000, 2000)
+	nextObjectPreview.texture
+	nextObject.sprite2D.texture
 	nextObjectPreview.texture = nextObject.sprite2D.texture
