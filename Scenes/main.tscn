@@ -243,8 +243,12 @@ font_color = Color(0.5019608, 0.30980393, 0.30980393, 1)
 
 [node name="Main" type="Node" unique_id=1760907832]
 
-[node name="Node" type="Node" parent="." unique_id=962948133]
+[node name="NeighbourManager" type="Node" parent="." unique_id=962948133]
 script = ExtResource("2_jjvhh")
+
+[node name="SilhouetteManager" parent="." unique_id=459499342 node_paths=PackedStringArray("finish_button", "objects_list") instance=ExtResource("4_jjvhh")]
+finish_button = NodePath("../FinishButton")
+objects_list = NodePath("../ObjectsList")
 
 [node name="Floor" parent="." unique_id=680558180 instance=ExtResource("2_bo1nx")]
 position = Vector2(557.00006, 651)

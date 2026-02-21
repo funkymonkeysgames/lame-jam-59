@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dyl1to7jkoatr"]
+
+[ext_resource type="AudioStream" uid="uid://brv8hulnbfw67" path="res://Assets/sfx/cant_place.mp3" id="1_tpyfc"]
+
+[node name="AudioStreamPlayerRejection" type="AudioStreamPlayer" unique_id=1322738899]
+stream = ExtResource("1_tpyfc")
+volume_db = -19.158

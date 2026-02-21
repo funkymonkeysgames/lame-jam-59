@@ -20,12 +20,12 @@ var soda_can_scene = preload("res://Scenes/Objects/soda_can.tscn")
 var spray_can_scene = preload("res://Scenes/Objects/spray_can.tscn")
 var styro_cup_scene = preload("res://Scenes/Objects/styro_cup.tscn")
 var tin_can_scene = preload("res://Scenes/Objects/tin_can.tscn")
-var block_scene = preload("res://Scenes/block.tscn")
-
+var block_scene = preload("res://Scenes/block_example.tscn")
 
 var currentObject: Node = null
 var nextObject: Node = null
 @export var nextObjectPreview:Sprite2D
+@export var objects_list: Node
 
 var object_has_arrived = true
 var start_position: Vector2
@@ -36,7 +36,6 @@ var objectTaken: bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	initilizeSceneArray()
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -78,7 +77,7 @@ func initilizeSceneArray() -> void:
 
 func setObjects():
 	nextObject = pickRandomObject().instantiate()
-	self.get_parent().add_child(nextObject)
+	objects_list.add_child(nextObject)
 	nextObject.global_position = Vector2(2000, 2000)
 	nextObjectPreview.texture = nextObject.sprite2D.texture
 	nextObjectPreview.global_position = targetPosition

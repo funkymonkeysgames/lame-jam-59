@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://gagkmr2exnfs"]
+
+[ext_resource type="Script" uid="uid://cy40vumh81ork" path="res://Scripts/silhouette_manager.gd" id="1_2cle6"]
+[ext_resource type="Texture2D" uid="uid://b5e53pjbnn6xo" path="res://Assets/Silhouettes/thinker_cropped_silhouette_transparent.png" id="1_5vbpn"]
+
+[node name="SilhouetteManager" type="Control" unique_id=459499342 node_paths=PackedStringArray("ray")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2cle6")
+ray = NodePath("RayCast2D")
+
+[node name="SilhouetteTextureRect" type="TextureRect" parent="." unique_id=815868820]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -576.0
+offset_top = 176.0
+offset_right = 576.0
+offset_bottom = 519.0
+grow_horizontal = 2
+texture = ExtResource("1_5vbpn")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=560030662]
+target_position = Vector2(240, 282)
+hit_from_inside = true
