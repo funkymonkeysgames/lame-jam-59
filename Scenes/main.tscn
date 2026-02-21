@@ -16,7 +16,6 @@
 [ext_resource type="Texture2D" uid="uid://bjtulqs5l3hv0" path="res://Assets/UI/panel.png" id="14_jkdf5"]
 [ext_resource type="Texture2D" uid="uid://cyyvwngsuay0m" path="res://Assets/UI/box.png" id="15_wsu2k"]
 [ext_resource type="FontFile" uid="uid://djne8hhwxuugs" path="res://Assets/Fonts/easvhs.ttf" id="16_k12tt"]
-[ext_resource type="Script" uid="uid://cr5aldwomsi7m" path="res://Scripts/tetris_spawner.gd" id="17_h1bgf"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6bp64"]
 animations = [{
@@ -251,14 +250,6 @@ script = ExtResource("2_jjvhh")
 position = Vector2(557.00006, 651)
 scale = Vector2(2000, 100)
 
-[node name="TetrisSpawner" parent="." unique_id=325327661 instance=ExtResource("3_8gbba")]
-process_mode = 4
-visible = false
-
-[node name="nextObjectPreview" parent="TetrisSpawner" index="0" unique_id=587752958]
-z_index = 3
-position = Vector2(875, 118)
-
 [node name="Background" type="Node2D" parent="." unique_id=1253728426]
 
 [node name="Floor2" type="Node2D" parent="Background" unique_id=1265041152]
@@ -384,7 +375,7 @@ offset_left = 644.0
 offset_top = 107.0
 offset_right = 794.0
 offset_bottom = 216.0
-text = "Incoming Thrash"
+text = "Incoming Trash"
 label_settings = SubResource("LabelSettings_h1bgf")
 autowrap_mode = 2
 
@@ -436,36 +427,7 @@ text = "Incoming Thrash"
 label_settings = SubResource("LabelSettings_h1bgf")
 autowrap_mode = 2
 
-[node name="TetrisSpawner2" type="Node2D" parent="." unique_id=111871940 node_paths=PackedStringArray("nextObjectPreview")]
-process_mode = 4
-visible = false
-script = ExtResource("17_h1bgf")
-nextObjectPreview = NodePath("nextObjectPreview")
-
-[node name="nextObjectPreview" type="Sprite2D" parent="TetrisSpawner2" unique_id=1390683866]
-position = Vector2(574, 132)
-
-[node name="Button" type="Button" parent="TetrisSpawner2/nextObjectPreview" unique_id=1546908348]
-custom_minimum_size = Vector2(60, 60)
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -0.5
-offset_top = -0.5
-offset_right = 59.5
-offset_bottom = 59.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_type_variation = &"FlatButton"
-action_mode = 0
-
 [node name="TetrisSpawner3" parent="." unique_id=464145678 instance=ExtResource("3_8gbba")]
 
 [connection signal="timeout" from="Background/Floor2/Timer" to="Background/Floor2/AnimatedSprite2D2" method="_on_timer_timeout"]
 [connection signal="timeout" from="Background/Sky/Timer" to="Background/Sky" method="_on_timer_timeout"]
-[connection signal="button_down" from="TetrisSpawner2/nextObjectPreview/Button" to="TetrisSpawner2" method="_on_button_button_down"]
-[connection signal="button_up" from="TetrisSpawner2/nextObjectPreview/Button" to="TetrisSpawner2" method="_on_button_button_up"]
-
-[editable path="TetrisSpawner"]
