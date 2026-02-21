@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Block
 
 @onready var can_drag = false
 @onready var can_update = true
@@ -12,7 +13,9 @@ extends CharacterBody2D
 @export var parent_body2d: CharacterBody2D
 @export var integrity_text: TextEdit
 @export var sprite2D: Sprite2D
-@onready var neighbour_manager = $"../Node"
+@onready var collision_shape: CollisionShape2D = $CollisionShape2D
+
+@onready var neighbour_manager: Node = $"../../NeighbourManager"
 
 func _physics_process(delta: float) -> void:
 	if !can_drag: return

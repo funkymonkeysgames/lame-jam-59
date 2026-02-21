@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://c7paen283i5qx"]
+
+[ext_resource type="Script" uid="uid://ca73di3wesr26" path="res://Scripts/thinker_polygon.gd" id="1_uwagf"]
+
+[node name="Polygon2DAAA" type="Area2D" unique_id=988674351]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_uwagf")
+
+[node name="CollisionPolygon2DAAA" type="CollisionPolygon2D" parent="." unique_id=1500719565]
+polygon = PackedVector2Array(497, 291, 516, 260, 538, 231, 563, 219, 576, 212, 584, 206, 595, 203, 603, 204, 619, 202, 631, 197, 648, 185, 668, 176, 690, 190, 703, 205, 695, 226, 685, 235, 676, 249, 686, 279, 674, 305, 657, 329, 688, 347, 689, 381, 655, 397, 591, 455, 597, 502, 608, 524, 453, 518, 459, 386, 483, 376, 481, 338, 492, 307)

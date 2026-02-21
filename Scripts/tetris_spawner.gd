@@ -25,6 +25,7 @@ var block_scene = preload("res://Scenes/block.tscn")
 var currentObject: Node = null
 var nextObject: Node = null
 @export var nextObjectPreview:Sprite2D
+@export var objects_list: Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -61,11 +62,11 @@ func initilizeSceneArray() -> void:
 func setObjects():
 	if nextObject == null:
 		currentObject = pickRandomObject().instantiate()
-		self.get_parent().add_child(currentObject)
+		objects_list.add_child(currentObject)
 	else:
 		currentObject = nextObject
 	currentObject.global_position = Vector2(100, 100)
 	nextObject = pickRandomObject().instantiate()
-	self.get_parent().add_child(nextObject)
+	objects_list.add_child(nextObject)
 	nextObject.global_position = Vector2(2000, 2000)
 	nextObjectPreview.texture = nextObject.sprite2D.texture
