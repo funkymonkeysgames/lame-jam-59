@@ -12,7 +12,7 @@ class_name Block
 @export var neighbour_area2d: Area2D
 @export var parent_body2d: CharacterBody2D
 @export var integrity_text: TextEdit
-@export var sprite2D: Sprite2D
+@onready var sprite2D: Sprite2D = $Sprite2D
 @onready var audio_stream_player_success: AudioStreamPlayer = $AudioStreamPlayerSuccess
 @onready var audio_stream_player_reject: AudioStreamPlayer = $AudioStreamPlayerRejection
 
@@ -26,6 +26,8 @@ class_name Block
 @onready var target_rotation: float = 0.0
 
 signal block_placed
+signal block_missed
+signal neighbour_entered
 
 func _ready() -> void:
 	# drag button
@@ -86,16 +88,16 @@ func _on_button_button_up() -> void:
 	
 func _on_neighbor_area_entered(_area: Area2D) -> void:
 	if can_update:
-		neighbour_manager.check_integrity(self)
+		await neighbour_manager.check_integrity(self)
+		neighbour_entered.emit(integrity)
 
 func _on_confirmation_button_button_down() -> void:
-	var g: bool = await neighbour_manager.check_integrity(self)
-	print(g)
-	if g:
+	if await neighbour_manager.check_integrity(self):
 		neighbour_manager.new_neighbour(self)
 		can_update = false
-		audio_stream_player_success.play(0)
+		#audio_stream_player_success.play(0)
 		block_placed.emit()
 	else:
-		audio_stream_player_reject.play(0)
+		block_missed.emit()
+		#audio_stream_player_reject.play(0)
 	

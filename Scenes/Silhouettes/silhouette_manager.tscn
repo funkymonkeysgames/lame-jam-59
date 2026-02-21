@@ -28,5 +28,4 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=560030662]
-target_position = Vector2(240, 282)
 hit_from_inside = true

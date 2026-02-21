@@ -2,10 +2,13 @@
 
 [ext_resource type="Script" uid="uid://g0qmwplp4ot0" path="res://Scripts/block.gd" id="1_ae587"]
 [ext_resource type="Texture2D" uid="uid://cxio2si6v2t6x" path="res://Assets/objects/box.png" id="2_1ic13"]
+[ext_resource type="Script" uid="uid://b72v0febfobxf" path="res://Scripts/block_sprite_2d.gd" id="3_55ba1"]
 [ext_resource type="PackedScene" uid="uid://d184xbu0oj6qs" path="res://Scenes/Objects/block/block_drag_button.tscn" id="3_kcfls"]
 [ext_resource type="PackedScene" uid="uid://c61qhupjp5748" path="res://Scenes/Objects/block/block_confirmation_button.tscn" id="4_cg3po"]
+[ext_resource type="PackedScene" uid="uid://cth0pnm0yp2o1" path="res://Scenes/Objects/block/block_animation_player.tscn" id="5_6ou7y"]
 [ext_resource type="PackedScene" uid="uid://dyl1to7jkoatr" path="res://Scenes/Objects/block/block_audio_stream_player_rejection.tscn" id="5_ae587"]
 [ext_resource type="PackedScene" uid="uid://iq7ije3aw7vn" path="res://Scenes/Objects/block/block_audio_stream_player_success.tscn" id="6_1ic13"]
+[ext_resource type="PackedScene" uid="uid://dm0n7fv6777j6" path="res://Scenes/Objects/block/block_cpu_particles_2d.tscn" id="6_xshvv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c2iur"]
 size = Vector2(51, 48)
@@ -19,21 +22,29 @@ script = ExtResource("1_ae587")
 neighbour_area2d = NodePath("Neighbour")
 parent_body2d = NodePath(".")
 integrity_text = NodePath("IntegrityText")
-sprite2D = NodePath("Sprite2D")
+sprite2D = NodePath("")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1735779317]
 scale = Vector2(1, 1.0000013)
 shape = SubResource("RectangleShape2D_c2iur")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=119915836]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1251007473 node_paths=PackedStringArray("animation_player", "particles")]
 texture_filter = 1
+rotation = -0.0031344413
 texture = ExtResource("2_1ic13")
+script = ExtResource("3_55ba1")
+animation_player = NodePath("")
+particles = NodePath("")
 
 [node name="Button" parent="Sprite2D" unique_id=1908648916 instance=ExtResource("3_kcfls")]
-offset_left = -25.5
-offset_top = -24.0
-offset_right = -25.5
-offset_bottom = -24.0
+offset_left = -10.5
+offset_top = -20.0
+offset_right = -10.5
+offset_bottom = -20.0
+
+[node name="AnimationPlayer" parent="Sprite2D" unique_id=1894733382 instance=ExtResource("5_6ou7y")]
+
+[node name="CPUParticles2D" parent="Sprite2D" unique_id=771912630 instance=ExtResource("6_xshvv")]
 
 [node name="Neighbour" type="Area2D" parent="." unique_id=1388060289]
 
@@ -53,4 +64,6 @@ offset_bottom = -12.999992
 
 [node name="AudioStreamPlayerSuccess" parent="." unique_id=1807916632 instance=ExtResource("6_1ic13")]
 
+[connection signal="button_down" from="Sprite2D/Button" to="Sprite2D" method="_on_button_button_down"]
+[connection signal="button_up" from="Sprite2D/Button" to="Sprite2D" method="_on_button_button_up"]
 [connection signal="area_entered" from="Neighbour" to="." method="_on_neighbor_area_entered"]

@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://dnw0s1dqejmi4"]
+
+[ext_resource type="Texture2D" uid="uid://bqt1lphpwwrj1" path="res://Assets/objects/bigger_tin_can.png" id="1_efay4"]
+[ext_resource type="Script" uid="uid://b72v0febfobxf" path="res://Scripts/block_sprite_2d.gd" id="2_ckwed"]
+[ext_resource type="PackedScene" uid="uid://d184xbu0oj6qs" path="res://Scenes/Objects/block/block_drag_button.tscn" id="2_ws5bn"]
+[ext_resource type="PackedScene" uid="uid://cth0pnm0yp2o1" path="res://Scenes/Objects/block/block_animation_player.tscn" id="4_uplq6"]
+[ext_resource type="PackedScene" uid="uid://dm0n7fv6777j6" path="res://Scenes/Objects/block/block_cpu_particles_2d.tscn" id="5_2k3m7"]
+
+[node name="Sprite2D" type="Sprite2D" unique_id=1251007473 node_paths=PackedStringArray("animation_player", "particles")]
+texture_filter = 1
+rotation = -0.0031344413
+texture = ExtResource("1_efay4")
+script = ExtResource("2_ckwed")
+animation_player = NodePath("")
+particles = NodePath("")
+
+[node name="Button" parent="." unique_id=1908648916 instance=ExtResource("2_ws5bn")]
+offset_left = -10.5
+offset_top = -20.0
+offset_right = -10.5
+offset_bottom = -20.0
+
+[node name="AnimationPlayer" parent="." unique_id=1894733382 instance=ExtResource("4_uplq6")]
+
+[node name="CPUParticles2D" parent="." unique_id=771912630 instance=ExtResource("5_2k3m7")]
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
+[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]

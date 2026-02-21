@@ -2,8 +2,11 @@
 
 [ext_resource type="Script" uid="uid://g0qmwplp4ot0" path="res://Scripts/block.gd" id="1_u02de"]
 [ext_resource type="Texture2D" uid="uid://br4sso06br7qj" path="res://Assets/objects/spray_can.png" id="2_n7ndb"]
+[ext_resource type="Script" uid="uid://b72v0febfobxf" path="res://Scripts/block_sprite_2d.gd" id="3_gk5qy"]
 [ext_resource type="PackedScene" uid="uid://d184xbu0oj6qs" path="res://Scenes/Objects/block/block_drag_button.tscn" id="3_u02de"]
+[ext_resource type="PackedScene" uid="uid://cth0pnm0yp2o1" path="res://Scenes/Objects/block/block_animation_player.tscn" id="4_6dif5"]
 [ext_resource type="PackedScene" uid="uid://c61qhupjp5748" path="res://Scenes/Objects/block/block_confirmation_button.tscn" id="4_u02de"]
+[ext_resource type="PackedScene" uid="uid://dm0n7fv6777j6" path="res://Scenes/Objects/block/block_cpu_particles_2d.tscn" id="5_gk5qy"]
 [ext_resource type="PackedScene" uid="uid://dyl1to7jkoatr" path="res://Scenes/Objects/block/block_audio_stream_player_rejection.tscn" id="5_n7ndb"]
 [ext_resource type="PackedScene" uid="uid://iq7ije3aw7vn" path="res://Scenes/Objects/block/block_audio_stream_player_success.tscn" id="6_6dif5"]
 
@@ -27,13 +30,19 @@ shape = SubResource("RectangleShape2D_c2iur")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=119915836]
 texture_filter = 1
+rotation = -0.0031344413
 texture = ExtResource("2_n7ndb")
+script = ExtResource("3_gk5qy")
 
 [node name="Button" parent="Sprite2D" unique_id=1908648916 instance=ExtResource("3_u02de")]
 offset_left = -8.5
 offset_top = -20.0
 offset_right = -8.5
 offset_bottom = -20.0
+
+[node name="AnimationPlayer" parent="Sprite2D" unique_id=1894733382 instance=ExtResource("4_6dif5")]
+
+[node name="CPUParticles2D" parent="Sprite2D" unique_id=771912630 instance=ExtResource("5_gk5qy")]
 
 [node name="Neighbour" type="Area2D" parent="." unique_id=1388060289]
 

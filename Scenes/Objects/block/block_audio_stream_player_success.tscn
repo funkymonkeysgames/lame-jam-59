@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://iq7ije3aw7vn"]
 
-[ext_resource type="AudioStream" uid="uid://vt3t52lmrebi" path="res://Assets/sfx/successfull_place.mp3" id="1_kprua"]
+[ext_resource type="AudioStream" uid="uid://b6w7u0ysujaoj" path="res://Assets/sfx/pop2.wav" id="1_0rt0n"]
 
 [node name="AudioStreamPlayerSuccess" type="AudioStreamPlayer" unique_id=1807916632]
-stream = ExtResource("1_kprua")
-volume_db = -20.56
+stream = ExtResource("1_0rt0n")

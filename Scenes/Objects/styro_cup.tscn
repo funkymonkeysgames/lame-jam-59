@@ -3,7 +3,10 @@
 [ext_resource type="Script" uid="uid://g0qmwplp4ot0" path="res://Scripts/block.gd" id="1_1yvv8"]
 [ext_resource type="Texture2D" uid="uid://cn5rntis7n3e3" path="res://Assets/objects/styro_cup.png" id="2_26m8v"]
 [ext_resource type="PackedScene" uid="uid://d184xbu0oj6qs" path="res://Scenes/Objects/block/block_drag_button.tscn" id="3_1yvv8"]
+[ext_resource type="Script" uid="uid://b72v0febfobxf" path="res://Scripts/block_sprite_2d.gd" id="3_2jery"]
 [ext_resource type="PackedScene" uid="uid://c61qhupjp5748" path="res://Scenes/Objects/block/block_confirmation_button.tscn" id="4_1yvv8"]
+[ext_resource type="PackedScene" uid="uid://cth0pnm0yp2o1" path="res://Scenes/Objects/block/block_animation_player.tscn" id="4_5st2r"]
+[ext_resource type="PackedScene" uid="uid://dm0n7fv6777j6" path="res://Scenes/Objects/block/block_cpu_particles_2d.tscn" id="5_2jery"]
 [ext_resource type="PackedScene" uid="uid://dyl1to7jkoatr" path="res://Scenes/Objects/block/block_audio_stream_player_rejection.tscn" id="5_26m8v"]
 [ext_resource type="PackedScene" uid="uid://iq7ije3aw7vn" path="res://Scenes/Objects/block/block_audio_stream_player_success.tscn" id="6_5st2r"]
 
@@ -27,13 +30,19 @@ shape = SubResource("RectangleShape2D_c2iur")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=119915836]
 texture_filter = 1
+rotation = -0.0031344413
 texture = ExtResource("2_26m8v")
+script = ExtResource("3_2jery")
 
 [node name="Button" parent="Sprite2D" unique_id=1908648916 instance=ExtResource("3_1yvv8")]
 offset_left = -14.0
 offset_top = -22.5
 offset_right = -14.0
 offset_bottom = -22.5
+
+[node name="AnimationPlayer" parent="Sprite2D" unique_id=1894733382 instance=ExtResource("4_5st2r")]
+
+[node name="CPUParticles2D" parent="Sprite2D" unique_id=771912630 instance=ExtResource("5_2jery")]
 
 [node name="Neighbour" type="Area2D" parent="." unique_id=1388060289]
 
