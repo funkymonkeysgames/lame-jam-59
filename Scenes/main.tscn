@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://d2wle73x0ng8r" path="res://Scenes/floor.tscn" id="2_bo1nx"]
 [ext_resource type="Script" uid="uid://di3ad1sghrct5" path="res://Scripts/neighbour_manager.gd" id="2_jjvhh"]
 [ext_resource type="PackedScene" uid="uid://ccglcr6p2if0w" path="res://Scenes/tetris_spawner.tscn" id="3_8gbba"]
+[ext_resource type="PackedScene" uid="uid://dn0qtbokpka07" path="res://Scenes/Objects/bigger_tin_can.tscn" id="3_kry3j"]
 [ext_resource type="PackedScene" uid="uid://gagkmr2exnfs" path="res://Scenes/Silhouettes/silhouette_manager.tscn" id="4_jjvhh"]
 
 [node name="Main" type="Node" unique_id=1760907832]
@@ -29,5 +30,8 @@ offset_bottom = 536.0
 text = "Press me"
 
 [node name="ObjectsList" type="Node" parent="." unique_id=1953807552]
+
+[node name="CharacterBody2D" parent="." unique_id=581432221 instance=ExtResource("3_kry3j")]
+position = Vector2(372, 425)
 
 [connection signal="button_down" from="FinishButton" to="SilhouetteManager" method="_on_finish_button_button_down"]

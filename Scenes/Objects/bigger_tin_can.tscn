@@ -1,8 +1,7 @@
 [gd_scene format=3 uid="uid://dn0qtbokpka07"]
 
 [ext_resource type="Script" uid="uid://g0qmwplp4ot0" path="res://Scripts/block.gd" id="1_jxqgo"]
-[ext_resource type="Texture2D" uid="uid://bqt1lphpwwrj1" path="res://Assets/objects/bigger_tin_can.png" id="2_mth6b"]
-[ext_resource type="PackedScene" uid="uid://d184xbu0oj6qs" path="res://Scenes/Objects/block/block_drag_button.tscn" id="3_v36ow"]
+[ext_resource type="PackedScene" uid="uid://dnw0s1dqejmi4" path="res://Scenes/Objects/block/block_sprite_2d.tscn" id="2_v36ow"]
 [ext_resource type="PackedScene" uid="uid://c61qhupjp5748" path="res://Scenes/Objects/block/block_confirmation_button.tscn" id="4_jxqgo"]
 [ext_resource type="PackedScene" uid="uid://dyl1to7jkoatr" path="res://Scenes/Objects/block/block_audio_stream_player_rejection.tscn" id="5_mth6b"]
 [ext_resource type="PackedScene" uid="uid://iq7ije3aw7vn" path="res://Scenes/Objects/block/block_audio_stream_player_success.tscn" id="6_8st8e"]
@@ -13,27 +12,18 @@ size = Vector2(21, 40)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8gbba"]
 size = Vector2(22, 41)
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=581432221 node_paths=PackedStringArray("neighbour_area2d", "parent_body2d", "integrity_text", "sprite2D")]
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=581432221 node_paths=PackedStringArray("neighbour_area2d", "parent_body2d", "integrity_text")]
 scale = Vector2(1, 1.0000001)
 script = ExtResource("1_jxqgo")
 neighbour_area2d = NodePath("Neighbour")
 parent_body2d = NodePath(".")
 integrity_text = NodePath("IntegrityText")
-sprite2D = NodePath("Sprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1735779317]
 scale = Vector2(1, 1.0000013)
 shape = SubResource("RectangleShape2D_c2iur")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=119915836]
-texture_filter = 1
-texture = ExtResource("2_mth6b")
-
-[node name="Button" parent="Sprite2D" unique_id=1908648916 instance=ExtResource("3_v36ow")]
-offset_left = -10.5
-offset_top = -20.0
-offset_right = -10.5
-offset_bottom = -20.0
+[node name="Sprite2D" parent="." unique_id=1251007473 instance=ExtResource("2_v36ow")]
 
 [node name="Neighbour" type="Area2D" parent="." unique_id=1388060289]
 
