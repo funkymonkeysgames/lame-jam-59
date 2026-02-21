@@ -22,8 +22,6 @@ var tin_can_scene = preload("res://Scenes/Objects/tin_can.tscn")
 var block_scene = preload("res://Scenes/block.tscn")
 
 
-var objectSpawned: bool = false
-
 var currentObject: Node = null
 var nextObject: Node = null
 @export var nextObjectPreview:Sprite2D
@@ -36,7 +34,6 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if currentObject == null or !currentObject.can_update:
-		print("yo")
 		setObjects()
 
 func pickRandomObject() -> PackedScene:
@@ -72,4 +69,3 @@ func setObjects():
 	self.get_parent().add_child(nextObject)
 	nextObject.global_position = Vector2(2000, 2000)
 	nextObjectPreview.texture = nextObject.sprite2D.texture
-	objectSpawned = true
