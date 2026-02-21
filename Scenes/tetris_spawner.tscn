@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://bvvbm68pjfov2"]
+[gd_scene format=3 uid="uid://ccglcr6p2if0w"]
 
 [ext_resource type="Script" uid="uid://cr5aldwomsi7m" path="res://Scripts/tetris_spawner.gd" id="1_6uk01"]
 

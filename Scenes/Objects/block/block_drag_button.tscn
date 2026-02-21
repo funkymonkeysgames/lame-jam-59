@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://d184xbu0oj6qs"]
+
+[ext_resource type="Script" uid="uid://bx6w5sem037xp" path="res://Scripts/movement_button.gd" id="1_ea4vj"]
+
+[node name="Button" type="Button" unique_id=1908648916]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+script = ExtResource("1_ea4vj")
+metadata/_edit_use_anchors_ = true

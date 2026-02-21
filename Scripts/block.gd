@@ -13,22 +13,30 @@ class_name Block
 @export var parent_body2d: CharacterBody2D
 @export var integrity_text: TextEdit
 @export var sprite2D: Sprite2D
-@onready var collision_shape: CollisionShape2D = $CollisionShape2D
-@onready var drag_button: Button = $Node2D/Button
+@onready var audio_stream_player_success: AudioStreamPlayer = $AudioStreamPlayerSuccess
+@onready var audio_stream_player_reject: AudioStreamPlayer = $AudioStreamPlayerRejection
 
+@onready var collision_shape: CollisionShape2D = $CollisionShape2D
+@onready var drag_button: Button = $Sprite2D/Button
+@onready var confirmation_button: TextureButton = $ConfirmationButton
 @onready var neighbour_manager: Node = $"../../NeighbourManager"
 
 @onready var t: float = 0.0
 @onready var lerping: bool = false
 @onready var target_rotation: float = 0.0
 
+signal block_placed
+
 func _ready() -> void:
-	drag_button.flat = true
+	# drag button
+	drag_button.button_down.connect(_on_button_button_down)
+	drag_button.button_up.connect(_on_button_button_up)
+	# confirmation button
+	confirmation_button.button_down.connect(_on_confirmation_button_button_down)
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("rotate_clockwise_90"):
 		target_rotation += 90
-		print("AAA")
 		lerping = true
 		t = 0.0
 	elif Input.is_action_just_pressed("rotate_counterclockwise_90"):
@@ -81,6 +89,13 @@ func _on_neighbor_area_entered(_area: Area2D) -> void:
 		neighbour_manager.check_integrity(self)
 
 func _on_confirmation_button_button_down() -> void:
-	if await neighbour_manager.check_integrity(self):
+	var g: bool = await neighbour_manager.check_integrity(self)
+	print(g)
+	if g:
 		neighbour_manager.new_neighbour(self)
-	can_update = false
+		can_update = false
+		audio_stream_player_success.play(0)
+		block_placed.emit()
+	else:
+		audio_stream_player_reject.play(0)
+	
