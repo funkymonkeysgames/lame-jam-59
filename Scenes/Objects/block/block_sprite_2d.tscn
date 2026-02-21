@@ -4,17 +4,58 @@
 [ext_resource type="Script" uid="uid://b72v0febfobxf" path="res://Scripts/block_sprite_2d.gd" id="2_ckwed"]
 [ext_resource type="PackedScene" uid="uid://d184xbu0oj6qs" path="res://Scenes/Objects/block/block_drag_button.tscn" id="2_ws5bn"]
 
-[node name="Sprite2D" type="Sprite2D" unique_id=1251007473]
+[sub_resource type="Animation" id="Animation_ws5bn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.0031344413]
+}
+
+[sub_resource type="Animation" id="Animation_ckwed"]
+resource_name = "shake"
+length = 0.76666665
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.26666668, 0.5, 0.76666665),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.17453292519943295, -0.17453292519943295, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uplq6"]
+_data = {
+&"RESET": SubResource("Animation_ws5bn"),
+&"shake": SubResource("Animation_ckwed")
+}
+
+[node name="Sprite2D" type="Sprite2D" unique_id=1251007473 node_paths=PackedStringArray("animation_player")]
 texture_filter = 1
 rotation = -0.0031344413
 texture = ExtResource("1_efay4")
 script = ExtResource("2_ckwed")
+animation_player = NodePath("AnimationPlayer")
 
 [node name="Button" parent="." unique_id=1908648916 instance=ExtResource("2_ws5bn")]
 offset_left = -10.5
 offset_top = -20.0
 offset_right = -10.5
 offset_bottom = -20.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=322146545]
+libraries/ = SubResource("AnimationLibrary_uplq6")
 
 [connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
 [connection signal="button_up" from="Button" to="." method="_on_button_button_up"]

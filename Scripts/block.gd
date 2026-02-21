@@ -26,6 +26,7 @@ class_name Block
 @onready var target_rotation: float = 0.0
 
 signal block_placed
+signal block_missed
 
 func _ready() -> void:
 	# drag button
@@ -97,5 +98,6 @@ func _on_confirmation_button_button_down() -> void:
 		audio_stream_player_success.play(0)
 		block_placed.emit()
 	else:
+		block_missed.emit()
 		audio_stream_player_reject.play(0)
 	
