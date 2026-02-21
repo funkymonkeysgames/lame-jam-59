@@ -22,4 +22,5 @@ shape = SubResource("RectangleShape2D_8gbba")
 shape = SubResource("RectangleShape2D_agfsv")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=190337358]
+visible = false
 texture = SubResource("CanvasTexture_wjf51")

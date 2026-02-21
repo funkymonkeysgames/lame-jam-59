@@ -1,5 +1,6 @@
 extends Node2D
 
+var rng = RandomNumberGenerator.new()
 
 var possible_objects = []
 
@@ -26,14 +27,32 @@ var nextObject: Node = null
 @export var nextObjectPreview:Sprite2D
 @export var objects_list: Node
 
+var object_has_arrived = true
+var start_position: Vector2
+var t: float = 0
+var targetPosition: Vector2 = Vector2(574, 132)
+var objectTaken: bool = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	initilizeSceneArray()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if currentObject == null or !currentObject.can_update:
+
+	if nextObject == null:
 		setObjects()
+
+	if t >= 1:
+		object_has_arrived = true
+		t = 0
+		nextObjectPreview.rotation = 0
+
+	if !object_has_arrived:
+		t += delta * 0.4
+		nextObjectPreview.global_position = start_position.lerp(targetPosition, t)
+
+		nextObjectPreview.rotation += 15 * delta
 
 func pickRandomObject() -> PackedScene:
 	return possible_objects.pick_random()
@@ -55,16 +74,45 @@ func initilizeSceneArray() -> void:
 	possible_objects.append(spray_can_scene)
 	possible_objects.append(styro_cup_scene)
 	possible_objects.append(tin_can_scene)
-	#possible_objects.append(block_scene)
 
 func setObjects():
-	if nextObject == null:
-		currentObject = pickRandomObject().instantiate()
-		objects_list.add_child(currentObject)
-	else:
-		currentObject = nextObject
-	currentObject.global_position = Vector2(100, 100)
 	nextObject = pickRandomObject().instantiate()
 	objects_list.add_child(nextObject)
 	nextObject.global_position = Vector2(2000, 2000)
 	nextObjectPreview.texture = nextObject.sprite2D.texture
+	nextObjectPreview.global_position = targetPosition
+
+
+func _on_button_button_down() -> void:
+	if object_has_arrived and (currentObject == null or !currentObject.can_update):
+		nextObjectPreview.global_position = Vector2(2000, 2000)
+
+		currentObject = nextObject
+		currentObject.global_position = targetPosition
+		objectTaken = true
+		currentObject.find_child("Node2D").find_child("Button").button_down.emit()
+		
+		nextObject = pickRandomObject().instantiate()
+		self.get_parent().add_child(nextObject)
+		nextObject.global_position = Vector2(2000, 2000)
+		nextObjectPreview.texture = nextObject.sprite2D.texture
+
+		throw_next_object()
+
+func throw_next_object() -> void:
+	var spawn_x: float = 0
+	if randi() % 2:
+		spawn_x = -10
+	else:
+		spawn_x = 1162
+
+	var spawn_y:float = rng.randf_range(0, 200)
+	start_position = Vector2(spawn_x, spawn_y)
+	nextObjectPreview.global_position = start_position
+	object_has_arrived = false
+
+
+func _on_button_button_up() -> void:
+	if objectTaken:
+		currentObject.find_child("Node2D").find_child("Button").button_up.emit()
+		objectTaken = false
