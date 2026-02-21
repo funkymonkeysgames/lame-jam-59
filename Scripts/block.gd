@@ -18,13 +18,44 @@ class_name Block
 
 @onready var neighbour_manager: Node = $"../../NeighbourManager"
 
+@onready var t: float = 0.0
+@onready var lerping: bool = false
+@onready var target_rotation: float = 0.0
+
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("rotate_clockwise_90"):
+		target_rotation += 90
+		print("AAA")
+		lerping = true
+		t = 0.0
+	elif Input.is_action_just_pressed("rotate_counterclockwise_90"):
+		target_rotation -= 90
+		lerping = true
+		t = 0.0
+	elif Input.is_action_just_pressed("rotate_clockwise_45"):
+		target_rotation += 45
+		lerping = true
+		t = 0.0
+	elif Input.is_action_just_pressed("rotate_counterclockwise_45"):
+		target_rotation -= 45
+		lerping = true
+		t = 0.0
 
 func _physics_process(delta: float) -> void:
+	if lerping and can_update:
+		collision_shape.rotation_degrees = lerpf(collision_shape.rotation_degrees, target_rotation, t)
+		neighbour_area2d.rotation_degrees = lerpf(neighbour_area2d.rotation_degrees, target_rotation, t)
+		sprite2D.rotation_degrees = lerpf(sprite2D.rotation_degrees, target_rotation, t)
+		t += delta * 3.0
+		
+		if t >= 1.0:
+			lerping = false
+			t = 0.0
+			
 	if !can_drag: return
 	
 	var distance = global_position.distance_to(get_global_mouse_position())
 	if distance > 100:
-		print("preemit")
 		drag_button.button_up.emit()
 		
 	var direction = global_position.direction_to(get_global_mouse_position())

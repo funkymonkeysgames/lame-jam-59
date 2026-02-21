@@ -21,7 +21,6 @@ var styro_cup_scene = preload("res://Scenes/Objects/styro_cup.tscn")
 var tin_can_scene = preload("res://Scenes/Objects/tin_can.tscn")
 var block_scene = preload("res://Scenes/block.tscn")
 
-
 var currentObject: Node = null
 var nextObject: Node = null
 @export var nextObjectPreview:Sprite2D
@@ -30,7 +29,6 @@ var nextObject: Node = null
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	initilizeSceneArray()
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
