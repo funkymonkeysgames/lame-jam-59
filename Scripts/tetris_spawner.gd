@@ -20,7 +20,7 @@ var soda_can_scene = preload("res://Scenes/Objects/soda_can.tscn")
 var spray_can_scene = preload("res://Scenes/Objects/spray_can.tscn")
 var styro_cup_scene = preload("res://Scenes/Objects/styro_cup.tscn")
 var tin_can_scene = preload("res://Scenes/Objects/tin_can.tscn")
-var block_scene = preload("res://Scenes/block_example.tscn")
+#var block_scene = preload("res://Scenes/block_example.tscn")
 
 var currentObject: Node = null
 var nextObject: Node = null
@@ -90,10 +90,10 @@ func _on_button_button_down() -> void:
 		currentObject = nextObject
 		currentObject.global_position = targetPosition
 		objectTaken = true
-		currentObject.find_child("Node2D").find_child("Button").button_down.emit()
+		currentObject.find_child("Sprite2D").find_child("Button").button_down.emit()
 		
 		nextObject = pickRandomObject().instantiate()
-		self.get_parent().add_child(nextObject)
+		objects_list.add_child(nextObject)
 		nextObject.global_position = Vector2(2000, 2000)
 		nextObjectPreview.texture = nextObject.sprite2D.texture
 
@@ -114,5 +114,5 @@ func throw_next_object() -> void:
 
 func _on_button_button_up() -> void:
 	if objectTaken:
-		currentObject.find_child("Node2D").find_child("Button").button_up.emit()
+		currentObject.find_child("Sprite2D").find_child("Button").button_up.emit()
 		objectTaken = false

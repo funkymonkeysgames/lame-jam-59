@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://d2wle73x0ng8r" path="res://Scenes/floor.tscn" id="2_bo1nx"]
 [ext_resource type="Script" uid="uid://di3ad1sghrct5" path="res://Scripts/neighbour_manager.gd" id="2_jjvhh"]
-[ext_resource type="PackedScene" uid="uid://bvvbm68pjfov2" path="res://Scenes/tetris_spawner.tscn" id="3_8gbba"]
+[ext_resource type="PackedScene" uid="uid://ccglcr6p2if0w" path="res://Scenes/tetris_spawner.tscn" id="3_8gbba"]
 [ext_resource type="Texture2D" uid="uid://dnodbo2fvoqud" path="res://Assets/background/Floor/2.png" id="4_kry3j"]
 [ext_resource type="Texture2D" uid="uid://brac6qs81s5tq" path="res://Assets/background/Floor/3.png" id="5_21xkr"]
 [ext_resource type="Texture2D" uid="uid://l6tkkro3xkcj" path="res://Assets/background/Sky/1.png" id="6_344ge"]
@@ -246,10 +246,6 @@ font_color = Color(0.5019608, 0.30980393, 0.30980393, 1)
 [node name="NeighbourManager" type="Node" parent="." unique_id=962948133]
 script = ExtResource("2_jjvhh")
 
-[node name="SilhouetteManager" parent="." unique_id=459499342 node_paths=PackedStringArray("finish_button", "objects_list") instance=ExtResource("4_jjvhh")]
-finish_button = NodePath("../FinishButton")
-objects_list = NodePath("../ObjectsList")
-
 [node name="Floor" parent="." unique_id=680558180 instance=ExtResource("2_bo1nx")]
 position = Vector2(557.00006, 651)
 scale = Vector2(2000, 100)
@@ -431,7 +427,10 @@ text = "Incoming Thrash"
 label_settings = SubResource("LabelSettings_h1bgf")
 autowrap_mode = 2
 
-[node name="TetrisSpawner3" parent="." unique_id=464145678 instance=ExtResource("3_8gbba")]
+[node name="TetrisSpawner" parent="." unique_id=464145678 node_paths=PackedStringArray("objects_list") instance=ExtResource("3_8gbba")]
+objects_list = NodePath("../ObjectsList")
+
+[node name="ObjectsList" type="Node" parent="." unique_id=106109053]
 
 [connection signal="timeout" from="Background/Floor2/Timer" to="Background/Floor2/AnimatedSprite2D2" method="_on_timer_timeout"]
 [connection signal="timeout" from="Background/Sky/Timer" to="Background/Sky" method="_on_timer_timeout"]
