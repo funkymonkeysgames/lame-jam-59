@@ -2,15 +2,32 @@
 
 [ext_resource type="PackedScene" uid="uid://d2wle73x0ng8r" path="res://Scenes/floor.tscn" id="2_bo1nx"]
 [ext_resource type="Script" uid="uid://di3ad1sghrct5" path="res://Scripts/neighbour_manager.gd" id="2_jjvhh"]
-[ext_resource type="PackedScene" uid="uid://bvvbm68pjfov2" path="res://Scenes/tetris_spawner.tscn" id="3_8gbba"]
+[ext_resource type="PackedScene" path="res://Scenes/tetris_spawner.tscn" id="3_8gbba"]
+[ext_resource type="PackedScene" uid="uid://gagkmr2exnfs" path="res://Scenes/Silhouettes/silhouette_manager.tscn" id="4_jjvhh"]
 
 [node name="Main" type="Node" unique_id=1760907832]
 
-[node name="Node" type="Node" parent="." unique_id=962948133]
+[node name="NeighbourManager" type="Node" parent="." unique_id=962948133]
 script = ExtResource("2_jjvhh")
+
+[node name="SilhouetteManager" parent="." unique_id=459499342 node_paths=PackedStringArray("finish_button", "objects_list") instance=ExtResource("4_jjvhh")]
+finish_button = NodePath("../FinishButton")
+objects_list = NodePath("../ObjectsList")
 
 [node name="Floor" parent="." unique_id=680558180 instance=ExtResource("2_bo1nx")]
 position = Vector2(557, 603)
 scale = Vector2(2000, 100)
 
-[node name="TetrisSpawner" parent="." unique_id=325327661 instance=ExtResource("3_8gbba")]
+[node name="TetrisSpawner" parent="." unique_id=325327661 node_paths=PackedStringArray("objects_list") instance=ExtResource("3_8gbba")]
+objects_list = NodePath("../ObjectsList")
+
+[node name="FinishButton" type="Button" parent="." unique_id=531984993]
+offset_left = 14.0
+offset_top = 444.0
+offset_right = 156.0
+offset_bottom = 536.0
+text = "Press me"
+
+[node name="ObjectsList" type="Node" parent="." unique_id=1953807552]
+
+[connection signal="button_down" from="FinishButton" to="SilhouetteManager" method="_on_finish_button_button_down"]
