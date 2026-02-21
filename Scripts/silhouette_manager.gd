@@ -8,7 +8,6 @@ extends Control
 @onready var polygons: Array = []
 
 @onready var silhouette_texturerect: TextureRect = $SilhouetteTextureRect
-@onready var debug_point: PackedScene = preload("res://Scenes/debug_point.tscn")
 
 var construct_bounding_box: Rect2
 var final_bounding_box: Rect2
@@ -50,10 +49,6 @@ func check_score() -> void:
 	var outlier: int = 0
 	for i in max_score:
 		var test_point: Vector2 = Vector2(randi_range(final_top_left.x, final_bottom_right.x), randi_range(final_top_left.y, final_bottom_right.y))
-		var debuggg: TextureRect = debug_point.instantiate()
-		debuggg.set_position(test_point)
-		debuggg.scale = Vector2(0.3,0.3)
-		add_child(debuggg)
 		ray.position = test_point
 		ray.target_position = Vector2.ZERO
 		ray.force_raycast_update()

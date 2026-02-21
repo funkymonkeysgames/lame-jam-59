@@ -14,14 +14,19 @@ class_name Block
 @export var integrity_text: TextEdit
 @export var sprite2D: Sprite2D
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
+@onready var drag_button: Button = $Node2D/Button
 
 @onready var neighbour_manager: Node = $"../../NeighbourManager"
+
 
 func _physics_process(delta: float) -> void:
 	if !can_drag: return
 	
-	var current_position = global_position
 	var distance = global_position.distance_to(get_global_mouse_position())
+	if distance > 100:
+		print("preemit")
+		drag_button.button_up.emit()
+		
 	var direction = global_position.direction_to(get_global_mouse_position())
 	
 	var speed = distance / delta
@@ -34,11 +39,10 @@ func _on_button_button_down() -> void:
 
 func _on_button_button_up() -> void:
 	can_drag = false
-
-func _on_neighbor_area_entered(area: Area2D) -> void:
+	
+func _on_neighbor_area_entered(_area: Area2D) -> void:
 	if can_update:
 		neighbour_manager.check_integrity(self)
-
 
 func _on_confirmation_button_button_down() -> void:
 	if await neighbour_manager.check_integrity(self):
