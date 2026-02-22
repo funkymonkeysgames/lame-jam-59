@@ -28,6 +28,7 @@ class_name Block
 signal block_placed
 signal block_missed
 signal neighbour_entered
+signal rotated
 
 func _ready() -> void:
 	# drag button
@@ -43,18 +44,22 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("rotate_clockwise_90"):
+		rotated.emit()
 		target_rotation += 90
 		lerping = true
 		t = 0.0
 	elif Input.is_action_just_pressed("rotate_counterclockwise_90"):
+		rotated.emit()
 		target_rotation -= 90
 		lerping = true
 		t = 0.0
 	elif Input.is_action_just_pressed("rotate_clockwise_45"):
+		rotated.emit()
 		target_rotation += 45
 		lerping = true
 		t = 0.0
 	elif Input.is_action_just_pressed("rotate_counterclockwise_45"):
+		rotated.emit()
 		target_rotation -= 45
 		lerping = true
 		t = 0.0

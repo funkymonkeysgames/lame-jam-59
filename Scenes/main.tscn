@@ -24,6 +24,7 @@
 [ext_resource type="AudioStream" uid="uid://cnr232bjrh75b" path="res://Assets/sfx/pickupp.wav" id="22_ee4r6"]
 [ext_resource type="AudioStream" uid="uid://b7tfn84cvu1ex" path="res://Assets/sfx/contact.wav" id="22_u50mg"]
 [ext_resource type="AudioStream" uid="uid://dx1ol6uci5e2y" path="res://Assets/sfx/click.wav" id="23_gt3je"]
+[ext_resource type="AudioStream" uid="uid://dpm03a74rjqpt" path="res://Assets/sfx/whoosh.wav" id="25_u50mg"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6bp64"]
 animations = [{
@@ -474,6 +475,10 @@ stream = ExtResource("22_ee4r6")
 [node name="Click" type="AudioStreamPlayer" parent="SFX" unique_id=269052698]
 stream = ExtResource("23_gt3je")
 volume_db = -8.782
+
+[node name="Rotate" type="AudioStreamPlayer" parent="SFX" unique_id=1025611864]
+stream = ExtResource("25_u50mg")
+volume_db = -6.009
 
 [connection signal="timeout" from="Background/Floor2/Timer" to="Background/Floor2/AnimatedSprite2D2" method="_on_timer_timeout"]
 [connection signal="timeout" from="Background/Sky/Timer" to="Background/Sky" method="_on_timer_timeout"]

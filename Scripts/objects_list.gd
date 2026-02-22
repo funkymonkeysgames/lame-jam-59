@@ -10,6 +10,7 @@ func _on_child_entered_tree(node: Block) -> void:
 	node.block_missed.connect(_on_block_missed)
 	node.drag_button.button_down.connect(_on_block_pickedup)
 	node.neighbour_entered.connect(_on_neighbour_entered)
+	node.rotated.connect(_on_rotated)
 	mouse_approached.connect(node.get_node("Sprite2D")._on_mouse_approached)
 	
 func _on_block_placed() -> void:
@@ -27,3 +28,6 @@ func _on_neighbour_entered(integrity: int) -> void:
 
 func _on_result_button_button_down() -> void:
 	audio_streams.get_node("Click").play()
+	
+func _on_rotated() -> void:
+	audio_streams.get_node("Rotate").play()
