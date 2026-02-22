@@ -67,7 +67,7 @@ func check_score() -> void:
 			outlier += 1
 			
 	var final_score: int = int(float(score)/float(max_score-outlier) * 100)
-	level_pass_panel.get_node("Label").text = "You got " + str(final_score) + "%\nNice job! How to you want to continue?"
+	level_pass_panel.get_node("Label").text = "You got " + str(final_score) + "%\nNice job! How do you want to continue?"
 	
 	finish_level()
 	
@@ -81,7 +81,6 @@ func load_level() -> void:
 	levels[current_level_idx].visible = true
 
 func _on_finish_button_button_up() -> void:
-	print("yo")
 	check_score()
 
 func _on_replay_button_down() -> void:
