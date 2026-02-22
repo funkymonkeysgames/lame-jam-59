@@ -8,7 +8,7 @@ extends Node
 @export var silhouettemanager: Control
 @export var tetris_spawner: Node2D
 @export var objects_list: Node2D
-@export var button: Button
+@export var button: TextureButton
 @export var sfx: Node
 @export var tutorial_ui: Control
 
@@ -22,7 +22,7 @@ func _process(delta: float) -> void:
 	pass
 
 
-func _on_start_button_button_down() -> void:
+func _on_start_button_button_up() -> void:
 	title_screen.visible = false
 	title_screen.process_mode = Node.PROCESS_MODE_DISABLED
 	tutorial_ui.visible = true

@@ -14,7 +14,7 @@ func _ready() -> void:
 	
 	
 	
-func _on_start_button_button_down() -> void:
+func _on_start_button_button_up() -> void:
 	get_node("Tutorial1").visible = true
 
 func _on_item_grabbed() -> void:

@@ -1,6 +1,6 @@
 extends Control
 
-@export var finish_button: Button
+@export var finish_button: TextureButton
 @export var objects_list: Node
 @export var ray: RayCast2D
 @export var level_pass_panel:Panel
@@ -80,7 +80,8 @@ func load_level() -> void:
 	levels[current_level_idx].process_mode = Node.PROCESS_MODE_INHERIT
 	levels[current_level_idx].visible = true
 
-func _on_finish_button_button_down() -> void:
+func _on_finish_button_button_up() -> void:
+	print("yo")
 	check_score()
 
 func _on_replay_button_down() -> void:
