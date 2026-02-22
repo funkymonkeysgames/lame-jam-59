@@ -66,7 +66,8 @@ func check_score() -> void:
 		elif not ray.is_colliding() and not Geometry2D.is_point_in_polygon(test_point, global_polygon_coords):
 			outlier += 1
 			
-	print(float(score)/float(max_score-outlier))
+	var final_score: int = int(float(score)/float(max_score-outlier) * 100)
+	level_pass_panel.get_node("Label").text = "You got " + str(final_score) + "%\nNice job! How to you want to continue?"
 	
 	finish_level()
 	
