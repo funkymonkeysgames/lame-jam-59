@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://c66nwaxcsihak"]
+
+[ext_resource type="Script" uid="uid://g0qmwplp4ot0" path="res://Scripts/block.gd" id="1_sb42b"]
+[ext_resource type="Shader" uid="uid://bcsc5uuhnl704" path="res://Assets/integrity_shaders/integrity.gdshader" id="2_5nnf5"]
+[ext_resource type="Texture2D" uid="uid://qnveepjwsjww" path="res://Assets/objects/new/umbrella.png" id="3_moxn3"]
+[ext_resource type="Script" uid="uid://b72v0febfobxf" path="res://Scripts/block_sprite_2d.gd" id="4_5trmt"]
+[ext_resource type="PackedScene" uid="uid://d184xbu0oj6qs" path="res://Scenes/Objects/block/block_drag_button.tscn" id="5_mi8gp"]
+[ext_resource type="PackedScene" uid="uid://cth0pnm0yp2o1" path="res://Scenes/Objects/block/block_animation_player.tscn" id="6_68ao1"]
+[ext_resource type="PackedScene" uid="uid://dm0n7fv6777j6" path="res://Scenes/Objects/block/block_cpu_particles_2d.tscn" id="7_n2nu7"]
+[ext_resource type="PackedScene" uid="uid://c61qhupjp5748" path="res://Scenes/Objects/block/block_confirmation_button.tscn" id="8_ltt8y"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jdo2k"]
+shader = ExtResource("2_5nnf5")
+shader_parameter/colour = Color(1, 1, 1, 1)
+shader_parameter/tint_factor = 0.5
+shader_parameter/fade = 1.0
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=581432221 node_paths=PackedStringArray("neighbour_area2d", "parent_body2d")]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_sb42b")
+neighbour_area2d = NodePath("Neighbour")
+parent_body2d = NodePath(".")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="." unique_id=2033120229]
+scale = Vector2(1, 1.0000013)
+polygon = PackedVector2Array(-1, 8.999987, -1, 28.999958, -2, 28.999958, -2, 38.999943, 0, 42.99994, 4, 44.999935, 6, 45.999935, 9, 45.999935, 13, 43.99994, 15, 40.999943, 16, 37.999947, 16, 33.99995, 13, 33.99995, 11, 38.999943, 10, 40.999943, 5, 40.999943, 2, 37.999947, 2, 29.999958, 1, 28.999958, 1, -15.999977, 7, -23.999966, 15, -23.999966, 21, -16.999975, 28, -23.999966, 34, -23.999966, 40, -20.99997, 36, -25.999962, 30, -32.999954, 22, -38.999943, 13, -43.99994, 0, -45.999935, -9, -43.99994, -20, -40.999943, -28, -34.99995, -36, -26.999962, -38, -22.999968, -39, -20.99997, -36, -22.999968, -29, -23.999966, -25, -21.99997, -22, -17.999973, -19, -21.99997, -15, -23.999966, -6, -23.999966, -1, -15.999977)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1251007473]
+texture_filter = 1
+material = SubResource("ShaderMaterial_jdo2k")
+rotation = -0.0031344413
+texture = ExtResource("3_moxn3")
+script = ExtResource("4_5trmt")
+
+[node name="Button" parent="Sprite2D" unique_id=1908648916 instance=ExtResource("5_mi8gp")]
+offset_left = 9.178619
+offset_top = -56.971504
+offset_right = 9.178619
+offset_bottom = -56.971497
+
+[node name="AnimationPlayer" parent="Sprite2D" unique_id=1894733382 instance=ExtResource("6_68ao1")]
+
+[node name="CPUParticles2D" parent="Sprite2D" unique_id=771912630 instance=ExtResource("7_n2nu7")]
+position = Vector2(-10.990543, -3.034464)
+
+[node name="IntegrityShaderTimer" type="Timer" parent="Sprite2D" unique_id=1085239035]
+wait_time = 0.5
+one_shot = true
+
+[node name="Neighbour" type="Area2D" parent="." unique_id=1388060289]
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Neighbour" unique_id=1202707379]
+visible = false
+scale = Vector2(1, 1.0000013)
+polygon = PackedVector2Array(-33, -33.99995, -24, -42.99994, -8, -47.99993, 19, -45.999935, 35, -34.99995, 44, -18.999973, 39, -15.999977, 32, -20.99997, 20, -13.99998, 11, -20.99997, 4, -13.99998, 4, 26.999962, 6, 36.999947, 9, 34.99995, 16, 30.999956, 20, 35.999947, 18, 41.99994, 12, 47.99993, 0, 46.99993, -5, 42.99994, -6, 31.999954, -4, -14.999979, -8, -21.99997, -14, -21.99997, -18, -17.999973, -21, -12.999981, -29, -20.99997, -35, -20.99997, -38, -12.999981, -44, -11.999983, -45, -17.999973)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1765578907]
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Area2D" unique_id=1673658004]
+polygon = PackedVector2Array(-32, -27.999996, -19, -37.999996, -5, -41.999996, 14, -39.999996, 26, -32.999996, 33, -26.999996, 26, -25.999996, 21, -21.999998, 15, -26.999996, 5, -26.999996, 0, -19.999998, -7, -26.999996, -16, -27.999996, -22, -22.999998)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" unique_id=1157169982]
+polygon = PackedVector2Array(0, -19.999998, 0, 29.999996, -1, 32.999996, 0, 38.999996, 4, 42.999996, 9, 43.999996, 14, 40.999996, 15, 34.999996, 14, 34.999996, 12, 39.999996, 10, 42.999996, 3, 40.999996, 1, 36.999996, 0, 29.999996)
+
+[node name="ConfirmationButton" parent="." unique_id=590694293 instance=ExtResource("8_ltt8y")]
+offset_left = 32.0
+offset_top = -4.0
+offset_right = 52.0
+offset_bottom = 16.0
+
+[connection signal="button_down" from="Sprite2D/Button" to="Sprite2D" method="_on_button_button_down"]
+[connection signal="button_up" from="Sprite2D/Button" to="Sprite2D" method="_on_button_button_up"]
+[connection signal="area_entered" from="Neighbour" to="." method="_on_neighbor_area_entered"]

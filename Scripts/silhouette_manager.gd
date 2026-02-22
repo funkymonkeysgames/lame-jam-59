@@ -43,8 +43,8 @@ func check_score() -> void:
 	#final_bottom_right = polygon2d.bottom_right
 	
 	final_bounding_box = Rect2(final_top_left, final_bottom_right-final_top_left)
-	#polygon2d.queue_redraw()
-	#queue_redraw()
+	polygon2d.queue_redraw()
+	queue_redraw()
 	
 	
 	var score: int = 0

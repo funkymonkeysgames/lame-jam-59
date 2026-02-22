@@ -16,6 +16,6 @@ func _ready() -> void:
 			bottom_right.y = max(bottom_right.y, v.y + offset.y)
 	
 	bounding_box = Rect2(top_left.x, top_left.y, bottom_right.x-top_left.x, bottom_right.y-top_left.y)
-#
-#func _draw() -> void:
-	#draw_rect(bounding_box, Color.BLUE, false)
+
+func _draw() -> void:
+	draw_rect(bounding_box, Color.BLUE, false)

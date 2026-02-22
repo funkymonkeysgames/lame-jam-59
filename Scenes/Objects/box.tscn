@@ -25,7 +25,6 @@ size = Vector2(52, 49)
 size = Vector2(37, 35.999996)
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=581432221 node_paths=PackedStringArray("neighbour_area2d", "parent_body2d")]
-scale = Vector2(1, 1.0000001)
 script = ExtResource("1_ae587")
 neighbour_area2d = NodePath("Neighbour")
 parent_body2d = NodePath(".")
@@ -68,10 +67,10 @@ position = Vector2(0.5, 0.999999)
 shape = SubResource("RectangleShape2D_55ba1")
 
 [node name="ConfirmationButton" parent="." unique_id=590694293 instance=ExtResource("4_cg3po")]
-offset_left = 33.0
-offset_top = -26.999996
-offset_right = 49.0
-offset_bottom = -11.0
+offset_left = 45.333332
+offset_top = -36.0
+offset_right = 65.33333
+offset_bottom = -16.0
 
 [connection signal="button_down" from="Sprite2D/Button" to="Sprite2D" method="_on_button_button_down"]
 [connection signal="button_up" from="Sprite2D/Button" to="Sprite2D" method="_on_button_button_up"]
