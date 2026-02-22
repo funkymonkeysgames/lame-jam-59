@@ -247,7 +247,8 @@ font_color = Color(0.5019608, 0.30980393, 0.30980393, 1)
 [node name="NeighbourManager" type="Node" parent="." unique_id=962948133]
 script = ExtResource("2_jjvhh")
 
-[node name="SilhouetteManager" parent="." unique_id=459499342 node_paths=PackedStringArray("objects_list") instance=ExtResource("2_h1bgf")]
+[node name="SilhouetteManager" parent="." unique_id=459499342 node_paths=PackedStringArray("finish_button", "objects_list") instance=ExtResource("2_h1bgf")]
+finish_button = NodePath("../Button")
 objects_list = NodePath("../ObjectsList")
 
 [node name="Floor" parent="." unique_id=680558180 instance=ExtResource("2_bo1nx")]
@@ -436,5 +437,13 @@ objects_list = NodePath("../ObjectsList")
 
 [node name="ObjectsList" type="Node" parent="." unique_id=106109053]
 
+[node name="Button" type="Button" parent="." unique_id=709874671]
+offset_left = 33.0
+offset_top = 537.0
+offset_right = 139.0
+offset_bottom = 585.0
+text = "press me"
+
 [connection signal="timeout" from="Background/Floor2/Timer" to="Background/Floor2/AnimatedSprite2D2" method="_on_timer_timeout"]
 [connection signal="timeout" from="Background/Sky/Timer" to="Background/Sky" method="_on_timer_timeout"]
+[connection signal="button_down" from="Button" to="SilhouetteManager" method="_on_finish_button_button_down"]
