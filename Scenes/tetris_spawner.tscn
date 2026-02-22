@@ -21,6 +21,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_type_variation = &"FlatButton"
 action_mode = 0
+flat = true
 
 [connection signal="button_down" from="nextObjectPreview/CenterContainer/Button" to="." method="_on_button_button_down"]
 [connection signal="button_up" from="nextObjectPreview/CenterContainer/Button" to="." method="_on_button_button_up"]

@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://bjtulqs5l3hv0" path="res://Assets/UI/panel.png" id="14_jkdf5"]
 [ext_resource type="Texture2D" uid="uid://cyyvwngsuay0m" path="res://Assets/UI/box.png" id="15_wsu2k"]
 [ext_resource type="FontFile" uid="uid://djne8hhwxuugs" path="res://Assets/Fonts/easvhs.ttf" id="16_k12tt"]
+[ext_resource type="PackedScene" uid="uid://dn0qtbokpka07" path="res://Scenes/Objects/bigger_tin_can.tscn" id="18_b3802"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6bp64"]
 animations = [{
@@ -436,6 +437,9 @@ autowrap_mode = 2
 objects_list = NodePath("../ObjectsList")
 
 [node name="ObjectsList" type="Node" parent="." unique_id=106109053]
+
+[node name="CharacterBody2D" parent="ObjectsList" unique_id=581432221 instance=ExtResource("18_b3802")]
+position = Vector2(313, 328)
 
 [node name="Button" type="Button" parent="." unique_id=709874671]
 offset_left = 33.0

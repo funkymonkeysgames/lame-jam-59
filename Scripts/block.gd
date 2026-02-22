@@ -13,8 +13,6 @@ class_name Block
 @export var parent_body2d: CharacterBody2D
 @export var integrity_text: TextEdit
 @onready var sprite2D: Sprite2D = $Sprite2D
-@onready var audio_stream_player_success: AudioStreamPlayer = $AudioStreamPlayerSuccess
-@onready var audio_stream_player_reject: AudioStreamPlayer = $AudioStreamPlayerRejection
 
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var drag_button: Button = $Sprite2D/Button
@@ -95,9 +93,7 @@ func _on_confirmation_button_button_down() -> void:
 	if await neighbour_manager.check_integrity(self):
 		neighbour_manager.new_neighbour(self)
 		can_update = false
-		#audio_stream_player_success.play(0)
 		block_placed.emit()
 	else:
 		block_missed.emit()
-		#audio_stream_player_reject.play(0)
 	
