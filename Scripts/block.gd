@@ -61,11 +61,13 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	if lerping and can_update:
+		print("rotate bitch")
+		print(collision_shape.rotation_degrees)
 		collision_shape.rotation_degrees = lerpf(collision_shape.rotation_degrees, target_rotation, t)
 		neighbour_area2d.rotation_degrees = lerpf(neighbour_area2d.rotation_degrees, target_rotation, t)
 		sprite2D.rotation_degrees = lerpf(sprite2D.rotation_degrees, target_rotation, t)
-		t += delta * 100.0
-		
+		t += delta * 10
+		print(t)
 		if t >= 1.0:
 			lerping = false
 			t = 0.0
