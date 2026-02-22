@@ -21,6 +21,9 @@ shader_parameter/fade = 1.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8gbba"]
 size = Vector2(22, 41)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8st8e"]
+size = Vector2(16, 32)
+
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=581432221 node_paths=PackedStringArray("neighbour_area2d", "parent_body2d")]
 script = ExtResource("1_jxqgo")
 neighbour_area2d = NodePath("Neighbour")
@@ -56,6 +59,11 @@ one_shot = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Neighbour" unique_id=1954082528]
 scale = Vector2(1, 1.0000013)
 shape = SubResource("RectangleShape2D_8gbba")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1541356367]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1058222485]
+shape = SubResource("RectangleShape2D_8st8e")
 
 [node name="ConfirmationButton" parent="." unique_id=590694293 instance=ExtResource("4_jxqgo")]
 offset_left = 21.0

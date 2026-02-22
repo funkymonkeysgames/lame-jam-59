@@ -18,12 +18,16 @@ class_name Block
 @onready var drag_button: Button = $Sprite2D/Button
 @onready var confirmation_button: TextureButton = $ConfirmationButton
 @onready var neighbour_manager: Node = $"../../NeighbourManager"
+@onready var noclipzone: Area2D = $Area2D
+@onready var noclipareas:Array[Area2D] = []
 
 @onready var t: float = 0.0
 @onready var lerping: bool = false
 @onready var target_rotation: float = 0.0
 
 @onready var has_neighbour: bool = false
+
+@onready var no_clip_before: Vector2
 
 signal block_placed
 signal block_missed
@@ -42,6 +46,9 @@ func _ready() -> void:
 	# hover cursor
 	drag_button.mouse_entered.connect(_on_hover)
 	drag_button.mouse_exited.connect(_on_hover_exit)
+	# nocliparea
+	noclipzone.area_entered.connect(_on_noclip_area_entered)
+	noclipzone.area_exited.connect(_on_noclip_area_exited)
 
 func _process(delta: float) -> void:
 	if global_position == Vector2(2000, 2000):
@@ -66,6 +73,13 @@ func _process(delta: float) -> void:
 		target_rotation -= 45
 		lerping = true
 		t = 0.0
+	
+	if Input.is_action_just_pressed("no_clip"):
+		no_clip_before = global_position
+		collision_shape.set_deferred("disabled", true)
+	elif Input.is_action_just_released("no_clip"):
+		collision_shape.set_deferred("disabled", false)
+
 
 func _physics_process(delta: float) -> void:
 	if lerping and can_update:
@@ -91,6 +105,13 @@ func _physics_process(delta: float) -> void:
 	var speed = distance / delta
 	velocity = direction * speed
 	move_and_slide()
+	
+func _on_noclip_area_entered(area: Area2D) -> void:
+	if area != neighbour_area2d:
+		noclipareas.append(area)
+
+func _on_noclip_area_exited(area: Area2D) -> void:
+	noclipareas.erase(area)
 	
 func _on_hover() -> void:
 	if not can_update: return
@@ -121,6 +142,9 @@ func _on_neighbor_area_exited(_area: Area2D) -> void:
 		await neighbour_manager.check_integrity(self)
 
 func _on_confirmation_button_button_down() -> void:
+	if noclipareas.size() > 0:
+		block_missed.emit()
+		return
 	if await neighbour_manager.check_integrity(self):
 		neighbour_manager.new_neighbour(self)
 		can_update = false
