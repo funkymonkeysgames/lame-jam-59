@@ -28,6 +28,7 @@ var nextObject: Node = null
 
 var object_has_arrived = true
 var start_position: Vector2
+var start_scale: Vector2
 var t: float = 0
 var targetPosition: Vector2 = Vector2(574, 132)
 var objectTaken: bool = false
@@ -46,10 +47,12 @@ func _process(delta: float) -> void:
 		object_has_arrived = true
 		t = 0
 		nextObjectPreview.rotation = 0
+		nextObjectPreview.scale = Vector2(1.0, 1.0)
 
 	if !object_has_arrived:
 		t += delta * 0.4
 		nextObjectPreview.global_position = start_position.lerp(targetPosition, t)
+		nextObjectPreview.scale = start_scale.lerp(Vector2(1.0, 1.0), t)
 
 		nextObjectPreview.rotation += 15 * delta
 
@@ -109,7 +112,9 @@ func throw_next_object() -> void:
 
 	var spawn_y:float = rng.randf_range(0, 200)
 	start_position = Vector2(spawn_x, spawn_y)
+	start_scale = Vector2(0.2, 0.2)
 	nextObjectPreview.global_position = start_position
+	nextObjectPreview.scale = start_scale
 	object_has_arrived = false
 
 
