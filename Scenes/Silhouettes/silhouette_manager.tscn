@@ -1,7 +1,14 @@
 [gd_scene format=3 uid="uid://gagkmr2exnfs"]
 
 [ext_resource type="Script" uid="uid://cy40vumh81ork" path="res://Scripts/silhouette_manager.gd" id="1_2cle6"]
-[ext_resource type="Texture2D" uid="uid://b5e53pjbnn6xo" path="res://Assets/Silhouettes/thinker_cropped_silhouette_transparent.png" id="1_5vbpn"]
+[ext_resource type="Texture2D" uid="uid://b5e53pjbnn6xo" path="res://Assets/Silhouettes/thinker_silhouette.png" id="1_5vbpn"]
+[ext_resource type="Texture2D" uid="uid://c5l4a0g3gj5iy" path="res://Assets/Silhouettes/feely_silhouette.png" id="2_ju2mw"]
+[ext_resource type="Texture2D" uid="uid://c2fcpgugbnig" path="res://Assets/Silhouettes/car_silhouette.png" id="2_k47b3"]
+[ext_resource type="PackedScene" uid="uid://d2wle73x0ng8r" path="res://Scenes/floor.tscn" id="3_ambuw"]
+[ext_resource type="Texture2D" uid="uid://g2nx2xxyldap" path="res://Assets/Silhouettes/fan_silhouette.png" id="4_t62pg"]
+[ext_resource type="Texture2D" uid="uid://b12salwy8pjxr" path="res://Assets/Silhouettes/house_silhouette.png" id="5_gl57l"]
+[ext_resource type="Texture2D" uid="uid://dahx266hya6bt" path="res://Assets/Silhouettes/beer_silhouette.png" id="6_os4f3"]
+[ext_resource type="Texture2D" uid="uid://cj6te712tgfdw" path="res://Assets/Silhouettes/window_silhouette.png" id="7_xsx78"]
 
 [node name="SilhouetteManager" type="Control" unique_id=459499342 node_paths=PackedStringArray("ray")]
 layout_mode = 3
@@ -13,19 +20,135 @@ grow_vertical = 2
 script = ExtResource("1_2cle6")
 ray = NodePath("RayCast2D")
 
-[node name="SilhouetteTextureRect" type="TextureRect" parent="." unique_id=815868820]
+[node name="Level1" type="TextureRect" parent="." unique_id=815868820]
+visible = false
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 7
 anchor_left = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-offset_left = -576.0
-offset_top = 176.0
-offset_right = 576.0
-offset_bottom = 519.0
+anchor_bottom = 1.0
+offset_left = -574.0
+offset_top = -144.0
+offset_right = 571.0
+offset_bottom = -47.0
 grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("2_ju2mw")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Level2" type="TextureRect" parent="." unique_id=106761590]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -574.0
+offset_top = -182.0
+offset_right = 571.0
+offset_bottom = -47.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("2_k47b3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Level3" type="TextureRect" parent="." unique_id=968397666]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -574.0
+offset_top = -209.0
+offset_right = 571.0
+offset_bottom = -47.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("4_t62pg")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Level4" type="TextureRect" parent="." unique_id=19257904]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -574.0
+offset_top = -250.0
+offset_right = 571.0
+offset_bottom = -47.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("5_gl57l")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Level5" type="TextureRect" parent="." unique_id=73888884]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -574.0
+offset_top = -293.0
+offset_right = 571.0
+offset_bottom = -47.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("6_os4f3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Level6" type="TextureRect" parent="." unique_id=231718993]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -574.0
+offset_top = -346.0
+offset_right = 571.0
+offset_bottom = -47.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("7_xsx78")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Level7" type="TextureRect" parent="." unique_id=1072333027]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -574.0
+offset_top = -405.0
+offset_right = 571.0
+offset_bottom = -47.0
+grow_horizontal = 2
+grow_vertical = 0
 texture = ExtResource("1_5vbpn")
 expand_mode = 1
 stretch_mode = 5
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=560030662]
 hit_from_inside = true
+
+[node name="Floor" parent="." unique_id=680558180 instance=ExtResource("3_ambuw")]
+position = Vector2(557.00006, 651)
+scale = Vector2(2000, 100)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dktfjlckaryao"
-path="res://.godot/imported/thinker_cropped_silhouette.png-fee64472817693af4ce5df8f5677ffda.ctex"
+uid="uid://cj6te712tgfdw"
+path="res://.godot/imported/window_silhouette.png-21500e8a0808f6464d8a7042de5936ca.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Silhouettes/thinker_cropped_silhouette.png"
-dest_files=["res://.godot/imported/thinker_cropped_silhouette.png-fee64472817693af4ce5df8f5677ffda.ctex"]
+source_file="res://Assets/Silhouettes/window_silhouette.png"
+dest_files=["res://.godot/imported/window_silhouette.png-21500e8a0808f6464d8a7042de5936ca.ctex"]
 
 [params]
 

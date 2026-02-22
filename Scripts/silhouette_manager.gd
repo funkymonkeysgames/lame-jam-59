@@ -7,6 +7,8 @@ extends Control
 @onready var silhouettes: Array = []
 @onready var polygons: Array = []
 
+@onready var level: int = 1
+
 @onready var silhouette_texturerect: TextureRect = $SilhouetteTextureRect
 
 var construct_bounding_box: Rect2
@@ -60,6 +62,8 @@ func check_score() -> void:
 			outlier += 1
 			
 	print(float(score)/float(max_score-outlier))
+	
+	
 		
 
 func _on_finish_button_button_down() -> void:

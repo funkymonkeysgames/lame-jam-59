@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5e53pjbnn6xo"
-path="res://.godot/imported/thinker_cropped_silhouette_transparent.png-ef23fead978e7cc9c31ee628450f67ae.ctex"
+uid="uid://b12salwy8pjxr"
+path="res://.godot/imported/house_silhouette.png-af800f7f39a2df931c57efbd16928269.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Silhouettes/thinker_cropped_silhouette_transparent.png"
-dest_files=["res://.godot/imported/thinker_cropped_silhouette_transparent.png-ef23fead978e7cc9c31ee628450f67ae.ctex"]
+source_file="res://Assets/Silhouettes/house_silhouette.png"
+dest_files=["res://.godot/imported/house_silhouette.png-af800f7f39a2df931c57efbd16928269.ctex"]
 
 [params]
 
