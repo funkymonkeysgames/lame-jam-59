@@ -79,6 +79,7 @@ func initilizeSceneArray() -> void:
 
 func setObjects():
 	nextObject = pickRandomObject().instantiate()
+	nextObject.can_update = false
 	objects_list.add_child(nextObject)
 	nextObject.global_position = Vector2(2000, 2000)
 	nextObjectPreview.texture
@@ -94,10 +95,12 @@ func _on_button_button_down() -> void:
 		currentObject = nextObject
 		currentObject.global_position = targetPosition
 		objectTaken = true
+		currentObject.can_update = true
 		currentObject.find_child("Sprite2D").find_child("Button").button_down.emit()
 		Input.set_custom_mouse_cursor(load("res://Assets/cursors/hand_small_closed_cropped.png"))
 		
 		nextObject = pickRandomObject().instantiate()
+		nextObject.can_update = false
 		objects_list.add_child(nextObject)
 		nextObject.global_position = Vector2(2000, 2000)
 		nextObjectPreview.texture = nextObject.sprite2D.texture

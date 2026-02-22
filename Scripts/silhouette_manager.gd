@@ -7,7 +7,7 @@ extends Control
 
 @export var levels:Array[TextureRect]
 
-@export var current_level_idx: int = 0
+@onready var current_level_idx: int = 0
 
 var final_top_left
 var final_bottom_right

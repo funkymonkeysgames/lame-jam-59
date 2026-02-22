@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://b5e53pjbnn6xo" path="res://Assets/Silhouettes/thinker_silhouette.png" id="1_5vbpn"]
 [ext_resource type="Texture2D" uid="uid://c5l4a0g3gj5iy" path="res://Assets/Silhouettes/feely_silhouette.png" id="2_ju2mw"]
 [ext_resource type="Texture2D" uid="uid://c2fcpgugbnig" path="res://Assets/Silhouettes/car_silhouette.png" id="2_k47b3"]
-[ext_resource type="PackedScene" uid="uid://d2wle73x0ng8r" path="res://Scenes/floor.tscn" id="3_ambuw"]
 [ext_resource type="Script" uid="uid://ca73di3wesr26" path="res://Scripts/thinker_polygon.gd" id="3_t62pg"]
 [ext_resource type="Texture2D" uid="uid://g2nx2xxyldap" path="res://Assets/Silhouettes/fan_silhouette.png" id="4_t62pg"]
 [ext_resource type="Texture2D" uid="uid://b12salwy8pjxr" path="res://Assets/Silhouettes/house_silhouette.png" id="5_gl57l"]
@@ -221,10 +220,6 @@ polygon = PackedVector2Array(497, 291, 516, 260, 538, 231, 563, 219, 576, 212, 5
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=560030662]
 hit_from_inside = true
-
-[node name="Floor" parent="." unique_id=680558180 instance=ExtResource("3_ambuw")]
-position = Vector2(557.00006, 651)
-scale = Vector2(2000, 100)
 
 [node name="Panel" type="Panel" parent="." unique_id=1293960500]
 layout_mode = 0

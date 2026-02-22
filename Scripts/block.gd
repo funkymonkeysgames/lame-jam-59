@@ -43,6 +43,8 @@ func _ready() -> void:
 	drag_button.mouse_exited.connect(_on_hover_exit)
 
 func _process(delta: float) -> void:
+	if global_position == Vector2(2000, 2000):
+		return
 	if Input.is_action_just_pressed("rotate_clockwise_90"):
 		rotated.emit()
 		target_rotation += 90

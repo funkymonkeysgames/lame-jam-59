@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://el8i4jaeaiuw"
+path="res://.godot/imported/On the Farm.mp3-3f030646cf929b07cf35e4e6fe95bdef.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/On the Farm.mp3"
+dest_files=["res://.godot/imported/On the Farm.mp3-3f030646cf929b07cf35e4e6fe95bdef.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
