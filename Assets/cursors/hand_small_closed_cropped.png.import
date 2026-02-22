@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://53w3c1pj03m0"
-path="res://.godot/imported/hand_closed.svg-0e67669be8d1fa8e8adf8402eb360242.ctex"
+uid="uid://cmewcpohbxc81"
+path="res://.godot/imported/hand_small_closed_cropped.png-0986eb479b01d3064874577491d68552.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/cursors/hand_closed.svg"
-dest_files=["res://.godot/imported/hand_closed.svg-0e67669be8d1fa8e8adf8402eb360242.ctex"]
+source_file="res://Assets/cursors/hand_small_closed_cropped.png"
+dest_files=["res://.godot/imported/hand_small_closed_cropped.png-0986eb479b01d3064874577491d68552.ctex"]
 
 [params]
 
@@ -38,6 +38,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false

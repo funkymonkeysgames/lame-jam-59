@@ -8,18 +8,21 @@ extends Sprite2D
 @onready var particles:CPUParticles2D = $CPUParticles2D
 @onready var shader_timer: Timer = $IntegrityShaderTimer
 
-var angle_x_max: float = 15.0
-var angle_y_max: float = 15.0
+var radius: int = 125
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var object:Block = get_parent()
 	object.block_placed.connect(_on_character_body_2d_block_placed)
 	object.block_missed.connect(_on_character_body_2d_block_missed)
-	object.neighbour_entered.connect(_on_character_body_2d_neighbour_entered)
 	shader_timer.timeout.connect(_on_integrity_shader_timer_timeout)
 	material.set("shader_parameter/tint_factor", 0.0)
 	material.resource_local_to_scene = true
+	
+func _process(delta: float) -> void:
+	var mouse_position: Vector2 = get_global_mouse_position()
+	if in_radius(mouse_position):
+		_on_mouse_approached()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
@@ -44,9 +47,11 @@ func _on_character_body_2d_block_placed() -> void:
 func _on_character_body_2d_block_missed() -> void:
 	animation_player.play("shake")
 
-func _on_character_body_2d_neighbour_entered(integrity: int) -> void:
-	print(get_parent().can_update)
-	if not get_parent().can_update: return
+func _on_integrity_shader_timer_timeout() -> void:
+	material.set("shader_parameter/tint_factor", 0.0)
+	
+func _on_mouse_approached() -> void:
+	var integrity = get_parent().integrity
 	shader_timer.start()
 	if integrity == 0:
 		material.set("shader_parameter/colour", Color(3.852, 0.628, 0.628))
@@ -62,8 +67,8 @@ func _on_character_body_2d_neighbour_entered(integrity: int) -> void:
 		material.set("shader_parameter/colour", Color(0.894, 4.0, 0.452))
 	material.set("shader_parameter/tint_factor", 0.4)
 	
-func _on_integrity_shader_timer_timeout() -> void:
-	material.set("shader_parameter/tint_factor", 0.0)
+func in_radius(mouse_position:Vector2) -> bool:
+	return abs(mouse_position.x - global_position.x) < radius and abs(mouse_position.y - global_position.y) < radius
 
 func _on_button_button_down() -> void:
 	forward_lerping = true

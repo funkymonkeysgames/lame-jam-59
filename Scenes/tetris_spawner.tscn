@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ccglcr6p2if0w"]
 
 [ext_resource type="Script" uid="uid://cr5aldwomsi7m" path="res://Scripts/tetris_spawner.gd" id="1_6uk01"]
+[ext_resource type="Script" uid="uid://qlt3pc8735kt" path="res://Scripts/tetris_preview_cursor_update.gd" id="2_r4upl"]
 
 [node name="TetrisSpawner" type="Node2D" unique_id=325327661 node_paths=PackedStringArray("nextObjectPreview")]
 script = ExtResource("1_6uk01")
@@ -22,6 +23,9 @@ size_flags_vertical = 4
 theme_type_variation = &"FlatButton"
 action_mode = 0
 flat = true
+script = ExtResource("2_r4upl")
 
 [connection signal="button_down" from="nextObjectPreview/CenterContainer/Button" to="." method="_on_button_button_down"]
 [connection signal="button_up" from="nextObjectPreview/CenterContainer/Button" to="." method="_on_button_button_up"]
+[connection signal="mouse_entered" from="nextObjectPreview/CenterContainer/Button" to="nextObjectPreview/CenterContainer/Button" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="nextObjectPreview/CenterContainer/Button" to="nextObjectPreview/CenterContainer/Button" method="_on_mouse_exited"]

@@ -21,12 +21,11 @@ shader_parameter/fade = 1.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8gbba"]
 size = Vector2(52, 49)
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=581432221 node_paths=PackedStringArray("neighbour_area2d", "parent_body2d", "integrity_text")]
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=581432221 node_paths=PackedStringArray("neighbour_area2d", "parent_body2d")]
 scale = Vector2(1, 1.0000001)
 script = ExtResource("1_ae587")
 neighbour_area2d = NodePath("Neighbour")
 parent_body2d = NodePath(".")
-integrity_text = NodePath("")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1735779317]
 scale = Vector2(1, 1.0000013)
@@ -60,6 +59,10 @@ scale = Vector2(1, 1.0000013)
 shape = SubResource("RectangleShape2D_8gbba")
 
 [node name="ConfirmationButton" parent="." unique_id=590694293 instance=ExtResource("4_cg3po")]
+offset_left = 33.0
+offset_top = -26.999996
+offset_right = 49.0
+offset_bottom = -11.0
 
 [connection signal="button_down" from="Sprite2D/Button" to="Sprite2D" method="_on_button_button_down"]
 [connection signal="button_up" from="Sprite2D/Button" to="Sprite2D" method="_on_button_button_up"]

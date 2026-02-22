@@ -20,7 +20,9 @@
 [ext_resource type="Script" uid="uid://cfiam50b1dq1t" path="res://Scripts/objects_list.gd" id="18_ee4r6"]
 [ext_resource type="AudioStream" uid="uid://cvomxq3ggfwwq" path="res://Assets/sfx/pop.wav" id="19_pdsj5"]
 [ext_resource type="AudioStream" uid="uid://bs0icwo5w7tjy" path="res://Assets/sfx/lomp.wav" id="21_3pmx8"]
+[ext_resource type="AudioStream" uid="uid://cnr232bjrh75b" path="res://Assets/sfx/pickupp.wav" id="22_ee4r6"]
 [ext_resource type="AudioStream" uid="uid://b7tfn84cvu1ex" path="res://Assets/sfx/contact.wav" id="22_u50mg"]
+[ext_resource type="AudioStream" uid="uid://dx1ol6uci5e2y" path="res://Assets/sfx/click.wav" id="23_gt3je"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6bp64"]
 animations = [{
@@ -439,7 +441,7 @@ autowrap_mode = 2
 [node name="TetrisSpawner" parent="." unique_id=464145678 node_paths=PackedStringArray("objects_list") instance=ExtResource("3_8gbba")]
 objects_list = NodePath("../ObjectsList")
 
-[node name="ObjectsList" type="Node" parent="." unique_id=106109053 node_paths=PackedStringArray("audio_streams")]
+[node name="ObjectsList" type="Node2D" parent="." unique_id=153524465 node_paths=PackedStringArray("audio_streams")]
 script = ExtResource("18_ee4r6")
 audio_streams = NodePath("../SFX")
 
@@ -461,7 +463,15 @@ stream = ExtResource("21_3pmx8")
 [node name="Contact" type="AudioStreamPlayer" parent="SFX" unique_id=1002647883]
 stream = ExtResource("22_u50mg")
 
+[node name="Pickup" type="AudioStreamPlayer" parent="SFX" unique_id=493207691]
+stream = ExtResource("22_ee4r6")
+
+[node name="Click" type="AudioStreamPlayer" parent="SFX" unique_id=269052698]
+stream = ExtResource("23_gt3je")
+volume_db = -8.782
+
 [connection signal="timeout" from="Background/Floor2/Timer" to="Background/Floor2/AnimatedSprite2D2" method="_on_timer_timeout"]
 [connection signal="timeout" from="Background/Sky/Timer" to="Background/Sky" method="_on_timer_timeout"]
 [connection signal="child_entered_tree" from="ObjectsList" to="ObjectsList" method="_on_child_entered_tree"]
 [connection signal="button_down" from="Button" to="SilhouetteManager" method="_on_finish_button_button_down"]
+[connection signal="button_down" from="Button" to="ObjectsList" method="_on_result_button_button_down"]

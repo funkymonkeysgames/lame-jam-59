@@ -1,12 +1,17 @@
 [gd_scene format=3 uid="uid://c61qhupjp5748"]
 
-[ext_resource type="Texture2D" uid="uid://cemimca4e3rr" path="res://Assets/confirmation_button.png" id="1_nw5nu"]
+[ext_resource type="Texture2D" uid="uid://rijq1t7lnc4u" path="res://Assets/UI/check_button.png" id="1_mp4mr"]
+[ext_resource type="Texture2D" uid="uid://bvuy2wo8l2uti" path="res://Assets/UI/check_button_pressed.png" id="2_c142o"]
 [ext_resource type="Script" uid="uid://bgy3liv1oh07x" path="res://Scripts/confirm_button.gd" id="2_x6w2w"]
 
 [node name="ConfirmationButton" type="TextureButton" unique_id=590694293]
-offset_right = 45.0
-offset_bottom = 45.0
-texture_normal = ExtResource("1_nw5nu")
+texture_filter = 1
+offset_left = 45.0
+offset_top = -58.0
+offset_right = 85.0
+offset_bottom = -18.0
+texture_normal = ExtResource("1_mp4mr")
+texture_pressed = ExtResource("2_c142o")
 ignore_texture_size = true
 stretch_mode = 4
 script = ExtResource("2_x6w2w")

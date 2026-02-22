@@ -95,6 +95,7 @@ func _on_button_button_down() -> void:
 		currentObject.global_position = targetPosition
 		objectTaken = true
 		currentObject.find_child("Sprite2D").find_child("Button").button_down.emit()
+		Input.set_custom_mouse_cursor(load("res://Assets/cursors/hand_small_closed_cropped.png"))
 		
 		nextObject = pickRandomObject().instantiate()
 		objects_list.add_child(nextObject)

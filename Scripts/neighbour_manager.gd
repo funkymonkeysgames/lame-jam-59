@@ -19,6 +19,9 @@ func check_integrity(body) -> bool:
 	body.max_neighbour_integrity = 0
 	await get_tree().process_frame
 	var neighbours = body.neighbour_area2d.get_overlapping_areas()
+	if neighbours.size() == 0: 
+		body.integrity = 0
+		return false
 	for i in neighbours.size():
 		body.max_neighbour_integrity = max(body.max_neighbour_integrity, neighbours[i].get_parent().integrity)
 	body.integrity = body.max_neighbour_integrity - 1
