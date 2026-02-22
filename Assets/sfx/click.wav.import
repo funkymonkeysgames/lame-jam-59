@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://cu1vl0nt635b7"
-path="res://.godot/imported/integrity1.wav-0972e2c762690a321206fef2af697031.sample"
+uid="uid://dx1ol6uci5e2y"
+path="res://.godot/imported/click.wav-8e5d7aa36b8ed7e3dfdbdad3347b29bd.sample"
 
 [deps]
 
-source_file="res://Assets/sfx/integrity1.wav"
-dest_files=["res://.godot/imported/integrity1.wav-0972e2c762690a321206fef2af697031.sample"]
+source_file="res://Assets/sfx/click.wav"
+dest_files=["res://.godot/imported/click.wav-8e5d7aa36b8ed7e3dfdbdad3347b29bd.sample"]
 
 [params]
 

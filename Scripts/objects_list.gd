@@ -1,16 +1,8 @@
-extends Node
+extends Node2D
 
 @export var audio_streams:Node
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
+signal mouse_approached
 
 func _on_child_entered_tree(node: Block) -> void:
 	await node.ready
@@ -18,27 +10,20 @@ func _on_child_entered_tree(node: Block) -> void:
 	node.block_missed.connect(_on_block_missed)
 	node.drag_button.button_down.connect(_on_block_pickedup)
 	node.neighbour_entered.connect(_on_neighbour_entered)
+	mouse_approached.connect(node.get_node("Sprite2D")._on_mouse_approached)
 	
 func _on_block_placed() -> void:
+	print("placed")
 	audio_streams.get_node("Success").play()
 	
 func _on_block_missed() -> void:
-	audio_streams.get_node("Rejection").play()
+	audio_streams.get_node("Fail").play()
 
 func _on_block_pickedup() -> void:
 	audio_streams.get_node("Pickup").play()
 
 func _on_neighbour_entered(integrity: int) -> void:
-	print(integrity)
-	if integrity == 0:
-		audio_streams.get_node("Integrity0").play()
-	elif integrity == 1:
-		audio_streams.get_node("Integrity1").play()
-	elif integrity == 2:
-		audio_streams.get_node("Integrity2").play()
-	elif integrity == 3:
-		audio_streams.get_node("Integrity3").play()
-	elif integrity == 4:
-		audio_streams.get_node("Integrity4").play()
-	elif integrity == 5:
-		audio_streams.get_node("Integrity5").play()
+	audio_streams.get_node("Contact").play()
+
+func _on_result_button_button_down() -> void:
+	audio_streams.get_node("Click").play()

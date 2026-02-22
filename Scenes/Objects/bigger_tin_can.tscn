@@ -1,27 +1,31 @@
 [gd_scene format=3 uid="uid://dn0qtbokpka07"]
 
 [ext_resource type="Script" uid="uid://g0qmwplp4ot0" path="res://Scripts/block.gd" id="1_jxqgo"]
+[ext_resource type="Shader" uid="uid://bcsc5uuhnl704" path="res://Assets/integrity_shaders/integrity.gdshader" id="2_8st8e"]
 [ext_resource type="Texture2D" uid="uid://bqt1lphpwwrj1" path="res://Assets/objects/bigger_tin_can.png" id="2_thhrb"]
 [ext_resource type="Script" uid="uid://b72v0febfobxf" path="res://Scripts/block_sprite_2d.gd" id="3_v6csl"]
 [ext_resource type="PackedScene" uid="uid://c61qhupjp5748" path="res://Scenes/Objects/block/block_confirmation_button.tscn" id="4_jxqgo"]
 [ext_resource type="PackedScene" uid="uid://d184xbu0oj6qs" path="res://Scenes/Objects/block/block_drag_button.tscn" id="4_l3ilu"]
-[ext_resource type="PackedScene" uid="uid://dyl1to7jkoatr" path="res://Scenes/Objects/block/block_audio_stream_player_rejection.tscn" id="5_mth6b"]
 [ext_resource type="PackedScene" uid="uid://cth0pnm0yp2o1" path="res://Scenes/Objects/block/block_animation_player.tscn" id="5_neiqg"]
-[ext_resource type="PackedScene" uid="uid://iq7ije3aw7vn" path="res://Scenes/Objects/block/block_audio_stream_player_success.tscn" id="6_8st8e"]
 [ext_resource type="PackedScene" uid="uid://dm0n7fv6777j6" path="res://Scenes/Objects/block/block_cpu_particles_2d.tscn" id="6_tlqrx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c2iur"]
 size = Vector2(21, 40)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8st8e"]
+shader = ExtResource("2_8st8e")
+shader_parameter/colour = Color(1, 1, 1, 1)
+shader_parameter/tint_factor = 0.50000002375
+shader_parameter/fade = 1.0
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8gbba"]
 size = Vector2(22, 41)
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=581432221 node_paths=PackedStringArray("neighbour_area2d", "parent_body2d", "integrity_text")]
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=581432221 node_paths=PackedStringArray("neighbour_area2d", "parent_body2d")]
 scale = Vector2(1, 1.0000001)
 script = ExtResource("1_jxqgo")
 neighbour_area2d = NodePath("Neighbour")
 parent_body2d = NodePath(".")
-integrity_text = NodePath("IntegrityText")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1735779317]
 scale = Vector2(1, 1.0000013)
@@ -29,6 +33,7 @@ shape = SubResource("RectangleShape2D_c2iur")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1251007473]
 texture_filter = 1
+material = SubResource("ShaderMaterial_8st8e")
 rotation = -0.0031344413
 texture = ExtResource("2_thhrb")
 script = ExtResource("3_v6csl")
@@ -43,27 +48,21 @@ offset_bottom = -20.0
 
 [node name="CPUParticles2D" parent="Sprite2D" unique_id=771912630 instance=ExtResource("6_tlqrx")]
 
+[node name="IntegrityShaderTimer" type="Timer" parent="Sprite2D" unique_id=1471443280]
+wait_time = 0.5
+one_shot = true
+
 [node name="Neighbour" type="Area2D" parent="." unique_id=1388060289]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Neighbour" unique_id=1954082528]
 scale = Vector2(1, 1.0000013)
 shape = SubResource("RectangleShape2D_8gbba")
 
-[node name="IntegrityText" type="TextEdit" parent="." unique_id=1748584442]
-offset_left = -56.0
-offset_top = -52.999992
-offset_right = -16.0
-offset_bottom = -12.999992
-
 [node name="ConfirmationButton" parent="." unique_id=590694293 instance=ExtResource("4_jxqgo")]
-offset_left = 11.0
-offset_top = -8.0
-offset_right = 40.0
-offset_bottom = 21.0
-
-[node name="AudioStreamPlayerRejection" parent="." unique_id=1322738899 instance=ExtResource("5_mth6b")]
-
-[node name="AudioStreamPlayerSuccess" parent="." unique_id=1807916632 instance=ExtResource("6_8st8e")]
+offset_left = 21.0
+offset_top = -18.999998
+offset_right = 37.0
+offset_bottom = -3.000002
 
 [connection signal="button_down" from="Sprite2D/Button" to="Sprite2D" method="_on_button_button_down"]
 [connection signal="button_up" from="Sprite2D/Button" to="Sprite2D" method="_on_button_button_up"]
