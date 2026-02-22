@@ -5,12 +5,13 @@
 [ext_resource type="Texture2D" uid="uid://c5l4a0g3gj5iy" path="res://Assets/Silhouettes/feely_silhouette.png" id="2_ju2mw"]
 [ext_resource type="Texture2D" uid="uid://c2fcpgugbnig" path="res://Assets/Silhouettes/car_silhouette.png" id="2_k47b3"]
 [ext_resource type="PackedScene" uid="uid://d2wle73x0ng8r" path="res://Scenes/floor.tscn" id="3_ambuw"]
+[ext_resource type="Script" uid="uid://ca73di3wesr26" path="res://Scripts/thinker_polygon.gd" id="3_t62pg"]
 [ext_resource type="Texture2D" uid="uid://g2nx2xxyldap" path="res://Assets/Silhouettes/fan_silhouette.png" id="4_t62pg"]
 [ext_resource type="Texture2D" uid="uid://b12salwy8pjxr" path="res://Assets/Silhouettes/house_silhouette.png" id="5_gl57l"]
 [ext_resource type="Texture2D" uid="uid://dahx266hya6bt" path="res://Assets/Silhouettes/beer_silhouette.png" id="6_os4f3"]
 [ext_resource type="Texture2D" uid="uid://cj6te712tgfdw" path="res://Assets/Silhouettes/window_silhouette.png" id="7_xsx78"]
 
-[node name="SilhouetteManager" type="Control" unique_id=459499342 node_paths=PackedStringArray("ray")]
+[node name="SilhouetteManager" type="Control" unique_id=459499342 node_paths=PackedStringArray("ray", "level_pass_panel", "levels")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,8 +20,11 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_2cle6")
 ray = NodePath("RayCast2D")
+level_pass_panel = NodePath("Panel")
+levels = [NodePath("Level1"), NodePath("Level2"), NodePath("Level3"), NodePath("Level4"), NodePath("Level5"), NodePath("Level6"), NodePath("Level7")]
 
 [node name="Level1" type="TextureRect" parent="." unique_id=815868820]
+process_mode = 4
 visible = false
 layout_mode = 1
 anchors_preset = 7
@@ -29,16 +33,25 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -574.0
-offset_top = -144.0
+offset_top = -142.0
 offset_right = 571.0
-offset_bottom = -47.0
+offset_bottom = -45.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("2_ju2mw")
 expand_mode = 1
 stretch_mode = 5
 
+[node name="Polygon2DAAA" type="Area2D" parent="Level1" unique_id=1152652094]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("3_t62pg")
+
+[node name="CollisionPolygon2DAAA" type="CollisionPolygon2D" parent="Level1/Polygon2DAAA" unique_id=1525637964]
+polygon = PackedVector2Array(559, 54, 558, 51, 555, 47, 554, 42, 555, 38, 557, 35, 560, 33, 563, 32, 563, 30, 560, 29, 559, 26, 562, 23, 562, 17, 562, 13, 565, 8, 568, 6, 572, 5, 575, 5, 579, 7, 582, 11, 583, 15, 583, 19, 583, 23, 587, 25, 587, 28, 584, 30, 582, 31, 585, 33, 588, 37, 590, 41, 590, 47, 586, 52, 587, 61, 587, 66, 585, 71, 583, 79, 580, 82, 585, 86, 588, 91, 587, 94, 582, 94, 577, 93, 574, 91, 569, 92, 563, 95, 559, 95, 556, 93, 557, 89, 560, 84, 563, 82, 565, 81, 562, 76, 560, 69, 560, 64, 559, 58)
+
 [node name="Level2" type="TextureRect" parent="." unique_id=106761590]
+process_mode = 4
 visible = false
 layout_mode = 1
 anchors_preset = 7
@@ -56,7 +69,16 @@ texture = ExtResource("2_k47b3")
 expand_mode = 1
 stretch_mode = 5
 
+[node name="Polygon2DAAA" type="Area2D" parent="Level2" unique_id=2050729446]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("3_t62pg")
+
+[node name="CollisionPolygon2DAAA" type="CollisionPolygon2D" parent="Level2/Polygon2DAAA" unique_id=581855733]
+polygon = PackedVector2Array(447, 85, 450, 80, 453, 78, 457, 63, 464, 53, 474, 44, 482, 36, 504, 9, 523, 6, 549, 4, 571, 4, 608, 3, 624, 31, 631, 36, 658, 39, 679, 50, 692, 69, 697, 96, 701, 98, 701, 110, 682, 115, 676, 119, 668, 129, 659, 134, 636, 135, 623, 127, 619, 117, 524, 117, 518, 124, 513, 130, 505, 134, 480, 134, 471, 129, 463, 117, 446, 115, 443, 111, 444, 103, 445, 97)
+
 [node name="Level3" type="TextureRect" parent="." unique_id=968397666]
+process_mode = 4
 visible = false
 layout_mode = 1
 anchors_preset = 7
@@ -65,16 +87,25 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -574.0
-offset_top = -209.0
+offset_top = -198.0
 offset_right = 571.0
-offset_bottom = -47.0
+offset_bottom = -35.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("4_t62pg")
 expand_mode = 1
 stretch_mode = 5
 
+[node name="Polygon2DAAA" type="Area2D" parent="Level3" unique_id=1835411035]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("3_t62pg")
+
+[node name="CollisionPolygon2DAAA" type="CollisionPolygon2D" parent="Level3/Polygon2DAAA" unique_id=1246330046]
+polygon = PackedVector2Array(568, 151, 572, 152, 576, 152, 582, 100, 589, 100, 600, 98, 608, 93, 617, 84, 619, 77, 613, 66, 607, 59, 597, 55, 587, 52, 584, 52, 582, 48, 587, 41, 596, 35, 603, 33, 608, 30, 609, 22, 602, 13, 591, 6, 583, 3, 574, 2, 566, 6, 561, 13, 559, 20, 559, 29, 562, 37, 567, 47, 565, 49, 560, 49, 553, 47, 546, 43, 541, 38, 536, 36, 530, 38, 528, 43, 525, 52, 524, 63, 524, 70, 529, 79, 535, 84, 543, 86, 549, 85, 556, 81, 562, 76, 566, 70, 570, 76, 569, 80, 572, 83, 567, 99, 565, 111, 565, 120, 565, 131, 566, 139)
+
 [node name="Level4" type="TextureRect" parent="." unique_id=19257904]
+process_mode = 4
 visible = false
 layout_mode = 1
 anchors_preset = 7
@@ -83,16 +114,25 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -574.0
-offset_top = -250.0
+offset_top = -248.0
 offset_right = 571.0
-offset_bottom = -47.0
+offset_bottom = -45.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("5_gl57l")
 expand_mode = 1
 stretch_mode = 5
 
+[node name="Polygon2DAAA" type="Area2D" parent="Level4" unique_id=264831906]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("3_t62pg")
+
+[node name="CollisionPolygon2DAAA" type="CollisionPolygon2D" parent="Level4/Polygon2DAAA" unique_id=962563474]
+polygon = PackedVector2Array(537, 163, 533, 156, 527, 152, 520, 141, 515, 132, 510, 126, 501, 118, 502, 112, 505, 109, 511, 110, 516, 109, 519, 96, 523, 88, 527, 81, 525, 74, 519, 73, 519, 70, 515, 67, 515, 65, 518, 63, 522, 63, 523, 61, 523, 57, 530, 56, 530, 61, 531, 68, 532, 70, 537, 67, 542, 66, 547, 60, 545, 38, 542, 36, 544, 21, 572, 23, 576, 18, 584, 15, 586, 4, 600, 3, 600, 38, 603, 42, 608, 47, 607, 49, 614, 54, 611, 55, 618, 60, 615, 62, 620, 66, 626, 66, 628, 73, 633, 74, 628, 82, 624, 90, 624, 96, 629, 104, 632, 114, 633, 119, 639, 122, 643, 126, 643, 130, 637, 131, 636, 140, 631, 147, 625, 155, 623, 161, 620, 169, 621, 174, 623, 180, 623, 186, 625, 201, 536, 201, 536, 185, 535, 180, 536, 173)
+
 [node name="Level5" type="TextureRect" parent="." unique_id=73888884]
+process_mode = 4
 visible = false
 layout_mode = 1
 anchors_preset = 7
@@ -110,7 +150,17 @@ texture = ExtResource("6_os4f3")
 expand_mode = 1
 stretch_mode = 5
 
+[node name="Polygon2DAAA" type="Area2D" parent="Level5" unique_id=995162438]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("3_t62pg")
+
+[node name="CollisionPolygon2DAAA" type="CollisionPolygon2D" parent="Level5/Polygon2DAAA" unique_id=1689447855]
+scale = Vector2(128.7489, 0.7170758)
+polygon = PackedVector2Array(3.712653, 124.11517, 3.697119, 343.05994, 4.6447, 343.05994, 4.668001, 326.32532, 4.6757684, 306.80157, 4.7068367, 302.61792, 4.8233423, 304.01245, 4.924314, 299.8288, 5.0175185, 292.85608, 5.095189, 281.69965, 5.1573257, 273.33234, 5.188394, 262.1759, 5.2194624, 244.04669, 5.227229, 235.67938, 5.227229, 214.76111, 5.211695, 202.21014, 5.211695, 191.05371, 5.1961613, 181.29187, 5.1961613, 170.13544, 5.1961613, 157.58447, 5.180627, 132.48248, 5.1495585, 119.93152, 5.1107235, 110.16968, 5.056354, 103.1969, 4.9942174, 100.407776, 4.939848, 99.013245, 4.877712, 97.61865, 4.792274, 94.82959, 4.753439, 94.82959, 4.6990695, 87.85681, 4.6913023, 76.70038, 4.7223706, 46.020203, 4.7146034, 26.49646, 4.660234, 13.945526, 4.598098, 8.36731, 4.528194, 5.578186, 4.4349895, 5.578186, 4.3961544, 4.183655, 4.3340178, 5.578186, 4.271881, 4.183655, 4.1476083, 5.578186, 3.9068294, 5.578186, 3.836926, 8.36731, 3.7903235, 12.550964, 3.7437212, 19.523743, 3.712653, 25.101929, 3.704886, 72.51672, 3.704886, 124.11517)
+
 [node name="Level6" type="TextureRect" parent="." unique_id=231718993]
+process_mode = 4
 visible = false
 layout_mode = 1
 anchors_preset = 7
@@ -119,32 +169,55 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -574.0
-offset_top = -346.0
+offset_top = -343.0
 offset_right = 571.0
-offset_bottom = -47.0
+offset_bottom = -44.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("7_xsx78")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Level7" type="TextureRect" parent="." unique_id=1072333027]
+[node name="Polygon2DAAA" type="Area2D" parent="Level6" unique_id=815858040]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("3_t62pg")
+
+[node name="CollisionPolygon2DAAA" type="CollisionPolygon2D" parent="Level6/Polygon2DAAA" unique_id=1633622496]
+polygon = PackedVector2Array(554, 104, 484, 103, 484, 185, 483, 280, 481, 281, 472, 297, 468, 297, 470, 89, 474, 89, 485, 52, 504, 24, 523, 12, 542, 7, 561, 4, 561, 13, 534, 16, 518, 25, 505, 35, 495, 48, 486, 72, 485, 80, 554, 81)
+
+[node name="CollisionPolygon2DAAA2" type="CollisionPolygon2D" parent="Level6/Polygon2DAAA" unique_id=1323315296]
+polygon = PackedVector2Array(561, 4, 561, 13, 577, 14, 600, 21, 616, 32, 627, 44, 639, 68, 642, 82, 554, 81, 554, 104, 644, 104, 645, 282, 652, 283, 674, 297, 677, 297, 678, 90, 663, 95, 662, 89, 651, 88, 645, 59, 636, 43, 625, 28, 609, 17, 590, 7, 568, 3)
+
+[node name="CollisionPolygon2DAAA3" type="CollisionPolygon2D" parent="Level6/Polygon2DAAA" unique_id=1856466010]
+polygon = PackedVector2Array(484, 185, 484, 191, 645, 193, 645, 187)
+
+[node name="CollisionPolygon2DAAA4" type="CollisionPolygon2D" parent="Level6/Polygon2DAAA" unique_id=1359293038]
+polygon = PackedVector2Array(554, 104, 574, 104, 575, 282, 555, 282)
+
+[node name="CollisionPolygon2DAAA5" type="CollisionPolygon2D" parent="Level6/Polygon2DAAA" unique_id=1364631811]
+polygon = PackedVector2Array(483, 280, 646, 283, 645, 276, 575, 275, 554, 277, 483, 277)
+
+[node name="Level7" type="TextureRect" parent="." unique_id=1433915006]
+process_mode = 4
 visible = false
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -574.0
-offset_top = -405.0
-offset_right = 571.0
-offset_bottom = -47.0
-grow_horizontal = 2
-grow_vertical = 0
+layout_mode = 0
+offset_left = 6.0
+offset_top = 253.0
+offset_right = 1151.0
+offset_bottom = 611.0
 texture = ExtResource("1_5vbpn")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="Polygon2DAAA" type="Area2D" parent="Level7" unique_id=988674351]
+position = Vector2(-4, -171)
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("3_t62pg")
+
+[node name="CollisionPolygon2DAAA" type="CollisionPolygon2D" parent="Level7/Polygon2DAAA" unique_id=1500719565]
+polygon = PackedVector2Array(497, 291, 516, 260, 538, 231, 563, 219, 576, 212, 584, 206, 595, 203, 603, 204, 619, 202, 631, 197, 648, 185, 668, 176, 690, 190, 703, 205, 695, 226, 685, 235, 676, 249, 686, 279, 674, 305, 657, 329, 688, 347, 689, 381, 655, 397, 591, 455, 597, 502, 608, 524, 453, 518, 459, 386, 483, 376, 481, 338, 492, 307)
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=560030662]
 hit_from_inside = true
@@ -152,3 +225,37 @@ hit_from_inside = true
 [node name="Floor" parent="." unique_id=680558180 instance=ExtResource("3_ambuw")]
 position = Vector2(557.00006, 651)
 scale = Vector2(2000, 100)
+
+[node name="Panel" type="Panel" parent="." unique_id=1293960500]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 36.0
+offset_right = 375.0
+offset_bottom = 370.0
+
+[node name="Label" type="Label" parent="Panel" unique_id=309646770]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 103.0
+offset_right = 322.0
+offset_bottom = 126.0
+text = "Nice job! How to you want to continue?"
+
+[node name="Replay" type="Button" parent="Panel" unique_id=366359040]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 206.0
+offset_right = 151.0
+offset_bottom = 265.0
+text = "Replay"
+
+[node name="Next level" type="Button" parent="Panel" unique_id=212482778]
+layout_mode = 0
+offset_left = 194.0
+offset_top = 206.0
+offset_right = 310.0
+offset_bottom = 265.0
+text = "Next Level"
+
+[connection signal="button_down" from="Panel/Replay" to="." method="_on_replay_button_down"]
+[connection signal="button_down" from="Panel/Next level" to="." method="_on_next_level_button_down"]

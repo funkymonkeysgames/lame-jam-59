@@ -30,7 +30,7 @@ var object_has_arrived = true
 var start_position: Vector2
 var start_scale: Vector2
 var t: float = 0
-var targetPosition: Vector2 = Vector2(574, 132)
+var targetPosition: Vector2 = Vector2(574, 83)
 var objectTaken: bool = false
 
 # Called when the node enters the scene tree for the first time.
@@ -46,7 +46,7 @@ func _process(delta: float) -> void:
 	if t >= 1:
 		object_has_arrived = true
 		t = 0
-		nextObjectPreview.rotation = 0
+		nextObjectPreview.global_rotation = 0
 		nextObjectPreview.scale = Vector2(1.0, 1.0)
 
 	if !object_has_arrived:

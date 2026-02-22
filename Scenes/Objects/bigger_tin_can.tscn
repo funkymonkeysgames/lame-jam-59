@@ -22,7 +22,6 @@ shader_parameter/fade = 1.0
 size = Vector2(22, 41)
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=581432221 node_paths=PackedStringArray("neighbour_area2d", "parent_body2d")]
-scale = Vector2(1, 1.0000001)
 script = ExtResource("1_jxqgo")
 neighbour_area2d = NodePath("Neighbour")
 parent_body2d = NodePath(".")

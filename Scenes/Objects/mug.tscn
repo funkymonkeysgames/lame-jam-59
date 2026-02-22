@@ -26,7 +26,7 @@ scale = Vector2(1, 1.0000001)
 script = ExtResource("1_wnx7q")
 neighbour_area2d = NodePath("Neighbour")
 parent_body2d = NodePath(".")
-integrity_text = NodePath("IntegrityText")
+integrity_text = NodePath("")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1735779317]
 scale = Vector2(1, 1.0000013)
@@ -58,12 +58,6 @@ one_shot = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Neighbour" unique_id=1954082528]
 scale = Vector2(1, 1.0000013)
 shape = SubResource("RectangleShape2D_8gbba")
-
-[node name="IntegrityText" type="TextEdit" parent="." unique_id=24334587]
-offset_left = -56.0
-offset_top = -52.999992
-offset_right = -16.0
-offset_bottom = -12.999992
 
 [node name="ConfirmationButton" parent="." unique_id=590694293 instance=ExtResource("4_xryr2")]
 
