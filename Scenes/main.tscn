@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://drakrwbphss2j"]
 
 [ext_resource type="PackedScene" uid="uid://d2wle73x0ng8r" path="res://Scenes/floor.tscn" id="2_bo1nx"]
+[ext_resource type="PackedScene" uid="uid://gagkmr2exnfs" path="res://Scenes/Silhouettes/silhouette_manager.tscn" id="2_h1bgf"]
 [ext_resource type="Script" uid="uid://di3ad1sghrct5" path="res://Scripts/neighbour_manager.gd" id="2_jjvhh"]
 [ext_resource type="PackedScene" uid="uid://ccglcr6p2if0w" path="res://Scenes/tetris_spawner.tscn" id="3_8gbba"]
 [ext_resource type="Texture2D" uid="uid://dnodbo2fvoqud" path="res://Assets/background/Floor/2.png" id="4_kry3j"]
@@ -10,8 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://k1dq4ten3egw" path="res://Assets/background/Sky/5.png" id="8_hptm8"]
 [ext_resource type="Texture2D" uid="uid://s7mq6sxxvbbh" path="res://Assets/background/Sky/3.png" id="9_ynf5e"]
 [ext_resource type="Texture2D" uid="uid://ddw6trbqhmff2" path="res://Assets/background/Floor/TopDownHouse_FloorsAndWalls.png" id="10_hptm8"]
-[ext_resource type="Script" uid="uid://c83bgwwngjr7k" path="res://Scripts/floor_2.gd" id="11_6iyac"]
-[ext_resource type="Script" uid="uid://bcn6xg7r4aeec" path="res://Scripts/sky.gd" id="11_d1ilt"]
+[ext_resource type="Script" path="res://Scripts/floor_2.gd" id="11_6iyac"]
+[ext_resource type="Script" path="res://Scripts/sky.gd" id="11_d1ilt"]
 [ext_resource type="AudioStream" uid="uid://bw1u40aq1us7s" path="res://Assets/Music/On the Farm.wav" id="13_fdnlq"]
 [ext_resource type="Texture2D" uid="uid://bjtulqs5l3hv0" path="res://Assets/UI/panel.png" id="14_jkdf5"]
 [ext_resource type="Texture2D" uid="uid://cyyvwngsuay0m" path="res://Assets/UI/box.png" id="15_wsu2k"]
@@ -240,22 +241,14 @@ sources/0 = SubResource("TileSetAtlasSource_d1ilt")
 font = ExtResource("16_k12tt")
 font_size = 24
 font_color = Color(0.5019608, 0.30980393, 0.30980393, 1)
-[ext_resource type="PackedScene" uid="uid://gagkmr2exnfs" path="res://Scenes/Silhouettes/silhouette_manager.tscn" id="4_jjvhh"]
-[ext_resource type="Script" uid="uid://cfiam50b1dq1t" path="res://Scripts/objects_list.gd" id="5_21xkr"]
-[ext_resource type="PackedScene" uid="uid://dyl1to7jkoatr" path="res://Scenes/Objects/block/block_audio_stream_player_rejection.tscn" id="7_344ge"]
-[ext_resource type="PackedScene" uid="uid://iq7ije3aw7vn" path="res://Scenes/Objects/block/block_audio_stream_player_success.tscn" id="8_ynf5e"]
-[ext_resource type="AudioStream" uid="uid://dy25n723fyhqq" path="res://Assets/sfx/integrity0.wav" id="9_jkdf5"]
-[ext_resource type="AudioStream" uid="uid://cu6nnmopxp5mb" path="res://Assets/sfx/pickup.wav" id="9_ynf5e"]
-[ext_resource type="AudioStream" uid="uid://cu1vl0nt635b7" path="res://Assets/sfx/integrity1.wav" id="10_wsu2k"]
-[ext_resource type="AudioStream" uid="uid://j2ym4ob45135" path="res://Assets/sfx/integrity2.wav" id="11_k12tt"]
-[ext_resource type="AudioStream" uid="uid://dewd3g74hfplv" path="res://Assets/sfx/integrity3.wav" id="12_h1bgf"]
-[ext_resource type="AudioStream" uid="uid://b2q1pfxb3f1jc" path="res://Assets/sfx/integrity4.wav" id="13_b3802"]
-[ext_resource type="AudioStream" uid="uid://ffaubqbjqqvy" path="res://Assets/sfx/integrity5.wav" id="14_fevyy"]
 
 [node name="Main" type="Node" unique_id=1760907832]
 
 [node name="NeighbourManager" type="Node" parent="." unique_id=962948133]
 script = ExtResource("2_jjvhh")
+
+[node name="SilhouetteManager" parent="." unique_id=459499342 node_paths=PackedStringArray("objects_list") instance=ExtResource("2_h1bgf")]
+objects_list = NodePath("../ObjectsList")
 
 [node name="Floor" parent="." unique_id=680558180 instance=ExtResource("2_bo1nx")]
 position = Vector2(557.00006, 651)
@@ -445,37 +438,3 @@ objects_list = NodePath("../ObjectsList")
 
 [connection signal="timeout" from="Background/Floor2/Timer" to="Background/Floor2/AnimatedSprite2D2" method="_on_timer_timeout"]
 [connection signal="timeout" from="Background/Sky/Timer" to="Background/Sky" method="_on_timer_timeout"]
-[node name="ObjectsList" type="Node" parent="." unique_id=1953807552 node_paths=PackedStringArray("audio_streams")]
-script = ExtResource("5_21xkr")
-audio_streams = NodePath("../AudioStreamPlayers")
-
-[node name="AudioStreamPlayers" type="Node" parent="." unique_id=1605672896]
-
-[node name="Rejection" parent="AudioStreamPlayers" unique_id=1322738899 instance=ExtResource("7_344ge")]
-
-[node name="Success" parent="AudioStreamPlayers" unique_id=1807916632 instance=ExtResource("8_ynf5e")]
-
-[node name="Pickup" type="AudioStreamPlayer" parent="AudioStreamPlayers" unique_id=359645204]
-stream = ExtResource("9_ynf5e")
-volume_db = -80.0
-
-[node name="Integrity0" type="AudioStreamPlayer" parent="AudioStreamPlayers" unique_id=674935102]
-stream = ExtResource("9_jkdf5")
-
-[node name="Integrity1" type="AudioStreamPlayer" parent="AudioStreamPlayers" unique_id=1040211311]
-stream = ExtResource("10_wsu2k")
-
-[node name="Integrity2" type="AudioStreamPlayer" parent="AudioStreamPlayers" unique_id=1146814749]
-stream = ExtResource("11_k12tt")
-
-[node name="Integrity3" type="AudioStreamPlayer" parent="AudioStreamPlayers" unique_id=683728810]
-stream = ExtResource("12_h1bgf")
-
-[node name="Integrity4" type="AudioStreamPlayer" parent="AudioStreamPlayers" unique_id=104545813]
-stream = ExtResource("13_b3802")
-
-[node name="Integrity5" type="AudioStreamPlayer" parent="AudioStreamPlayers" unique_id=931835794]
-stream = ExtResource("14_fevyy")
-
-[connection signal="button_down" from="FinishButton" to="SilhouetteManager" method="_on_finish_button_button_down"]
-[connection signal="child_entered_tree" from="ObjectsList" to="ObjectsList" method="_on_child_entered_tree"]
