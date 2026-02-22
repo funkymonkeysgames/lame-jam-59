@@ -14,7 +14,7 @@ class_name Block
 @export var integrity_text: TextEdit
 @onready var sprite2D: Sprite2D = $Sprite2D
 
-@onready var collision_shape: CollisionShape2D = $CollisionShape2D
+@onready var collision_shape = $CollisionShape2D
 @onready var drag_button: Button = $Sprite2D/Button
 @onready var confirmation_button: TextureButton = $ConfirmationButton
 @onready var neighbour_manager: Node = $"../../NeighbourManager"
@@ -107,6 +107,9 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 func _on_noclip_area_entered(area: Area2D) -> void:
+	print("noclip area ", area.name)
+	if area.name == "Neighbour":
+		return 
 	if area != neighbour_area2d:
 		noclipareas.append(area)
 

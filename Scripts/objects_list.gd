@@ -35,5 +35,7 @@ func _on_rotated() -> void:
 
 func _on_silhouette_manager_level_resetted() -> void:
 	for n in get_children():
+		if n.global_position == Vector2(2000, 2000):
+			continue
 		remove_child(n)
 		n.queue_free()

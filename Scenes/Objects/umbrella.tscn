@@ -33,10 +33,15 @@ texture = ExtResource("3_moxn3")
 script = ExtResource("4_5trmt")
 
 [node name="Button" parent="Sprite2D" unique_id=1908648916 instance=ExtResource("5_mi8gp")]
-offset_left = 9.178619
-offset_top = -56.971504
-offset_right = 9.178619
-offset_bottom = -56.971497
+anchors_preset = -1
+anchor_left = 0.02902244
+anchor_top = 0.004726037
+anchor_right = 0.9010058
+anchor_bottom = 0.98274165
+offset_left = -38.526474
+offset_top = -44.78765
+offset_right = -38.526474
+offset_bottom = -44.787643
 
 [node name="AnimationPlayer" parent="Sprite2D" unique_id=1894733382 instance=ExtResource("6_68ao1")]
 
@@ -63,10 +68,10 @@ polygon = PackedVector2Array(-32, -27.999996, -19, -37.999996, -5, -41.999996, 1
 polygon = PackedVector2Array(0, -19.999998, 0, 29.999996, -1, 32.999996, 0, 38.999996, 4, 42.999996, 9, 43.999996, 14, 40.999996, 15, 34.999996, 14, 34.999996, 12, 39.999996, 10, 42.999996, 3, 40.999996, 1, 36.999996, 0, 29.999996)
 
 [node name="ConfirmationButton" parent="." unique_id=590694293 instance=ExtResource("8_ltt8y")]
-offset_left = 32.0
-offset_top = -4.0
-offset_right = 52.0
-offset_bottom = 16.0
+offset_left = 44.0
+offset_top = -12.666667
+offset_right = 64.0
+offset_bottom = 7.333333
 
 [connection signal="button_down" from="Sprite2D/Button" to="Sprite2D" method="_on_button_button_down"]
 [connection signal="button_up" from="Sprite2D/Button" to="Sprite2D" method="_on_button_button_up"]

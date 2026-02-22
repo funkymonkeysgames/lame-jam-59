@@ -33,10 +33,16 @@ texture = ExtResource("3_qud3t")
 script = ExtResource("4_l58ft")
 
 [node name="Button" parent="Sprite2D" unique_id=1908648916 instance=ExtResource("5_lub1p")]
-offset_left = 9.178619
-offset_top = -56.971504
-offset_right = 9.178619
-offset_bottom = -56.971497
+anchors_preset = -1
+anchor_left = 0.21870054
+anchor_top = 0.031802587
+anchor_right = 0.8842451
+anchor_bottom = 1.0144918
+offset_left = -32.00615
+offset_top = -97.81265
+offset_right = -32.00615
+offset_bottom = -97.81265
+rotation = 0.17453292
 
 [node name="AnimationPlayer" parent="Sprite2D" unique_id=1894733382 instance=ExtResource("6_joo4q")]
 

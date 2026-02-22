@@ -31,10 +31,19 @@ func check_score() -> void:
 	var construct_bottom_right: Vector2 = Vector2.ZERO
 	for child: Block in objects_list.get_children():
 		if child.can_update or child.position == Vector2(2000, 2000): continue
-		construct_top_left.x = min(child.global_position.x - child.collision_shape.shape.size.x/2, construct_top_left.x)
-		construct_top_left.y = min(child.global_position.y - child.collision_shape.shape.size.y/2, construct_top_left.y)
-		construct_bottom_right.x = max(child.global_position.x + child.collision_shape.shape.size.x/2, construct_bottom_right.x)
-		construct_bottom_right.y = max(child.global_position.y + child.collision_shape.shape.size.y/2, construct_bottom_right.y)
+		
+		if child.collision_shape is CollisionPolygon2D:
+			var offset:Vector2 = child.global_position
+			for v:Vector2 in child.collision_shape.polygon:
+				construct_top_left.x = min(construct_top_left.x, v.x + offset.x)
+				construct_top_left.y = min(construct_top_left.y, v.y + offset.y)
+				construct_bottom_right.x = max(construct_bottom_right.x, v.x + offset.x)
+				construct_bottom_right.y = max(construct_bottom_right.y, v.y + offset.y)
+		else:
+			construct_top_left.x = min(child.global_position.x - child.collision_shape.shape.size.x/2, construct_top_left.x)
+			construct_top_left.y = min(child.global_position.y - child.collision_shape.shape.size.y/2, construct_top_left.y)
+			construct_bottom_right.x = max(child.global_position.x + child.collision_shape.shape.size.x/2, construct_bottom_right.x)
+			construct_bottom_right.y = max(child.global_position.y + child.collision_shape.shape.size.y/2, construct_bottom_right.y)
 	
 	construct_bounding_box = Rect2(construct_top_left, construct_bottom_right-construct_top_left)
 	final_top_left = Vector2(min(construct_top_left.x, polygon2d.top_left.x), min(construct_top_left.y, polygon2d.top_left.y))
@@ -43,8 +52,8 @@ func check_score() -> void:
 	#final_bottom_right = polygon2d.bottom_right
 	
 	final_bounding_box = Rect2(final_top_left, final_bottom_right-final_top_left)
-	polygon2d.queue_redraw()
-	queue_redraw()
+	#polygon2d.queue_redraw()
+	#queue_redraw()
 	
 	
 	var score: int = 0
@@ -73,6 +82,7 @@ func check_score() -> void:
 	
 func finish_level() -> void:
 	level_pass_panel.visible = true
+	
 
 func load_level() -> void:
 	level_pass_panel.visible = false

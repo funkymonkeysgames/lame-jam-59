@@ -33,10 +33,10 @@ texture = ExtResource("3_fjp6x")
 script = ExtResource("4_ku18c")
 
 [node name="Button" parent="Sprite2D" unique_id=1908648916 instance=ExtResource("5_mpcrx")]
-offset_left = 9.178619
-offset_top = -56.971504
-offset_right = 9.178619
-offset_bottom = -56.971497
+offset_left = -57.820007
+offset_top = -57.514854
+offset_right = -57.820007
+offset_bottom = -57.514847
 
 [node name="AnimationPlayer" parent="Sprite2D" unique_id=1894733382 instance=ExtResource("6_j2arr")]
 
