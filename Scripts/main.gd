@@ -10,6 +10,7 @@ extends Node
 @export var objects_list: Node2D
 @export var button: Button
 @export var sfx: Node
+@export var tutorial_ui: Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -24,6 +25,7 @@ func _process(delta: float) -> void:
 func _on_start_button_button_down() -> void:
 	title_screen.visible = false
 	title_screen.process_mode = Node.PROCESS_MODE_DISABLED
+	tutorial_ui.visible = true
 	floor.visible = true
 	background.visible = true
 	ui2.visible = true

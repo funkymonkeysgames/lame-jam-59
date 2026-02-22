@@ -31,3 +31,9 @@ func _on_result_button_button_down() -> void:
 	
 func _on_rotated() -> void:
 	audio_streams.get_node("Rotate").play()
+
+
+func _on_silhouette_manager_level_resetted() -> void:
+	for n in get_children():
+		remove_child(n)
+		n.queue_free()

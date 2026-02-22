@@ -29,6 +29,7 @@ signal block_placed
 signal block_missed
 signal neighbour_entered
 signal rotated
+signal TUTO
 
 func _ready() -> void:
 	# drag button
