@@ -17,8 +17,8 @@
 [ext_resource type="Texture2D" uid="uid://k1dq4ten3egw" path="res://Assets/background/Sky/5.png" id="8_hptm8"]
 [ext_resource type="Texture2D" uid="uid://s7mq6sxxvbbh" path="res://Assets/background/Sky/3.png" id="9_ynf5e"]
 [ext_resource type="Texture2D" uid="uid://ddw6trbqhmff2" path="res://Assets/background/Floor/TopDownHouse_FloorsAndWalls.png" id="10_hptm8"]
-[ext_resource type="Script" uid="uid://c83bgwwngjr7k" path="res://Scripts/floor_2.gd" id="11_6iyac"]
-[ext_resource type="Script" uid="uid://bcn6xg7r4aeec" path="res://Scripts/sky.gd" id="11_d1ilt"]
+[ext_resource type="Script" path="res://Scripts/floor_2.gd" id="11_6iyac"]
+[ext_resource type="Script" path="res://Scripts/sky.gd" id="11_d1ilt"]
 [ext_resource type="AudioStream" uid="uid://el8i4jaeaiuw" path="res://Assets/Music/On the Farm.mp3" id="12_u50mg"]
 [ext_resource type="Texture2D" uid="uid://bjtulqs5l3hv0" path="res://Assets/UI/panel.png" id="14_jkdf5"]
 [ext_resource type="Texture2D" uid="uid://cyyvwngsuay0m" path="res://Assets/UI/box.png" id="15_wsu2k"]
@@ -415,6 +415,15 @@ text = "KING"
 label_settings = SubResource("LabelSettings_1w6v2")
 horizontal_alignment = 2
 
+[node name="TextureRect" type="TextureRect" parent="title_screen" unique_id=589920925]
+layout_mode = 0
+offset_left = 285.99997
+offset_top = -26.999998
+offset_right = 4053.0
+offset_bottom = 1973.0
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("5_e08e2")
+
 [node name="StartButton" type="TextureButton" parent="title_screen" unique_id=1070775050]
 texture_filter = 1
 layout_mode = 0
@@ -425,15 +434,6 @@ offset_bottom = 287.0
 scale = Vector2(6, 6)
 texture_normal = ExtResource("3_6vcvc")
 texture_pressed = ExtResource("4_7k868")
-
-[node name="TextureRect" type="TextureRect" parent="title_screen" unique_id=589920925]
-layout_mode = 0
-offset_left = 285.99997
-offset_top = -26.999998
-offset_right = 4053.0
-offset_bottom = 1973.0
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("5_e08e2")
 
 [node name="credits" type="Control" parent="." unique_id=38481397]
 visible = false
@@ -836,7 +836,7 @@ text = "Now that's a solid foundation. You need to pay attention when you're bui
 
 See if you can't build out that silhouette with that junk. That's what I call art!
 
-Press \"Peak Art\" at the bottom left of your screen to submit your masterpiece."
+Press \"FINISH\" at the bottom left of your screen to submit your masterpiece."
 label_settings = SubResource("LabelSettings_aqgau")
 autowrap_mode = 3
 
