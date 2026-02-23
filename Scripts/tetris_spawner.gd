@@ -4,7 +4,7 @@ var rng = RandomNumberGenerator.new()
 
 var possible_objects = []
 
-var baseball_bat_scene = preload("res://Scenes/Objects/baseball_bat.tscn")
+#var baseball_bat_scene = preload("res://Scenes/Objects/baseball_bat.tscn")
 var bigger_tin_can_scene = preload("res://Scenes/Objects/bigger_tin_can.tscn")
 var box_scene = preload("res://Scenes/Objects/box.tscn")
 var candle_holder_scene = preload("res://Scenes/Objects/candle_holder.tscn")
@@ -63,13 +63,12 @@ func pickRandomObject() -> PackedScene:
 	return possible_objects.pick_random()
 
 func initilizeSceneArray() -> void:
-	possible_objects.append(baseball_bat_scene)
+	#possible_objects.append(baseball_bat_scene)
 	possible_objects.append(candle_holder_scene)
 	possible_objects.append(cross_scene)
 	possible_objects.append(skyscraper_scene)
 	possible_objects.append(sneakers_scene)
 	possible_objects.append(umbrella_scene)
-	possible_objects.append(baseball_bat_scene)
 	possible_objects.append(water_bottle_scene)
 	possible_objects.append(bigger_tin_can_scene)
 	possible_objects.append(box_scene)

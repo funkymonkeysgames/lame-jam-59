@@ -21,10 +21,9 @@ neighbour_area2d = NodePath("Neighbour")
 parent_body2d = NodePath(".")
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="." unique_id=2033120229]
-polygon = PackedVector2Array(2, -7.9999886, 22, -27.99996, 27, -21.99997, 3, 1.9999971, 2, 8.999987, 1, 27.99996, 4, 30.999956, 3, 32.999954, -4, 32.999954, -5, 30.999956, -2, 27.99996, -2, 18.999973, -3, 16.999975, -3, 7.9999886, -5, 5.9999914, -4, 1.9999971, -3, 1.9999971, -2, 0.99999857, -1, 0, 0, -0.99999857, 0, -0.99999857, -2, -2.9999957)
+polygon = PackedVector2Array(2, -7.9999886, 22, -27.99996, 27, -21.99997, 3, 1.9999971, 2, 8.999987, 1, 27.99996, 4, 30.999956, 3, 32.999954, -4, 32.999954, -5, 30.999956, -2, 27.99996, -2, 18.999973, -3, 16.999975, -3, 7.9999886, -5, 5.9999914, -4, 1.9999971, -3, 0, -2, -3, -2, -2.9999957)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1251007473]
-visible = false
 texture_filter = 1
 material = SubResource("ShaderMaterial_jdo2k")
 position = Vector2(11, 2.9999998)
@@ -48,7 +47,6 @@ wait_time = 0.5
 one_shot = true
 
 [node name="Neighbour" type="Area2D" parent="." unique_id=1388060289]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="Neighbour" unique_id=1202707379]
 scale = Vector2(1, 1.0000013)

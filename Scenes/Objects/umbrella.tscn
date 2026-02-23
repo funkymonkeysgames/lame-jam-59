@@ -65,6 +65,8 @@ polygon = PackedVector2Array(-33, -33.99995, -24, -42.99994, -8, -47.99993, 19, 
 polygon = PackedVector2Array(-32, -27.999996, -19, -37.999996, -5, -41.999996, 14, -39.999996, 26, -32.999996, 33, -26.999996, 26, -25.999996, 21, -21.999998, 15, -26.999996, 5, -26.999996, 0, -19.999998, -7, -26.999996, -16, -27.999996, -22, -22.999998)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" unique_id=1157169982]
+process_mode = 4
+visible = false
 polygon = PackedVector2Array(0, -19.999998, 0, 29.999996, -1, 32.999996, 0, 38.999996, 4, 42.999996, 9, 43.999996, 14, 40.999996, 15, 34.999996, 14, 34.999996, 12, 39.999996, 10, 42.999996, 3, 40.999996, 1, 36.999996, 0, 29.999996)
 
 [node name="ConfirmationButton" parent="." unique_id=590694293 instance=ExtResource("8_ltt8y")]

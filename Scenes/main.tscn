@@ -41,13 +41,6 @@ font_size = 40
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_1w6v2"]
-font = ExtResource("16_k12tt")
-font_size = 150
-font_color = Color(0.29259983, 0.5861352, 1.1672156, 1)
-outline_size = 5
-outline_color = Color(0, 0, 0, 1)
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ptfg5"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
@@ -55,6 +48,13 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 font = ExtResource("16_k12tt")
 font_size = 60
 font_color = Color(0.5019608, 0.30980393, 0.30980393, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_1w6v2"]
+font = ExtResource("16_k12tt")
+font_size = 150
+font_color = Color(0.29259983, 0.5861352, 1.1672156, 1)
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1semv"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -73,6 +73,7 @@ font_size = 50
 font_color = Color(0.5019608, 0.30980393, 0.30980393, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_1semv"]
+font = ExtResource("16_k12tt")
 font_size = 20
 font_color = Color(0.5019608, 0.30980393, 0.30980393, 1)
 
@@ -407,7 +408,6 @@ tutorial_ui = NodePath("Tutorial UI")
 credits_ui = NodePath("credits")
 
 [node name="title_screen" type="Control" parent="." unique_id=1231648412]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -431,21 +431,6 @@ text = "For Lame Jam 59"
 label_settings = SubResource("LabelSettings_cbgmd")
 autowrap_mode = 3
 
-[node name="Label2" type="Label" parent="title_screen" unique_id=557346195]
-visible = false
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -459.0
-offset_top = 51.0
-offset_right = 459.0
-offset_bottom = 202.0
-grow_horizontal = 2
-text = "KING"
-label_settings = SubResource("LabelSettings_1w6v2")
-horizontal_alignment = 2
-
 [node name="TextureRect" type="TextureRect" parent="title_screen" unique_id=589920925]
 layout_mode = 0
 offset_left = 285.99997
@@ -467,6 +452,7 @@ texture_normal = ExtResource("3_6vcvc")
 texture_pressed = ExtResource("4_7k868")
 
 [node name="credits" type="Control" parent="." unique_id=38481397]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -488,7 +474,7 @@ offset_left = 6.0
 offset_top = 47.0
 offset_right = 178.0
 offset_bottom = 70.0
-text = "Thank you for playing:"
+text = "Thank you for playing"
 label_settings = SubResource("LabelSettings_2daye")
 
 [node name="Label2" type="Label" parent="credits/Panel" unique_id=987383664]
@@ -557,9 +543,9 @@ offset_right = 343.0
 offset_bottom = 178.0
 text = "This is the end of our game.
 
-We were heavily inspired by Tetris and Valheim. We hope you enjoyed it :)
+We were heavily inspired by Tetris and Valheim. We hope you enjoyed it <3
 
-Please leave a review/comment/feedback!!
+Please leave a review, comment, feedback!!
 
 Thanks for playing until the end and reaching this screen!"
 label_settings = SubResource("LabelSettings_2060n")
@@ -579,7 +565,7 @@ offset_left = 160.0
 offset_top = -16.0
 offset_right = 350.0
 offset_bottom = 189.0
-text = "Credits:"
+text = "Credits"
 label_settings = SubResource("LabelSettings_ueoa1")
 
 [node name="Label2" type="Label" parent="credits/Panel3" unique_id=519711289]
@@ -588,8 +574,8 @@ offset_left = 46.0
 offset_top = 51.0
 offset_right = 446.0
 offset_bottom = 141.0
-text = "Made by:
-Umut Ucak & Dorian Sousa Calvo"
+text = "Made by
+Umut Ucak and Dorian Sousa Calvo"
 label_settings = SubResource("LabelSettings_1semv")
 horizontal_alignment = 1
 
@@ -600,13 +586,13 @@ offset_top = 122.0
 offset_right = 415.0
 offset_bottom = 327.0
 text = "Free assets by:
-- Sky Box: free-game-assets.itch.io
-- Grass Background: free-game-assets.itch.io
-- Wooden Floor Tiles: penzilla.itch.io
-- Some Object Assets: Clint Bellanger
-- Clicking SFX: jdsherbert.itch.io
-- UI Elements: toffeecraft.itch.io
-- Music: ludoloonstudio.itch.io"
+Sky Box: free-game-assets.itch.io
+Grass Background: free-game-assets.itch.io
+Wooden Floor Tiles: penzilla.itch.io
+Some Object Assets: Clint Bellanger
+Clicking SFX: jdsherbert.itch.io
+UI Elements: toffeecraft.itch.io
+Music: ludoloonstudio.itch.io"
 label_settings = SubResource("LabelSettings_6ml46")
 horizontal_alignment = 1
 
@@ -855,7 +841,7 @@ offset_left = 47.0
 offset_top = 35.0
 offset_right = 297.0
 offset_bottom = 173.0
-text = "Let's build something meaningful out of this junk; turn it into gold.
+text = "Let's build something meaningful out of this junk, turn it into gold.
 
 Move it to the ground near Feely's ghost, then confirm it's position. His soul has been lingering here since that horrible accident... Let's bring him some peace."
 label_settings = SubResource("LabelSettings_536cc")
@@ -972,10 +958,10 @@ offset_left = 14.0
 offset_top = 24.0
 offset_right = 251.0
 offset_bottom = 333.0
-text = "Not bad for a newbie. Here are some pointers:
-- With Q/E you can rotate your junk to better fit your magnum opus
+text = "Not bad for a newbie. Here are some pointers.
+With Q and E you can rotate your junk to better fit your magnum opus
 
-- with SPACEBAR you can toggle noclip to reach areas that are blocked
+With SPACEBAR you can toggle no_clip to reach areas that are blocked
 
 Try to get a better score with the next one!"
 label_settings = SubResource("LabelSettings_kltya")
