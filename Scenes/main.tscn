@@ -36,8 +36,7 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_cbgmd"]
 font = ExtResource("16_k12tt")
-font_size = 150
-font_color = Color(0.17254902, 0.9372549, 0.24313726, 1)
+font_size = 40
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 
@@ -48,8 +47,36 @@ font_color = Color(0.29259983, 0.5861352, 1.1672156, 1)
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ptfg5"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_2daye"]
+font = ExtResource("16_k12tt")
+font_size = 60
+font_color = Color(0.5019608, 0.30980393, 0.30980393, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1semv"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_2060n"]
+font = ExtResource("16_k12tt")
+font_size = 25
+font_color = Color(0.5019608, 0.30980393, 0.30980393, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2daye"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
 [sub_resource type="LabelSettings" id="LabelSettings_ueoa1"]
+font = ExtResource("16_k12tt")
 font_size = 50
+font_color = Color(0.5019608, 0.30980393, 0.30980393, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_1semv"]
+font_size = 20
+font_color = Color(0.5019608, 0.30980393, 0.30980393, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_6ml46"]
+font_color = Color(0.5019608, 0.30980393, 0.30980393, 1)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6bp64"]
 animations = [{
@@ -387,18 +414,20 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Label" type="Label" parent="title_screen" unique_id=596876613]
-visible = false
+z_index = 2
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -459.0
-offset_top = 51.0
-offset_right = 459.0
-offset_bottom = 202.0
+offset_left = -214.0
+offset_top = 128.0
+offset_right = 86.0
+offset_bottom = 697.0
 grow_horizontal = 2
-text = "RECYCLE"
+rotation = 0.3700098
+text = "For Lame Jam 59"
 label_settings = SubResource("LabelSettings_cbgmd")
+autowrap_mode = 3
 
 [node name="Label2" type="Label" parent="title_screen" unique_id=557346195]
 visible = false
@@ -415,6 +444,15 @@ text = "KING"
 label_settings = SubResource("LabelSettings_1w6v2")
 horizontal_alignment = 2
 
+[node name="TextureRect" type="TextureRect" parent="title_screen" unique_id=589920925]
+layout_mode = 0
+offset_left = 285.99997
+offset_top = -26.999998
+offset_right = 4053.0
+offset_bottom = 1973.0
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("5_e08e2")
+
 [node name="StartButton" type="TextureButton" parent="title_screen" unique_id=1070775050]
 texture_filter = 1
 layout_mode = 0
@@ -425,15 +463,6 @@ offset_bottom = 287.0
 scale = Vector2(6, 6)
 texture_normal = ExtResource("3_6vcvc")
 texture_pressed = ExtResource("4_7k868")
-
-[node name="TextureRect" type="TextureRect" parent="title_screen" unique_id=589920925]
-layout_mode = 0
-offset_left = 285.99997
-offset_top = -26.999998
-offset_right = 4053.0
-offset_bottom = 1973.0
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("5_e08e2")
 
 [node name="credits" type="Control" parent="." unique_id=38481397]
 visible = false
@@ -450,6 +479,7 @@ offset_left = 20.0
 offset_top = 41.0
 offset_right = 1138.0
 offset_bottom = 204.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ptfg5")
 
 [node name="Label" type="Label" parent="credits/Panel" unique_id=372273050]
 layout_mode = 0
@@ -458,8 +488,10 @@ offset_top = 47.0
 offset_right = 178.0
 offset_bottom = 70.0
 text = "Thank you for playing:"
+label_settings = SubResource("LabelSettings_2daye")
 
 [node name="Label2" type="Label" parent="credits/Panel" unique_id=987383664]
+visible = false
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -473,6 +505,7 @@ text = "RECYCLE"
 label_settings = SubResource("LabelSettings_cbgmd")
 
 [node name="Label3" type="Label" parent="credits/Panel" unique_id=1858157665]
+visible = false
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -486,17 +519,41 @@ text = "KING"
 label_settings = SubResource("LabelSettings_1w6v2")
 horizontal_alignment = 2
 
+[node name="TextureRect" type="TextureRect" parent="credits/Panel" unique_id=889363200]
+layout_mode = 0
+offset_left = 520.0
+offset_top = -87.0
+offset_right = 4287.0
+offset_bottom = 1913.0
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("5_e08e2")
+
 [node name="Panel2" type="Panel" parent="credits" unique_id=1649019550]
 layout_mode = 0
-offset_left = 22.0
-offset_top = 235.0
-offset_right = 555.0
-offset_bottom = 581.0
+offset_left = 72.0
+offset_top = 240.0
+offset_right = 605.0
+offset_bottom = 586.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_1semv")
+
+[node name="TextureRect" type="TextureRect" parent="credits/Panel2" unique_id=698108245]
+z_index = -1
+texture_filter = 1
+layout_mode = 0
+offset_left = -41.0
+offset_top = -76.0
+offset_right = 409.0
+offset_bottom = 374.0
+focus_behavior_recursive = 1
+mouse_filter = 2
+texture = ExtResource("14_jkdf5")
 
 [node name="Label" type="Label" parent="credits/Panel2" unique_id=1066077153]
 layout_mode = 0
-offset_right = 482.0
-offset_bottom = 101.0
+offset_left = 13.0
+offset_top = -27.0
+offset_right = 343.0
+offset_bottom = 178.0
 text = "This is the end of our game.
 
 We were heavily inspired by Tetris and Valheim. We hope you enjoyed it :)
@@ -504,7 +561,8 @@ We were heavily inspired by Tetris and Valheim. We hope you enjoyed it :)
 Please leave a review/comment/feedback!!
 
 Thanks for playing until the end and reaching this screen!"
-autowrap_mode = 2
+label_settings = SubResource("LabelSettings_2060n")
+autowrap_mode = 3
 
 [node name="Panel3" type="Panel" parent="credits" unique_id=2001666823]
 layout_mode = 0
@@ -512,36 +570,56 @@ offset_left = 609.0
 offset_top = 240.0
 offset_right = 1140.0
 offset_bottom = 578.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_2daye")
 
 [node name="Label" type="Label" parent="credits/Panel3" unique_id=515076833]
 layout_mode = 0
 offset_left = 160.0
-offset_top = -1.0
-offset_right = 345.0
-offset_bottom = 204.0
+offset_top = -16.0
+offset_right = 350.0
+offset_bottom = 189.0
 text = "Credits:"
 label_settings = SubResource("LabelSettings_ueoa1")
 
 [node name="Label2" type="Label" parent="credits/Panel3" unique_id=519711289]
 layout_mode = 0
-offset_left = 163.0
-offset_top = 89.0
-offset_right = 321.0
-offset_bottom = 164.0
+offset_left = 46.0
+offset_top = 51.0
+offset_right = 446.0
+offset_bottom = 141.0
 text = "Made by:
-Umut Ucak
-Dorian Sousa Calvo"
+Umut Ucak & Dorian Sousa Calvo"
+label_settings = SubResource("LabelSettings_1semv")
 horizontal_alignment = 1
 
 [node name="Label3" type="Label" parent="credits/Panel3" unique_id=608815306]
 layout_mode = 0
-offset_left = 149.0
-offset_top = 217.0
-offset_right = 318.0
-offset_bottom = 266.0
+offset_left = 72.0
+offset_top = 132.0
+offset_right = 415.0
+offset_bottom = 311.0
 text = "Free assets by:
-- [enter your list here]"
+- Sky Box: free-game-assets.itch.io
+- Grass Background: free-game-assets.itch.io
+- Wooden Floor Tiles: penzilla.itch.io
+- Some Object Assets: Clint Bellanger
+- Clicking SFX: jdsherbert.itch.io
+- UI Elements: toffeecraft.itch.io
+- Music: ludoloonstudio.itch.io"
+label_settings = SubResource("LabelSettings_6ml46")
 horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="credits/Panel3" unique_id=1296292015]
+z_index = -1
+texture_filter = 1
+layout_mode = 0
+offset_left = -41.0
+offset_top = -76.0
+offset_right = 509.0
+offset_bottom = 374.0
+focus_behavior_recursive = 1
+mouse_filter = 2
+texture = ExtResource("14_jkdf5")
 
 [node name="NeighbourManager" type="Node" parent="." unique_id=962948133]
 script = ExtResource("2_jjvhh")
@@ -561,7 +639,7 @@ texture_filter = 1
 position = Vector2(577, 295)
 scale = Vector2(2.05, 2.05)
 sprite_frames = SubResource("SpriteFrames_6bp64")
-animation = &"grass1"
+animation = &"grass2"
 script = ExtResource("11_6iyac")
 anim_timer = NodePath("../Timer")
 
@@ -836,7 +914,7 @@ text = "Now that's a solid foundation. You need to pay attention when you're bui
 
 See if you can't build out that silhouette with that junk. That's what I call art!
 
-Press \"Peak Art\" at the bottom left of your screen to submit your masterpiece."
+Press \"FINISH\" at the bottom left of your screen to submit your masterpiece."
 label_settings = SubResource("LabelSettings_aqgau")
 autowrap_mode = 3
 
