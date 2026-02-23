@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bf4q4me1kw3tm" path="res://Assets/UI/start_button_pressed.png" id="4_7k868"]
 [ext_resource type="Texture2D" uid="uid://dnodbo2fvoqud" path="res://Assets/background/Floor/2.png" id="4_kry3j"]
 [ext_resource type="Texture2D" uid="uid://brac6qs81s5tq" path="res://Assets/background/Floor/3.png" id="5_21xkr"]
+[ext_resource type="Texture2D" uid="uid://bl3ehbkvcru38" path="res://Assets/UI/logo.png" id="5_e08e2"]
 [ext_resource type="Texture2D" uid="uid://l6tkkro3xkcj" path="res://Assets/background/Sky/1.png" id="6_344ge"]
 [ext_resource type="Texture2D" uid="uid://c30xwoh5u7n7n" path="res://Assets/background/Sky/4.png" id="7_ynf5e"]
 [ext_resource type="Texture2D" uid="uid://k1dq4ten3egw" path="res://Assets/background/Sky/5.png" id="8_hptm8"]
@@ -382,6 +383,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Label" type="Label" parent="title_screen" unique_id=596876613]
+visible = false
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -395,6 +397,7 @@ text = "RECYCLE"
 label_settings = SubResource("LabelSettings_cbgmd")
 
 [node name="Label2" type="Label" parent="title_screen" unique_id=557346195]
+visible = false
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -418,6 +421,15 @@ offset_bottom = 287.0
 scale = Vector2(6, 6)
 texture_normal = ExtResource("3_6vcvc")
 texture_pressed = ExtResource("4_7k868")
+
+[node name="TextureRect" type="TextureRect" parent="title_screen" unique_id=589920925]
+layout_mode = 0
+offset_left = 285.99997
+offset_top = -26.999998
+offset_right = 4053.0
+offset_bottom = 1973.0
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("5_e08e2")
 
 [node name="NeighbourManager" type="Node" parent="." unique_id=962948133]
 script = ExtResource("2_jjvhh")
@@ -653,17 +665,17 @@ offset_right = 297.0
 offset_bottom = 173.0
 text = "Let's build something meaningful out of this junk; turn it into gold.
 
-Move it to the ground near the silhouette then confirm it's position."
+Move it to the ground near Feely's ghost, then confirm it's position. His soul has been lingering here since that horrible accident... Let's bring him some peace."
 label_settings = SubResource("LabelSettings_536cc")
 autowrap_mode = 3
 
 [node name="Button" type="Button" parent="Tutorial UI/Tutorial2" unique_id=2079852270]
 z_index = 1
 layout_mode = 0
-offset_left = 41.0
-offset_top = 183.0
-offset_right = 230.0
-offset_bottom = 220.0
+offset_left = 63.0
+offset_top = 225.0
+offset_right = 252.0
+offset_bottom = 262.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_aqgau")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_8cuat")
 theme_override_styles/hover = SubResource("StyleBoxFlat_o1aky")
