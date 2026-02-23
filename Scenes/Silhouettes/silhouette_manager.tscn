@@ -9,6 +9,47 @@
 [ext_resource type="Texture2D" uid="uid://b12salwy8pjxr" path="res://Assets/Silhouettes/house_silhouette.png" id="5_gl57l"]
 [ext_resource type="Texture2D" uid="uid://dahx266hya6bt" path="res://Assets/Silhouettes/beer_silhouette.png" id="6_os4f3"]
 [ext_resource type="Texture2D" uid="uid://cj6te712tgfdw" path="res://Assets/Silhouettes/window_silhouette.png" id="7_xsx78"]
+[ext_resource type="FontFile" uid="uid://djne8hhwxuugs" path="res://Assets/Fonts/easvhs.ttf" id="10_gl57l"]
+[ext_resource type="Texture2D" uid="uid://bjtulqs5l3hv0" path="res://Assets/UI/panel.png" id="11_os4f3"]
+[ext_resource type="Texture2D" uid="uid://c6juk127tfs54" path="res://Assets/UI/blank_button.png" id="11_xsx78"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xsx78"]
+bg_color = Color(0.41960785, 0.6156863, 0.83137256, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_cwr3e"]
+font = ExtResource("10_gl57l")
+font_size = 24
+font_color = Color(0.5019608, 0.30980393, 0.30980393, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_os4f3"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cwr3e"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3smjs"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t5x7x"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pxtxo"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uue17"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rcmxv"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1jqmh"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ya860"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p8nxw"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="SilhouetteManager" type="Control" unique_id=459499342 node_paths=PackedStringArray("ray", "level_pass_panel", "full_image", "levels")]
 layout_mode = 3
@@ -227,31 +268,81 @@ offset_left = 28.0
 offset_top = 36.0
 offset_right = 375.0
 offset_bottom = 370.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_xsx78")
 
 [node name="Label" type="Label" parent="Panel" unique_id=309646770]
 layout_mode = 0
-offset_left = 20.0
-offset_top = 103.0
-offset_right = 322.0
-offset_bottom = 126.0
-text = "Nice job! How to you want to continue?"
+offset_left = 46.0
+offset_top = 54.0
+offset_right = 296.0
+offset_bottom = 135.0
+text = "Nice job! 
+How do you want 
+to continue?"
+label_settings = SubResource("LabelSettings_cwr3e")
+autowrap_mode = 3
 
 [node name="Replay" type="Button" parent="Panel" unique_id=366359040]
+z_index = 1
 layout_mode = 0
-offset_left = 35.0
+offset_left = 46.0
 offset_top = 206.0
-offset_right = 151.0
+offset_right = 162.0
 offset_bottom = 265.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_os4f3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cwr3e")
+theme_override_styles/hover = SubResource("StyleBoxFlat_3smjs")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_t5x7x")
+theme_override_styles/focus = SubResource("StyleBoxFlat_pxtxo")
 text = "Replay"
 
+[node name="TextureRect" type="TextureRect" parent="Panel/Replay" unique_id=1185921300]
+z_index = -1
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_xsx78")
+
 [node name="Next level" type="Button" parent="Panel" unique_id=212482778]
+z_index = 1
 layout_mode = 0
-offset_left = 194.0
+offset_left = 185.0
 offset_top = 206.0
-offset_right = 310.0
+offset_right = 301.0
 offset_bottom = 265.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_uue17")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rcmxv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_1jqmh")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_ya860")
+theme_override_styles/focus = SubResource("StyleBoxFlat_p8nxw")
 text = "Next Level"
 
+[node name="TextureRect" type="TextureRect" parent="Panel/Next level" unique_id=1349189149]
+z_index = -1
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_xsx78")
+
+[node name="TextureRect" type="TextureRect" parent="Panel" unique_id=77522525]
+z_index = -1
+texture_filter = 1
+layout_mode = 0
+offset_left = -1.0
+offset_right = 346.0
+offset_bottom = 420.0
+focus_behavior_recursive = 1
+mouse_filter = 2
+mouse_behavior_recursive = 2
+texture = ExtResource("11_os4f3")
 [node name="FullImage" type="TextureRect" parent="." unique_id=1294008123]
 layout_mode = 1
 anchors_preset = 1
