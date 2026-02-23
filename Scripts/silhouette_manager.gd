@@ -17,6 +17,7 @@ var construct_bounding_box: Rect2
 var final_bounding_box: Rect2
 
 signal level_resetted
+signal all_levels_beat
 
 func _ready() -> void:
 	load_level()
@@ -98,7 +99,6 @@ func finish_level() -> void:
 	elif current_level_idx == 6:
 		full_image.texture = load("res://Assets/target images/thinker.jpg")
 
-
 func load_level() -> void:
 	level_pass_panel.visible = false
 	full_image.texture = null
@@ -116,4 +116,7 @@ func _on_next_level_button_down() -> void:
 	levels[current_level_idx].process_mode = Node.PROCESS_MODE_DISABLED
 	levels[current_level_idx].visible = false
 	current_level_idx += 1
-	load_level()
+	if current_level_idx == levels.size():
+		all_levels_beat.emit()
+	else:
+		load_level()

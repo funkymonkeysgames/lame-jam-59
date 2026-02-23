@@ -11,16 +11,7 @@ extends Node
 @export var button: Button
 @export var sfx: Node
 @export var tutorial_ui: Control
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
+@export var credits_ui: Control
 
 func _on_start_button_button_down() -> void:
 	title_screen.visible = false
@@ -33,3 +24,14 @@ func _on_start_button_button_down() -> void:
 	tetris_spawner.visible = true
 	objects_list.visible = true
 	button.visible = true
+
+
+func _on_silhouette_manager_all_levels_beat() -> void:
+	tutorial_ui.visible = false
+	floor.visible = false
+	ui2.visible = false
+	silhouettemanager.visible = false
+	tetris_spawner.visible = false
+	objects_list.visible = false
+	button.visible = false
+	credits_ui.visible = true
