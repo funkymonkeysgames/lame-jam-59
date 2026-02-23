@@ -643,6 +643,8 @@ wait_time = 1.1
 autostart = true
 
 [node name="Sky" type="Node2D" parent="Background" unique_id=1827975449 node_paths=PackedStringArray("anim_timer")]
+position = Vector2(-40, -27)
+scale = Vector2(1.1, 1.1)
 script = ExtResource("11_d1ilt")
 anim_timer = NodePath("Timer")
 
