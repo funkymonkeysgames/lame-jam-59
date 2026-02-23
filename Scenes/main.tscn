@@ -407,6 +407,7 @@ tutorial_ui = NodePath("Tutorial UI")
 credits_ui = NodePath("credits")
 
 [node name="title_screen" type="Control" parent="." unique_id=1231648412]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -466,7 +467,6 @@ texture_normal = ExtResource("3_6vcvc")
 texture_pressed = ExtResource("4_7k868")
 
 [node name="credits" type="Control" parent="." unique_id=38481397]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -596,9 +596,9 @@ horizontal_alignment = 1
 [node name="Label3" type="Label" parent="credits/Panel3" unique_id=608815306]
 layout_mode = 0
 offset_left = 72.0
-offset_top = 132.0
+offset_top = 122.0
 offset_right = 415.0
-offset_bottom = 311.0
+offset_bottom = 327.0
 text = "Free assets by:
 - Sky Box: free-game-assets.itch.io
 - Grass Background: free-game-assets.itch.io

@@ -13,7 +13,7 @@ config_version=5
 config/name="Lame Jam 59"
 run/main_scene="uid://drakrwbphss2j"
 config/features=PackedStringArray("4.6", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="uid://bl3ehbkvcru38"
 
 [display]
 
