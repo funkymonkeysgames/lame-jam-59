@@ -22,7 +22,7 @@ func _on_item_grabbed() -> void:
 		first_item_grabbed = true
 		get_node("Tutorial2").visible = true
 
-func _on_neighbour_entered() -> void:
+func _on_block_placed() -> void:
 	if not first_item_placed:
 		first_item_placed = true
 		get_node("Tutorial3").visible = true
@@ -39,4 +39,4 @@ func _on_objects_list_child_entered_tree(node: Node) -> void:
 		first_item_connected = true
 		var object:Block = get_parent().get_node("ObjectsList").get_child(0)
 		await object.ready
-		object.confirmation_button.button_down.connect(_on_neighbour_entered)
+		object.block_placed.connect(_on_block_placed)

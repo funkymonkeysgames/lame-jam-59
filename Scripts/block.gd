@@ -14,7 +14,7 @@ class_name Block
 @export var integrity_text: TextEdit
 @onready var sprite2D: Sprite2D = $Sprite2D
 
-@onready var collision_shape: CollisionShape2D = $CollisionShape2D
+@onready var collision_shape = $CollisionShape2D
 @onready var drag_button: Button = $Sprite2D/Button
 @onready var confirmation_button: TextureButton = $ConfirmationButton
 @onready var neighbour_manager: Node = $"../../NeighbourManager"
@@ -33,7 +33,6 @@ signal block_placed
 signal block_missed
 signal neighbour_entered
 signal rotated
-signal TUTO
 
 func _ready() -> void:
 	# drag button
@@ -83,13 +82,13 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	if lerping and can_update:
-		print("rotate bitch")
-		print(collision_shape.rotation_degrees)
+		#print("rotate bitch")
+		#print(collision_shape.rotation_degrees)
 		collision_shape.rotation_degrees = lerpf(collision_shape.rotation_degrees, target_rotation, t)
 		neighbour_area2d.rotation_degrees = lerpf(neighbour_area2d.rotation_degrees, target_rotation, t)
 		sprite2D.rotation_degrees = lerpf(sprite2D.rotation_degrees, target_rotation, t)
 		t += delta * 10
-		print(t)
+		#print(t)
 		if t >= 1.0:
 			lerping = false
 			t = 0.0
@@ -97,6 +96,7 @@ func _physics_process(delta: float) -> void:
 	if !can_drag: return
 	
 	var distance = global_position.distance_to(get_global_mouse_position())
+	#print(has_neighbour)
 	if has_neighbour and distance > 20:
 		drag_button.button_up.emit()
 		
@@ -107,6 +107,9 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 func _on_noclip_area_entered(area: Area2D) -> void:
+	print("noclip area ", area.name)
+	if area.name == "Neighbour":
+		return 
 	if area != neighbour_area2d:
 		noclipareas.append(area)
 
@@ -130,22 +133,27 @@ func _on_button_button_up() -> void:
 	Input.set_custom_mouse_cursor(load("res://Assets/cursors/hand_small_point_cropped.png"))
 	can_drag = false
 	
-func _on_neighbor_area_entered(_area: Area2D) -> void:
+func _on_neighbor_area_entered(area: Area2D) -> void:
+	print(area)
+	if area == neighbour_area2d or area == noclipzone:
+		return
+	print("AAA")
 	has_neighbour = true
 	if can_update:
 		await neighbour_manager.check_integrity(self)
 		neighbour_entered.emit(integrity)
 
 func _on_neighbor_area_exited(_area: Area2D) -> void:
+	print("exiting")
 	has_neighbour = false
 	if can_update:
 		await neighbour_manager.check_integrity(self)
 
 func _on_confirmation_button_button_down() -> void:
 	if noclipareas.size() > 0:
+		print("clipping")
 		block_missed.emit()
-		return
-	if await neighbour_manager.check_integrity(self):
+	elif await neighbour_manager.check_integrity(self):
 		neighbour_manager.new_neighbour(self)
 		can_update = false
 		block_placed.emit()

@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://cnwr8cq4on31v"]
+
+[ext_resource type="Script" uid="uid://g0qmwplp4ot0" path="res://Scripts/block.gd" id="1_6q0xp"]
+[ext_resource type="Shader" uid="uid://bcsc5uuhnl704" path="res://Assets/integrity_shaders/integrity.gdshader" id="2_4annd"]
+[ext_resource type="Texture2D" uid="uid://biu73mwka5car" path="res://Assets/objects/new/baseball bat.png" id="3_iludm"]
+[ext_resource type="Script" uid="uid://b72v0febfobxf" path="res://Scripts/block_sprite_2d.gd" id="4_jqf2e"]
+[ext_resource type="PackedScene" uid="uid://d184xbu0oj6qs" path="res://Scenes/Objects/block/block_drag_button.tscn" id="5_7318u"]
+[ext_resource type="PackedScene" uid="uid://cth0pnm0yp2o1" path="res://Scenes/Objects/block/block_animation_player.tscn" id="6_5sku0"]
+[ext_resource type="PackedScene" uid="uid://dm0n7fv6777j6" path="res://Scenes/Objects/block/block_cpu_particles_2d.tscn" id="7_yu0lu"]
+[ext_resource type="PackedScene" uid="uid://c61qhupjp5748" path="res://Scenes/Objects/block/block_confirmation_button.tscn" id="8_78721"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jdo2k"]
+shader = ExtResource("2_4annd")
+shader_parameter/colour = Color(1, 1, 1, 1)
+shader_parameter/tint_factor = 0.5
+shader_parameter/fade = 1.0
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=581432221 node_paths=PackedStringArray("neighbour_area2d", "parent_body2d")]
+script = ExtResource("1_6q0xp")
+neighbour_area2d = NodePath("Neighbour")
+parent_body2d = NodePath(".")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="." unique_id=2033120229]
+polygon = PackedVector2Array(2, -7.9999886, 22, -27.99996, 27, -21.99997, 3, 1.9999971, 2, 8.999987, 1, 27.99996, 4, 30.999956, 3, 32.999954, -4, 32.999954, -5, 30.999956, -2, 27.99996, -2, 18.999973, -3, 16.999975, -3, 7.9999886, -5, 5.9999914, -4, 1.9999971, -3, 1.9999971, -2, 0.99999857, -1, 0, 0, -0.99999857, 0, -0.99999857, -2, -2.9999957)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1251007473]
+texture_filter = 1
+material = SubResource("ShaderMaterial_jdo2k")
+position = Vector2(11, 2.9999998)
+rotation = -0.0031344413
+texture = ExtResource("3_iludm")
+script = ExtResource("4_jqf2e")
+
+[node name="Button" parent="Sprite2D" unique_id=1908648916 instance=ExtResource("5_7318u")]
+offset_left = -18.905872
+offset_top = -30.059404
+offset_right = -18.905872
+offset_bottom = -30.059397
+
+[node name="AnimationPlayer" parent="Sprite2D" unique_id=1894733382 instance=ExtResource("6_5sku0")]
+
+[node name="CPUParticles2D" parent="Sprite2D" unique_id=771912630 instance=ExtResource("7_yu0lu")]
+position = Vector2(-10.990543, -3.034464)
+
+[node name="IntegrityShaderTimer" type="Timer" parent="Sprite2D" unique_id=1085239035]
+wait_time = 0.5
+one_shot = true
+
+[node name="Neighbour" type="Area2D" parent="." unique_id=1388060289]
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Neighbour" unique_id=1202707379]
+scale = Vector2(1, 1.0000013)
+polygon = PackedVector2Array(1, -8.999987, 21, -28.999958, 29, -21.99997, 4, 2.9999957, 3, 9.999986, 2, 27.99996, 5, 30.999956, 4, 33.99995, -5, 33.99995, -6, 30.999956, -3, 26.999962, -3, 18.999973, -4, 16.999975, -4, 7.9999886, -6, 4.999993, -5, 1.9999971, -4, 0.99999857, -2, -2.9999957)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1765578907]
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Area2D" unique_id=1673658004]
+polygon = PackedVector2Array(-2, 30.999996, 1, 30.999996, 0, 27.999996, 0, 3.9999995, 5, -2.9999995, 23, -20.999998, 21, -23.999996, 2, -3.9999995, 2, 0.9999999, 0, 3.9999995, -2, 5.999999, -1, 14.999998, -1, 27.999996)
+
+[node name="ConfirmationButton" parent="." unique_id=590694293 instance=ExtResource("8_78721")]
+offset_left = 46.666668
+offset_top = -38.0
+offset_right = 71.66667
+offset_bottom = -13.0
+
+[connection signal="button_down" from="Sprite2D/Button" to="Sprite2D" method="_on_button_button_down"]
+[connection signal="button_up" from="Sprite2D/Button" to="Sprite2D" method="_on_button_button_up"]
+[connection signal="area_entered" from="Neighbour" to="." method="_on_neighbor_area_entered"]

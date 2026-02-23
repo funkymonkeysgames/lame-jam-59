@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://bhewr0tk1nn4u"]
+
+[ext_resource type="Script" uid="uid://g0qmwplp4ot0" path="res://Scripts/block.gd" id="1_7g8ei"]
+[ext_resource type="Shader" uid="uid://bcsc5uuhnl704" path="res://Assets/integrity_shaders/integrity.gdshader" id="2_mofa3"]
+[ext_resource type="Texture2D" uid="uid://byq8mm4xvr8my" path="res://Assets/objects/new/sneaker-L.png" id="3_7g8ei"]
+[ext_resource type="Script" uid="uid://b72v0febfobxf" path="res://Scripts/block_sprite_2d.gd" id="4_4owwp"]
+[ext_resource type="PackedScene" uid="uid://d184xbu0oj6qs" path="res://Scenes/Objects/block/block_drag_button.tscn" id="5_t6jby"]
+[ext_resource type="PackedScene" uid="uid://cth0pnm0yp2o1" path="res://Scenes/Objects/block/block_animation_player.tscn" id="6_eul5l"]
+[ext_resource type="PackedScene" uid="uid://dm0n7fv6777j6" path="res://Scenes/Objects/block/block_cpu_particles_2d.tscn" id="7_6rjkx"]
+[ext_resource type="PackedScene" uid="uid://c61qhupjp5748" path="res://Scenes/Objects/block/block_confirmation_button.tscn" id="8_22p7v"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jdo2k"]
+shader = ExtResource("2_mofa3")
+shader_parameter/colour = Color(1, 1, 1, 1)
+shader_parameter/tint_factor = 0.5
+shader_parameter/fade = 1.0
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=581432221 node_paths=PackedStringArray("neighbour_area2d", "parent_body2d")]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_7g8ei")
+neighbour_area2d = NodePath("Neighbour")
+parent_body2d = NodePath(".")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="." unique_id=2033120229]
+scale = Vector2(1, 1.0000013)
+polygon = PackedVector2Array(-15, 19.999971, -15, 17.999973, -12, 14.999979, -9, 14.999979, -5, 12.999981, -1, 10.999985, 0, 7.9999886, 3, 7.9999886, 3, -4.999993, 7, -7.9999886, 9, -11.999983, 10, -16.999975, 13, -19.999971, 15, -19.999971, 15, 4.999993, 10, 4.999993, 10, 19.999971)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1251007473]
+texture_filter = 1
+material = SubResource("ShaderMaterial_jdo2k")
+rotation = -0.0031344413
+texture = ExtResource("3_7g8ei")
+script = ExtResource("4_4owwp")
+
+[node name="Button" parent="Sprite2D" unique_id=1908648916 instance=ExtResource("5_t6jby")]
+offset_left = -15.270569
+offset_top = -20.047966
+offset_right = -15.270569
+offset_bottom = -20.047958
+
+[node name="AnimationPlayer" parent="Sprite2D" unique_id=1894733382 instance=ExtResource("6_eul5l")]
+
+[node name="CPUParticles2D" parent="Sprite2D" unique_id=771912630 instance=ExtResource("7_6rjkx")]
+position = Vector2(-10.990543, -3.034464)
+
+[node name="IntegrityShaderTimer" type="Timer" parent="Sprite2D" unique_id=1085239035]
+wait_time = 0.5
+one_shot = true
+
+[node name="Neighbour" type="Area2D" parent="." unique_id=1388060289]
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Neighbour" unique_id=1202707379]
+scale = Vector2(1, 1.0000013)
+polygon = PackedVector2Array(-16, 13.99998, -2, 4.999993, -1, -7.9999886, 6, -13.99998, 11, -22.999968, 18, -22.999968, 18, 8.999987, 13, 8.999987, 13, 22.999968, -18, 22.999968)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1765578907]
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Area2D" unique_id=1673658004]
+polygon = PackedVector2Array(-2, 13.999998, -8, 16.999998, 7, 17.999998, 7, 8.999999, 13, 1.9999998, 13, -13.999998, 7, -3.9999995, 6, 1.9999998)
+
+[node name="ConfirmationButton" parent="." unique_id=590694293 instance=ExtResource("8_22p7v")]
+offset_left = 34.666668
+offset_top = -24.666668
+offset_right = 54.666668
+offset_bottom = -4.666668
+
+[connection signal="button_down" from="Sprite2D/Button" to="Sprite2D" method="_on_button_button_down"]
+[connection signal="button_up" from="Sprite2D/Button" to="Sprite2D" method="_on_button_button_up"]
+[connection signal="area_entered" from="Neighbour" to="." method="_on_neighbor_area_entered"]

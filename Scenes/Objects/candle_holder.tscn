@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://b1hclvsqqi56o"]
+
+[ext_resource type="Script" uid="uid://g0qmwplp4ot0" path="res://Scripts/block.gd" id="1_x1ik3"]
+[ext_resource type="Shader" uid="uid://bcsc5uuhnl704" path="res://Assets/integrity_shaders/integrity.gdshader" id="2_5xli8"]
+[ext_resource type="Texture2D" uid="uid://dqg28sknv0v8j" path="res://Assets/objects/new/candle holdert.png" id="3_7xl8a"]
+[ext_resource type="Script" uid="uid://b72v0febfobxf" path="res://Scripts/block_sprite_2d.gd" id="4_8twvj"]
+[ext_resource type="PackedScene" uid="uid://d184xbu0oj6qs" path="res://Scenes/Objects/block/block_drag_button.tscn" id="5_mlmcc"]
+[ext_resource type="PackedScene" uid="uid://cth0pnm0yp2o1" path="res://Scenes/Objects/block/block_animation_player.tscn" id="6_8p0u7"]
+[ext_resource type="PackedScene" uid="uid://dm0n7fv6777j6" path="res://Scenes/Objects/block/block_cpu_particles_2d.tscn" id="7_gmu3j"]
+[ext_resource type="PackedScene" uid="uid://c61qhupjp5748" path="res://Scenes/Objects/block/block_confirmation_button.tscn" id="8_cuapb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jdo2k"]
+shader = ExtResource("2_5xli8")
+shader_parameter/colour = Color(1, 1, 1, 1)
+shader_parameter/tint_factor = 0.5
+shader_parameter/fade = 1.0
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=581432221 node_paths=PackedStringArray("neighbour_area2d", "parent_body2d")]
+script = ExtResource("1_x1ik3")
+neighbour_area2d = NodePath("Neighbour")
+parent_body2d = NodePath(".")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="." unique_id=2033120229]
+scale = Vector2(1, 1.0000013)
+polygon = PackedVector2Array(-6, -6.99999, 7, -6.99999, 7, -7.9999886, 10, -7.9999886, 11, -8.999987, 17, -13.99998, 18, -15.999977, 19, -17.999973, 21, -19.999971, 21, -23.999966, 22, -25.999962, 23, -28.999958, 23, -32.999954, 19, -32.999954, 19, -34.99995, 15, -34.99995, 15, -35.999947, 14, -35.999947, 14, -36.999947, 15, -36.999947, 15, -37.999947, 19, -37.999947, 19, -38.999943, 20, -38.999943, 21, -38.999943, 22, -42.99994, 27, -42.99994, 28, -39.999943, 30, -38.999943, 34, -37.999947, 35, -36.999947, 34, -34.99995, 31, -33.99995, 29, -33.99995, 26, -32.999954, 26, -27.99996, 25, -25.999962, 25, -22.999968, 23, -19.999971, 22, -17.999973, 20, -13.99998, 18, -10.999985, 13, -6.99999, 10, -5.9999914, 7, -4.999993, 5, -3.9999943, 2, -2.9999957, 2, 43.99994, 8, 44.999935, 12, 45.999935, 14, 47.99993, 11, 48.99993, 7, 49.999928, -7, 49.999928, -9, 48.99993, -11, 48.99993, -13, 47.99993, -13, 46.99993, -11, 45.999935, -7, 45.999935, -7, 44.999935, -2, 44.999935, -2, -3.9999943, -5, -3.9999943, -8, -4.999993, -10, -5.9999914, -13, -6.99999, -14, -8.999987, -17, -9.999986, -18, -11.999983, -21, -15.999977, -23, -19.999971, -24, -22.999968, -25, -27.99996, -26, -32.999954, -30, -33.99995, -33, -34.99995, -34, -35.999947, -35, -36.999947, -33, -37.999947, -30, -37.999947, -29, -38.999943, -28, -38.999943, -27, -38.999943, -27, -49.999928, -22, -49.999928, -22, -38.999943, -20, -38.999943, -19, -37.999947, -15, -37.999947, -15, -35.999947, -16, -34.99995, -19, -34.99995, -20, -33.99995, -23, -33.99995, -23, -28.999958, -22, -23.999966, -20, -18.999973, -17, -13.99998, -13, -9.999986, -10, -7.9999886)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1251007473]
+texture_filter = 1
+material = SubResource("ShaderMaterial_jdo2k")
+rotation = -0.0031344413
+texture = ExtResource("3_7xl8a")
+script = ExtResource("4_8twvj")
+
+[node name="Button" parent="Sprite2D" unique_id=1908648916 instance=ExtResource("5_mlmcc")]
+offset_left = -35.8431
+offset_top = -50.112595
+offset_right = -35.8431
+offset_bottom = -50.112587
+
+[node name="AnimationPlayer" parent="Sprite2D" unique_id=1894733382 instance=ExtResource("6_8p0u7")]
+
+[node name="CPUParticles2D" parent="Sprite2D" unique_id=771912630 instance=ExtResource("7_gmu3j")]
+position = Vector2(-10.990543, -3.034464)
+
+[node name="IntegrityShaderTimer" type="Timer" parent="Sprite2D" unique_id=1085239035]
+wait_time = 0.5
+one_shot = true
+
+[node name="Neighbour" type="Area2D" parent="." unique_id=1388060289]
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Neighbour" unique_id=1202707379]
+scale = Vector2(1, 1.0000013)
+polygon = PackedVector2Array(-25, -21.99997, -28, -31.999954, -34, -33.99995, -36, -36.999947, -33, -38.999943, -31, -38.999943, -28, -39.999943, -28, -50.999928, -21, -50.999928, -20, -39.999943, -17, -38.999943, -14, -38.999943, -14, -35.999947, -17, -32.999954, -19, -32.999954, -21, -32.999954, -20, -24.999964, -18, -17.999973, -14, -13.99998, -10, -9.999986, -5, -7.9999886, 5, -7.9999886, 9, -9.999986, 15, -13.99998, 19, -19.999971, 20, -24.999964, 21, -31.999954, 18, -31.999954, 17, -33.99995, 15, -33.99995, 13, -35.999947, 14, -38.999943, 18, -39.999943, 20, -40.999943, 21, -43.99994, 28, -43.99994, 29, -40.999943, 33, -39.999943, 37, -36.999947, 36, -33.99995, 29, -30.999956, 27, -25.999962, 26, -20.99997, 23, -14.999979, 19, -8.999987, 13, -4.999993, 6, -2.9999957, 3, -1.9999971, 4, 42.99994, 7, 43.99994, 12, 44.999935, 15, 46.99993, 15, 48.99993, 10, 50.999928, 3, 51.999924, -6, 50.999928, -11, 49.999928, -15, 47.99993, -12, 44.999935, -8, 44.999935, -6, 43.99994, -3, 43.99994, -4, -1.9999971, -9, -3.9999943, -16, -6.99999, -19, -9.999986, -22, -14.999979, -24, -17.999973)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1765578907]
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Area2D" unique_id=1673658004]
+polygon = PackedVector2Array(-25, -33.999996, -29, -35.999996, -25, -36.999996, -25, -44.999996, -24, -44.999996, -24, -37.999996, -19, -36.999996, -24, -33.999996)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" unique_id=934779831]
+polygon = PackedVector2Array(23, -40.999996, 25, -40.999996, 26, -37.999996, 30, -36.999996, 26, -34.999996, 20, -36.999996, 23, -38.999996)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Area2D" unique_id=1038320513]
+polygon = PackedVector2Array(-5, 46.999996, -5, 48.999992, 5, 48.999992, 6, 45.999996)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Area2D" unique_id=712616444]
+polygon = PackedVector2Array(-1, 46.999996, -1, 44.999996, -1, 43.999996, -1, -4.9999995, 1, -4.9999995, 1, 46.999996)
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Area2D" unique_id=1981274854]
+polygon = PackedVector2Array(-25, -33.999996, -25, -28.999996, -24, -26.999996, -24, -23.999996, -22, -20.999998, -21, -18.999998, -20, -15.999998, -18, -12.999998, -15, -9.999999, -11, -6.999999, -7, -4.9999995, -2, -3.9999995, -2, -4.9999995, -7, -5.999999, -11, -7.999999, -15, -10.999999, -18, -14.999998, -20, -18.999998, -23, -23.999996, -23, -27.999996, -24, -29.999996, -24, -33.999996)
+
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="Area2D" unique_id=245340700]
+polygon = PackedVector2Array(2, -4.9999995, 2, -3.9999995, 5, -4.9999995, 8, -5.999999, 12, -7.999999, 16, -10.999999, 20, -15.999998, 22, -20.999998, 24, -23.999996, 25, -28.999996, 25, -34.999996, 24, -34.999996, 24, -28.999996, 23, -26.999996, 23, -22.999998, 21, -20.999998, 20, -17.999998, 18, -14.999998, 17, -12.999998, 14, -10.999999, 11, -7.999999, 8, -6.999999, 4, -4.9999995)
+
+[node name="ConfirmationButton" parent="." unique_id=590694293 instance=ExtResource("8_cuapb")]
+offset_left = 44.0
+offset_top = -16.666666
+offset_right = 64.0
+offset_bottom = 3.333334
+
+[connection signal="button_down" from="Sprite2D/Button" to="Sprite2D" method="_on_button_button_down"]
+[connection signal="button_up" from="Sprite2D/Button" to="Sprite2D" method="_on_button_button_up"]
+[connection signal="area_entered" from="Neighbour" to="." method="_on_neighbor_area_entered"]

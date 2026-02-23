@@ -6,10 +6,8 @@
 
 [node name="ConfirmationButton" type="TextureButton" unique_id=590694293]
 texture_filter = 1
-offset_left = 45.0
-offset_top = -58.0
-offset_right = 85.0
-offset_bottom = -18.0
+offset_right = 40.0
+offset_bottom = 40.0
 texture_normal = ExtResource("1_mp4mr")
 texture_pressed = ExtResource("2_c142o")
 ignore_texture_size = true

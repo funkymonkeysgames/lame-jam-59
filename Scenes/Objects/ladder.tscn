@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://becc06yokdupq"]
+
+[ext_resource type="Script" uid="uid://g0qmwplp4ot0" path="res://Scripts/block.gd" id="1_ba4pb"]
+[ext_resource type="Shader" uid="uid://bcsc5uuhnl704" path="res://Assets/integrity_shaders/integrity.gdshader" id="2_mlx8y"]
+[ext_resource type="Texture2D" uid="uid://0dumeo0koi87" path="res://Assets/objects/new/laddert.png" id="3_qud3t"]
+[ext_resource type="Script" uid="uid://b72v0febfobxf" path="res://Scripts/block_sprite_2d.gd" id="4_l58ft"]
+[ext_resource type="PackedScene" uid="uid://d184xbu0oj6qs" path="res://Scenes/Objects/block/block_drag_button.tscn" id="5_lub1p"]
+[ext_resource type="PackedScene" uid="uid://cth0pnm0yp2o1" path="res://Scenes/Objects/block/block_animation_player.tscn" id="6_joo4q"]
+[ext_resource type="PackedScene" uid="uid://dm0n7fv6777j6" path="res://Scenes/Objects/block/block_cpu_particles_2d.tscn" id="7_q1xwb"]
+[ext_resource type="PackedScene" uid="uid://c61qhupjp5748" path="res://Scenes/Objects/block/block_confirmation_button.tscn" id="8_8v5sj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jdo2k"]
+shader = ExtResource("2_mlx8y")
+shader_parameter/colour = Color(1, 1, 1, 1)
+shader_parameter/tint_factor = 0.5
+shader_parameter/fade = 1.0
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=581432221 node_paths=PackedStringArray("neighbour_area2d", "parent_body2d")]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_ba4pb")
+neighbour_area2d = NodePath("Neighbour")
+parent_body2d = NodePath(".")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="." unique_id=2033120229]
+scale = Vector2(1, 1.0000013)
+polygon = PackedVector2Array(-14, -83.99988, -42, 83.99988, -41, 88.99987, -38, 90.99987, -35, 89.99987, -32, 85.99988, -31, 77.999886, 5, 77.999886, 5, 83.99988, 6, 88.99987, 9, 89.99987, 13, 88.99987, 14, 84.99988, 17, 73.99989, 42, -84.99988, 40, -89.99987, 36, -90.99987, 33, -84.99988, 32, -78.999886, -6, -78.999886, -5, -85.99988, -7, -89.99987, -12, -89.99987, -13, -86.99988)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1251007473]
+texture_filter = 1
+material = SubResource("ShaderMaterial_jdo2k")
+rotation = -0.0031344413
+texture = ExtResource("3_qud3t")
+script = ExtResource("4_l58ft")
+
+[node name="Button" parent="Sprite2D" unique_id=1908648916 instance=ExtResource("5_lub1p")]
+anchors_preset = -1
+anchor_left = 0.21870054
+anchor_top = 0.031802587
+anchor_right = 0.8842451
+anchor_bottom = 1.0144918
+offset_left = -32.00615
+offset_top = -97.81265
+offset_right = -32.00615
+offset_bottom = -97.81265
+rotation = 0.17453292
+
+[node name="AnimationPlayer" parent="Sprite2D" unique_id=1894733382 instance=ExtResource("6_joo4q")]
+
+[node name="CPUParticles2D" parent="Sprite2D" unique_id=771912630 instance=ExtResource("7_q1xwb")]
+position = Vector2(-10.990543, -3.034464)
+
+[node name="IntegrityShaderTimer" type="Timer" parent="Sprite2D" unique_id=1085239035]
+wait_time = 0.5
+one_shot = true
+
+[node name="Neighbour" type="Area2D" parent="." unique_id=1388060289]
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Neighbour" unique_id=1202707379]
+scale = Vector2(1, 1.0000013)
+polygon = PackedVector2Array(-36, 12.999981, -19, -90.99987, -11, -96.99986, -2, -96.99986, 3, -87.99988, 3, -83.99988, 26, -83.99988, 30, -93.99986, 45, -95.99986, 50, -85.99988, 48, -72.99989, 18, 95.99986, 9, 97.99986, 1, 93.99986, -3, 83.99988, -24, 85.99988, -34, 98.999855, -50, 91.99987, -49, 68.9999)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1765578907]
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Area2D" unique_id=1673658004]
+polygon = PackedVector2Array(-31, 70.99999, -7, -71.99999, 28, -71.99999, 6, 70.99999)
+
+[node name="ConfirmationButton" parent="." unique_id=590694293 instance=ExtResource("8_8v5sj")]
+offset_left = 58.000004
+offset_top = -23.333334
+offset_right = 78.0
+offset_bottom = -3.333334
+
+[connection signal="button_down" from="Sprite2D/Button" to="Sprite2D" method="_on_button_button_down"]
+[connection signal="button_up" from="Sprite2D/Button" to="Sprite2D" method="_on_button_button_up"]
+[connection signal="area_entered" from="Neighbour" to="." method="_on_neighbor_area_entered"]

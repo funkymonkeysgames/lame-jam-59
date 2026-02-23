@@ -4,18 +4,26 @@ var rng = RandomNumberGenerator.new()
 
 var possible_objects = []
 
-var water_bottle_scene = preload("res://Scenes/Objects/water_bottle.tscn")
+var baseball_bat_scene = preload("res://Scenes/Objects/baseball_bat.tscn")
 var bigger_tin_can_scene = preload("res://Scenes/Objects/bigger_tin_can.tscn")
 var box_scene = preload("res://Scenes/Objects/box.tscn")
+var candle_holder_scene = preload("res://Scenes/Objects/candle_holder.tscn")
 var coke_bottle_scene = preload("res://Scenes/Objects/coke_bottle.tscn")
+var cross_scene = preload("res://Scenes/Objects/cross.tscn")
 var detergent_scene = preload("res://Scenes/Objects/detergent.tscn")
+var ladder_scene = preload("res://Scenes/Objects/ladder.tscn")
 var mug_scene = preload("res://Scenes/Objects/mug.tscn")
 var newspaper_scene = preload("res://Scenes/Objects/newspaper.tscn")
 var paper_bag_scene = preload("res://Scenes/Objects/paper_bag.tscn")
 var pizza_box_scene = preload("res://Scenes/Objects/pizza_box.tscn")
+var skyscraper_scene = preload("res://Scenes/Objects/skyscraper.tscn")
+var sneakers_scene = preload("res://Scenes/Objects/sneakers.tscn")
 var soda_can_scene = preload("res://Scenes/Objects/soda_can.tscn")
 var spray_can_scene = preload("res://Scenes/Objects/spray_can.tscn")
 var styro_cup_scene = preload("res://Scenes/Objects/styro_cup.tscn")
+var umbrella_scene = preload("res://Scenes/Objects/umbrella.tscn")
+var water_bottle_scene = preload("res://Scenes/Objects/water_bottle.tscn")
+
 var currentObject: Node = null
 var nextObject: Node = null
 @export var nextObjectPreview:Sprite2D
@@ -55,6 +63,13 @@ func pickRandomObject() -> PackedScene:
 	return possible_objects.pick_random()
 
 func initilizeSceneArray() -> void:
+	possible_objects.append(baseball_bat_scene)
+	possible_objects.append(candle_holder_scene)
+	possible_objects.append(cross_scene)
+	possible_objects.append(skyscraper_scene)
+	possible_objects.append(sneakers_scene)
+	possible_objects.append(umbrella_scene)
+	possible_objects.append(baseball_bat_scene)
 	possible_objects.append(water_bottle_scene)
 	possible_objects.append(bigger_tin_can_scene)
 	possible_objects.append(box_scene)

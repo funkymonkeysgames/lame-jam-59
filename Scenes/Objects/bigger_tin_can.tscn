@@ -66,10 +66,10 @@ shape = SubResource("RectangleShape2D_8gbba")
 shape = SubResource("RectangleShape2D_8st8e")
 
 [node name="ConfirmationButton" parent="." unique_id=590694293 instance=ExtResource("4_jxqgo")]
-offset_left = 21.0
-offset_top = -18.999998
-offset_right = 37.0
-offset_bottom = -3.000002
+offset_left = 25.333334
+offset_top = -23.333334
+offset_right = 45.333336
+offset_bottom = -3.333334
 
 [connection signal="button_down" from="Sprite2D/Button" to="Sprite2D" method="_on_button_button_down"]
 [connection signal="button_up" from="Sprite2D/Button" to="Sprite2D" method="_on_button_button_up"]

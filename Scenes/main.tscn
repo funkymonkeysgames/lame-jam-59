@@ -48,6 +48,9 @@ font_color = Color(0.29259983, 0.5861352, 1.1672156, 1)
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_ueoa1"]
+font_size = 50
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_6bp64"]
 animations = [{
 "frames": [{
@@ -360,7 +363,7 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bv80c"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
-[node name="Main" type="Node" unique_id=1760907832 node_paths=PackedStringArray("title_screen", "floor", "background", "music_player", "ui2", "silhouettemanager", "tetris_spawner", "objects_list", "button", "sfx", "tutorial_ui")]
+[node name="Main" type="Node" unique_id=1760907832 node_paths=PackedStringArray("title_screen", "floor", "background", "music_player", "ui2", "silhouettemanager", "tetris_spawner", "objects_list", "button", "sfx", "tutorial_ui", "credits_ui")]
 script = ExtResource("1_cbgmd")
 title_screen = NodePath("title_screen")
 floor = NodePath("Floor")
@@ -373,6 +376,7 @@ objects_list = NodePath("ObjectsList")
 button = NodePath("Button")
 sfx = NodePath("SFX")
 tutorial_ui = NodePath("Tutorial UI")
+credits_ui = NodePath("credits")
 
 [node name="title_screen" type="Control" parent="." unique_id=1231648412]
 layout_mode = 3
@@ -431,6 +435,114 @@ offset_bottom = 1973.0
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("5_e08e2")
 
+[node name="credits" type="Control" parent="." unique_id=38481397]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="credits" unique_id=1621604434]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 41.0
+offset_right = 1138.0
+offset_bottom = 204.0
+
+[node name="Label" type="Label" parent="credits/Panel" unique_id=372273050]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 47.0
+offset_right = 178.0
+offset_bottom = 70.0
+text = "Thank you for playing:"
+
+[node name="Label2" type="Label" parent="credits/Panel" unique_id=987383664]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -366.0
+offset_top = 9.0
+offset_right = 552.0
+offset_bottom = 160.0
+grow_horizontal = 2
+text = "RECYCLE"
+label_settings = SubResource("LabelSettings_cbgmd")
+
+[node name="Label3" type="Label" parent="credits/Panel" unique_id=1858157665]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -366.0
+offset_top = 9.0
+offset_right = 552.0
+offset_bottom = 160.0
+grow_horizontal = 2
+text = "KING"
+label_settings = SubResource("LabelSettings_1w6v2")
+horizontal_alignment = 2
+
+[node name="Panel2" type="Panel" parent="credits" unique_id=1649019550]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 235.0
+offset_right = 555.0
+offset_bottom = 581.0
+
+[node name="Label" type="Label" parent="credits/Panel2" unique_id=1066077153]
+layout_mode = 0
+offset_right = 482.0
+offset_bottom = 101.0
+text = "This is the end of our game.
+
+We were heavily inspired by Tetris and Valheim. We hope you enjoyed it :)
+
+Please leave a review/comment/feedback!!
+
+Thanks for playing until the end and reaching this screen!"
+autowrap_mode = 2
+
+[node name="Panel3" type="Panel" parent="credits" unique_id=2001666823]
+layout_mode = 0
+offset_left = 609.0
+offset_top = 240.0
+offset_right = 1140.0
+offset_bottom = 578.0
+
+[node name="Label" type="Label" parent="credits/Panel3" unique_id=515076833]
+layout_mode = 0
+offset_left = 160.0
+offset_top = -1.0
+offset_right = 345.0
+offset_bottom = 204.0
+text = "Credits:"
+label_settings = SubResource("LabelSettings_ueoa1")
+
+[node name="Label2" type="Label" parent="credits/Panel3" unique_id=519711289]
+layout_mode = 0
+offset_left = 163.0
+offset_top = 89.0
+offset_right = 321.0
+offset_bottom = 164.0
+text = "Made by:
+Umut Ucak
+Dorian Sousa Calvo"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="credits/Panel3" unique_id=608815306]
+layout_mode = 0
+offset_left = 149.0
+offset_top = 217.0
+offset_right = 318.0
+offset_bottom = 266.0
+text = "Free assets by:
+- [enter your list here]"
+horizontal_alignment = 1
+
 [node name="NeighbourManager" type="Node" parent="." unique_id=962948133]
 script = ExtResource("2_jjvhh")
 
@@ -449,7 +561,7 @@ texture_filter = 1
 position = Vector2(577, 295)
 scale = Vector2(2.05, 2.05)
 sprite_frames = SubResource("SpriteFrames_6bp64")
-animation = &"grass2"
+animation = &"grass1"
 script = ExtResource("11_6iyac")
 anim_timer = NodePath("../Timer")
 
@@ -865,6 +977,7 @@ volume_db = -6.009
 [connection signal="button_up" from="title_screen/StartButton" to="Tutorial UI" method="_on_start_button_button_up"]
 [connection signal="timeout" from="Background/Floor2/Timer" to="Background/Floor2/AnimatedSprite2D2" method="_on_timer_timeout"]
 [connection signal="timeout" from="Background/Sky/Timer" to="Background/Sky" method="_on_timer_timeout"]
+[connection signal="all_levels_beat" from="SilhouetteManager" to="." method="_on_silhouette_manager_all_levels_beat"]
 [connection signal="level_resetted" from="SilhouetteManager" to="ObjectsList" method="_on_silhouette_manager_level_resetted"]
 [connection signal="child_entered_tree" from="ObjectsList" to="ObjectsList" method="_on_child_entered_tree"]
 [connection signal="child_entered_tree" from="ObjectsList" to="Tutorial UI" method="_on_objects_list_child_entered_tree"]

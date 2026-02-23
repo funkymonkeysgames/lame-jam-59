@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://bcdh7f2h805of"]
+
+[ext_resource type="Script" uid="uid://g0qmwplp4ot0" path="res://Scripts/block.gd" id="1_lu7lj"]
+[ext_resource type="Shader" uid="uid://bcsc5uuhnl704" path="res://Assets/integrity_shaders/integrity.gdshader" id="2_6yui7"]
+[ext_resource type="Texture2D" uid="uid://bt04j45xw1ovo" path="res://Assets/objects/new/skyscrapert.png" id="3_wvsqc"]
+[ext_resource type="Script" uid="uid://b72v0febfobxf" path="res://Scripts/block_sprite_2d.gd" id="4_62lfb"]
+[ext_resource type="PackedScene" uid="uid://d184xbu0oj6qs" path="res://Scenes/Objects/block/block_drag_button.tscn" id="5_xm4qi"]
+[ext_resource type="PackedScene" uid="uid://cth0pnm0yp2o1" path="res://Scenes/Objects/block/block_animation_player.tscn" id="6_c47yv"]
+[ext_resource type="PackedScene" uid="uid://dm0n7fv6777j6" path="res://Scenes/Objects/block/block_cpu_particles_2d.tscn" id="7_14umq"]
+[ext_resource type="PackedScene" uid="uid://c61qhupjp5748" path="res://Scenes/Objects/block/block_confirmation_button.tscn" id="8_asqxy"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jdo2k"]
+shader = ExtResource("2_6yui7")
+shader_parameter/colour = Color(1, 1, 1, 1)
+shader_parameter/tint_factor = 0.5
+shader_parameter/fade = 1.0
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=581432221 node_paths=PackedStringArray("neighbour_area2d", "parent_body2d")]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_lu7lj")
+neighbour_area2d = NodePath("Neighbour")
+parent_body2d = NodePath(".")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="." unique_id=2033120229]
+scale = Vector2(1, 1.0000013)
+polygon = PackedVector2Array(-14, 111.99984, -14, 95.99986, -13, 94.99986, -13, 61.999912, -12, 59.999916, -12, 27.99996, -11, 25.999962, -11, -6.99999, -10, -7.9999886, -10, -40.999943, -9, -41.99994, -10, -74.99989, -9, -74.99989, -9, -92.99987, -1, -92.99987, -1, -103.99985, 2, -103.99985, 2, -92.99987, 8, -92.99987, 8, -74.99989, 9, -73.99989, 9, -40.999943, 10, -39.999943, 11, -6.99999, 15, 110.99984)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1251007473]
+texture_filter = 1
+material = SubResource("ShaderMaterial_jdo2k")
+rotation = -0.0031344413
+texture = ExtResource("3_wvsqc")
+script = ExtResource("4_62lfb")
+
+[node name="Button" parent="Sprite2D" unique_id=1908648916 instance=ExtResource("5_xm4qi")]
+anchors_preset = -1
+anchor_left = 0.09658766
+anchor_top = 0.08556291
+anchor_right = 0.95860547
+offset_left = -15.648865
+offset_top = -112.0496
+offset_right = -15.648865
+offset_bottom = -112.0496
+
+[node name="AnimationPlayer" parent="Sprite2D" unique_id=1894733382 instance=ExtResource("6_c47yv")]
+
+[node name="CPUParticles2D" parent="Sprite2D" unique_id=771912630 instance=ExtResource("7_14umq")]
+position = Vector2(-10.990543, -3.034464)
+
+[node name="IntegrityShaderTimer" type="Timer" parent="Sprite2D" unique_id=1085239035]
+wait_time = 0.5
+one_shot = true
+
+[node name="Neighbour" type="Area2D" parent="." unique_id=1388060289]
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Neighbour" unique_id=1202707379]
+scale = Vector2(1, 1.0000013)
+polygon = PackedVector2Array(-18, 44.999935, -15, -95.99986, -6, -96.99986, -5, -106.99985, 0, -109.99984, 7, -104.99985, 7, -97.99986, 13, -94.99986, 20, 114.99983, -22, 115.99983)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1765578907]
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Area2D" unique_id=1673658004]
+polygon = PackedVector2Array(-8, 104.999985, 8, 105.999985, 4, -84.99999, -4, -85.99999)
+
+[node name="ConfirmationButton" parent="." unique_id=590694293 instance=ExtResource("8_asqxy")]
+offset_left = 34.0
+offset_top = -47.333336
+offset_right = 54.0
+offset_bottom = -27.333336
+
+[connection signal="button_down" from="Sprite2D/Button" to="Sprite2D" method="_on_button_button_down"]
+[connection signal="button_up" from="Sprite2D/Button" to="Sprite2D" method="_on_button_button_up"]
+[connection signal="area_entered" from="Neighbour" to="." method="_on_neighbor_area_entered"]

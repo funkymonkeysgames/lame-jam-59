@@ -4,6 +4,7 @@ extends Control
 @export var objects_list: Node
 @export var ray: RayCast2D
 @export var level_pass_panel:Panel
+@export var full_image:TextureRect
 
 @export var levels:Array[TextureRect]
 
@@ -16,6 +17,7 @@ var construct_bounding_box: Rect2
 var final_bounding_box: Rect2
 
 signal level_resetted
+signal all_levels_beat
 
 func _ready() -> void:
 	load_level()
@@ -31,10 +33,19 @@ func check_score() -> void:
 	var construct_bottom_right: Vector2 = Vector2.ZERO
 	for child: Block in objects_list.get_children():
 		if child.can_update or child.position == Vector2(2000, 2000): continue
-		construct_top_left.x = min(child.global_position.x - child.collision_shape.shape.size.x/2, construct_top_left.x)
-		construct_top_left.y = min(child.global_position.y - child.collision_shape.shape.size.y/2, construct_top_left.y)
-		construct_bottom_right.x = max(child.global_position.x + child.collision_shape.shape.size.x/2, construct_bottom_right.x)
-		construct_bottom_right.y = max(child.global_position.y + child.collision_shape.shape.size.y/2, construct_bottom_right.y)
+		
+		if child.collision_shape is CollisionPolygon2D:
+			var offset:Vector2 = child.global_position
+			for v:Vector2 in child.collision_shape.polygon:
+				construct_top_left.x = min(construct_top_left.x, v.x + offset.x)
+				construct_top_left.y = min(construct_top_left.y, v.y + offset.y)
+				construct_bottom_right.x = max(construct_bottom_right.x, v.x + offset.x)
+				construct_bottom_right.y = max(construct_bottom_right.y, v.y + offset.y)
+		else:
+			construct_top_left.x = min(child.global_position.x - child.collision_shape.shape.size.x/2, construct_top_left.x)
+			construct_top_left.y = min(child.global_position.y - child.collision_shape.shape.size.y/2, construct_top_left.y)
+			construct_bottom_right.x = max(child.global_position.x + child.collision_shape.shape.size.x/2, construct_bottom_right.x)
+			construct_bottom_right.y = max(child.global_position.y + child.collision_shape.shape.size.y/2, construct_bottom_right.y)
 	
 	construct_bounding_box = Rect2(construct_top_left, construct_bottom_right-construct_top_left)
 	final_top_left = Vector2(min(construct_top_left.x, polygon2d.top_left.x), min(construct_top_left.y, polygon2d.top_left.y))
@@ -73,9 +84,24 @@ func check_score() -> void:
 	
 func finish_level() -> void:
 	level_pass_panel.visible = true
+	if current_level_idx == 0:
+		full_image.texture = load("res://Assets/target images/feely.webp")
+	elif current_level_idx == 1:
+		full_image.texture = load("res://Assets/target images/car_full.jpg")
+	elif current_level_idx == 2:
+		full_image.texture = load("res://Assets/target images/fan_full.jpg")
+	elif current_level_idx == 3:
+		full_image.texture = load("res://Assets/target images/house_full.jpg")
+	elif current_level_idx == 4:
+		full_image.texture = load("res://Assets/target images/beer_full.jpg")
+	elif current_level_idx == 5:
+		full_image.texture = load("res://Assets/target images/window_full.jpg")
+	elif current_level_idx == 6:
+		full_image.texture = load("res://Assets/target images/thinker.jpg")
 
 func load_level() -> void:
 	level_pass_panel.visible = false
+	full_image.texture = null
 	level_resetted.emit()
 	levels[current_level_idx].process_mode = Node.PROCESS_MODE_INHERIT
 	levels[current_level_idx].visible = true
@@ -90,4 +116,7 @@ func _on_next_level_button_down() -> void:
 	levels[current_level_idx].process_mode = Node.PROCESS_MODE_DISABLED
 	levels[current_level_idx].visible = false
 	current_level_idx += 1
-	load_level()
+	if current_level_idx == levels.size():
+		all_levels_beat.emit()
+	else:
+		load_level()
