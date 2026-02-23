@@ -24,6 +24,7 @@ parent_body2d = NodePath(".")
 polygon = PackedVector2Array(2, -7.9999886, 22, -27.99996, 27, -21.99997, 3, 1.9999971, 2, 8.999987, 1, 27.99996, 4, 30.999956, 3, 32.999954, -4, 32.999954, -5, 30.999956, -2, 27.99996, -2, 18.999973, -3, 16.999975, -3, 7.9999886, -5, 5.9999914, -4, 1.9999971, -3, 1.9999971, -2, 0.99999857, -1, 0, 0, -0.99999857, 0, -0.99999857, -2, -2.9999957)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1251007473]
+visible = false
 texture_filter = 1
 material = SubResource("ShaderMaterial_jdo2k")
 position = Vector2(11, 2.9999998)
@@ -47,6 +48,7 @@ wait_time = 0.5
 one_shot = true
 
 [node name="Neighbour" type="Area2D" parent="." unique_id=1388060289]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="Neighbour" unique_id=1202707379]
 scale = Vector2(1, 1.0000013)
@@ -55,7 +57,7 @@ polygon = PackedVector2Array(1, -8.999987, 21, -28.999958, 29, -21.99997, 4, 2.9
 [node name="Area2D" type="Area2D" parent="." unique_id=1765578907]
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="Area2D" unique_id=1673658004]
-polygon = PackedVector2Array(-2, 30.999996, 1, 30.999996, 0, 27.999996, 0, 3.9999995, 5, -2.9999995, 23, -20.999998, 21, -23.999996, 2, -3.9999995, 2, 0.9999999, 0, 3.9999995, -2, 5.999999, -1, 14.999998, -1, 27.999996)
+polygon = PackedVector2Array(21, -24, 24, -21, 5, -2, 3, -4)
 
 [node name="ConfirmationButton" parent="." unique_id=590694293 instance=ExtResource("8_78721")]
 offset_left = 46.666668
