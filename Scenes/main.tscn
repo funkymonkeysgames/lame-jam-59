@@ -19,11 +19,12 @@
 [ext_resource type="Texture2D" uid="uid://ddw6trbqhmff2" path="res://Assets/background/Floor/TopDownHouse_FloorsAndWalls.png" id="10_hptm8"]
 [ext_resource type="Script" path="res://Scripts/floor_2.gd" id="11_6iyac"]
 [ext_resource type="Script" path="res://Scripts/sky.gd" id="11_d1ilt"]
-[ext_resource type="AudioStream" uid="uid://el8i4jaeaiuw" path="res://Assets/Music/On the Farm.mp3" id="12_u50mg"]
 [ext_resource type="Texture2D" uid="uid://bjtulqs5l3hv0" path="res://Assets/UI/panel.png" id="14_jkdf5"]
 [ext_resource type="Texture2D" uid="uid://cyyvwngsuay0m" path="res://Assets/UI/box.png" id="15_wsu2k"]
 [ext_resource type="FontFile" uid="uid://djne8hhwxuugs" path="res://Assets/Fonts/easvhs.ttf" id="16_k12tt"]
+[ext_resource type="AudioStream" uid="uid://wwuwtogjq6cl" path="res://Assets/Music/On the Farm.ogg" id="17_neg2b"]
 [ext_resource type="Script" uid="uid://cfiam50b1dq1t" path="res://Scripts/objects_list.gd" id="18_ee4r6"]
+[ext_resource type="Script" uid="uid://dbpr1jn5sssi5" path="res://Scripts/music_looper.gd" id="18_neg2b"]
 [ext_resource type="AudioStream" uid="uid://cvomxq3ggfwwq" path="res://Assets/sfx/pop.wav" id="19_pdsj5"]
 [ext_resource type="AudioStream" uid="uid://bs0icwo5w7tjy" path="res://Assets/sfx/lomp.wav" id="21_3pmx8"]
 [ext_resource type="AudioStream" uid="uid://cnr232bjrh75b" path="res://Assets/sfx/pickupp.wav" id="22_ee4r6"]
@@ -626,10 +627,11 @@ tile_map_data = PackedByteArray("AAAjABwAAAACAAYAAAAjABsAAAACAAYAAAAjABoAAAACAAY
 tile_set = SubResource("TileSet_6iyac")
 
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=309025099]
-stream = ExtResource("12_u50mg")
+stream = ExtResource("17_neg2b")
 volume_db = -15.0
 autoplay = true
-parameters/looping = false
+parameters/looping = true
+script = ExtResource("18_neg2b")
 
 [node name="UI2" type="Control" parent="." unique_id=589887161]
 visible = false
@@ -977,6 +979,7 @@ volume_db = -6.009
 [connection signal="button_up" from="title_screen/StartButton" to="Tutorial UI" method="_on_start_button_button_up"]
 [connection signal="timeout" from="Background/Floor2/Timer" to="Background/Floor2/AnimatedSprite2D2" method="_on_timer_timeout"]
 [connection signal="timeout" from="Background/Sky/Timer" to="Background/Sky" method="_on_timer_timeout"]
+[connection signal="finished" from="Music" to="Music" method="_on_finished"]
 [connection signal="all_levels_beat" from="SilhouetteManager" to="." method="_on_silhouette_manager_all_levels_beat"]
 [connection signal="level_resetted" from="SilhouetteManager" to="ObjectsList" method="_on_silhouette_manager_level_resetted"]
 [connection signal="child_entered_tree" from="ObjectsList" to="ObjectsList" method="_on_child_entered_tree"]
