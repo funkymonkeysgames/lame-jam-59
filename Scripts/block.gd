@@ -85,11 +85,13 @@ func _physics_process(delta: float) -> void:
 		collision_shape.rotation_degrees = lerpf(collision_shape.rotation_degrees, target_rotation, t)
 		neighbour_area2d.rotation_degrees = lerpf(neighbour_area2d.rotation_degrees, target_rotation, t)
 		sprite2D.rotation_degrees = lerpf(sprite2D.rotation_degrees, target_rotation, t)
+		noclipzone.rotation_degrees = lerpf(noclipzone.rotation_degrees, target_rotation, t)
+
 		t += delta * 10
 		if t >= 1.0:
 			lerping = false
 			t = 0.0
-			
+
 	if !can_drag: return
 	
 	var distance = global_position.distance_to(get_global_mouse_position())
