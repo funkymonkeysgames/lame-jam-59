@@ -453,7 +453,7 @@ texture_filter = 1
 position = Vector2(577, 295)
 scale = Vector2(2.05, 2.05)
 sprite_frames = SubResource("SpriteFrames_6bp64")
-animation = &"grass2"
+animation = &"grass1"
 script = ExtResource("11_6iyac")
 anim_timer = NodePath("../Timer")
 
@@ -640,7 +640,7 @@ offset_right = 281.0
 offset_bottom = 141.0
 text = "Let's build something meaningful out of this junk; turn it into gold.
 
-Move it to the ground near the silhouette then confirm it's position."
+Move it to the ground near Feely's ghost, then confirm it's position. His soul has been lingering here since that horrible accident... Let's bring him some peace."
 autowrap_mode = 2
 
 [node name="Button" type="Button" parent="Tutorial UI/Tutorial2" unique_id=2079852270]
