@@ -4,6 +4,7 @@ extends Control
 @export var objects_list: Node
 @export var ray: RayCast2D
 @export var level_pass_panel:Panel
+@export var full_image:TextureRect
 
 @export var levels:Array[TextureRect]
 
@@ -82,10 +83,25 @@ func check_score() -> void:
 	
 func finish_level() -> void:
 	level_pass_panel.visible = true
-	
+	if current_level_idx == 0:
+		full_image.texture = load("res://Assets/target images/feely.webp")
+	elif current_level_idx == 1:
+		full_image.texture = load("res://Assets/target images/car_full.jpg")
+	elif current_level_idx == 2:
+		full_image.texture = load("res://Assets/target images/fan_full.jpg")
+	elif current_level_idx == 3:
+		full_image.texture = load("res://Assets/target images/house_full.jpg")
+	elif current_level_idx == 4:
+		full_image.texture = load("res://Assets/target images/beer_full.jpg")
+	elif current_level_idx == 5:
+		full_image.texture = load("res://Assets/target images/window_full.jpg")
+	elif current_level_idx == 6:
+		full_image.texture = load("res://Assets/target images/thinker.jpg")
+
 
 func load_level() -> void:
 	level_pass_panel.visible = false
+	full_image.texture = null
 	level_resetted.emit()
 	levels[current_level_idx].process_mode = Node.PROCESS_MODE_INHERIT
 	levels[current_level_idx].visible = true

@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dahx266hya6bt" path="res://Assets/Silhouettes/beer_silhouette.png" id="6_os4f3"]
 [ext_resource type="Texture2D" uid="uid://cj6te712tgfdw" path="res://Assets/Silhouettes/window_silhouette.png" id="7_xsx78"]
 
-[node name="SilhouetteManager" type="Control" unique_id=459499342 node_paths=PackedStringArray("ray", "level_pass_panel", "levels")]
+[node name="SilhouetteManager" type="Control" unique_id=459499342 node_paths=PackedStringArray("ray", "level_pass_panel", "full_image", "levels")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,6 +20,7 @@ grow_vertical = 2
 script = ExtResource("1_2cle6")
 ray = NodePath("RayCast2D")
 level_pass_panel = NodePath("Panel")
+full_image = NodePath("FullImage")
 levels = [NodePath("Level1"), NodePath("Level2"), NodePath("Level3"), NodePath("Level4"), NodePath("Level5"), NodePath("Level6"), NodePath("Level7")]
 
 [node name="Level1" type="TextureRect" parent="." unique_id=815868820]
@@ -250,6 +251,17 @@ offset_top = 206.0
 offset_right = 310.0
 offset_bottom = 265.0
 text = "Next Level"
+
+[node name="FullImage" type="TextureRect" parent="." unique_id=1294008123]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -397.0
+offset_bottom = 621.0
+grow_horizontal = 0
+expand_mode = 4
+stretch_mode = 4
 
 [connection signal="button_down" from="Panel/Replay" to="." method="_on_replay_button_down"]
 [connection signal="button_down" from="Panel/Next level" to="." method="_on_next_level_button_down"]
